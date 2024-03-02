@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# Dependency directories
+/coverage/
+/dist/
+/yarn-error.log
+.pnp
+.pnp.js
+
+# Environment variables
+.env
+
+# IDE (Visual Studio Code)
+.vscode/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build output
+/build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
