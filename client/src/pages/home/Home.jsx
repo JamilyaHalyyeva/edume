@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero } from '../../pages/home/Hero'
+import Hero from "../../pages/home/Hero"
 
 export default function Home() {
   return (

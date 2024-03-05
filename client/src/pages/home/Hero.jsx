@@ -1,11 +1,11 @@
-
 import React from 'react'
-import "./hero.css"
 import { Title } from '../../components/title/Title'
+import "./hero.css"
 
-export const Hero = () => {
+const Hero = () => {
   return (
     <>
+   
         <section className='hero'> 
         <div className="container">
             <div className="row">
@@ -30,3 +30,5 @@ export const Hero = () => {
     </>
   )
 }
+
+export default Hero
