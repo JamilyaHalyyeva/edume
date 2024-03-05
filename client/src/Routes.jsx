@@ -1,9 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-export default function AppRoutes() {
+const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" />
     </Routes>
   );
-}
+
+};
+
+export default AppRoutes;
+
