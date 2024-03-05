@@ -1,1 +1,22 @@
+.hero{
+    background-image: url("../../../public/girl-student-standing-with-colorful-folders.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    padding-top: 20%;
+    padding-right: 50px;
+    color: #fff;
 
+}
+.hero #heading h3{
+    text-align: left;
+    max-width: 0;
+    padding: 0;
+
+}
