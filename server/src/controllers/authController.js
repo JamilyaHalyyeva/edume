@@ -98,3 +98,32 @@ export const handleForgotPassword = async (req, res) => {
     return res.status(500).send({ success: false, error: error.message });
   }
 };
+
+export const handleChangeForgotPassword = async (req, res) => {
+  try {
+    console.log('change forgot password: data is ', req.body);
+    const { token, password } = req.body;
+
+    if (!token || !password) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const decoded = jwt.verify(token, config.jwtSecret);
+    console.log('decoded is ', decoded);
+
+    const user = await User.findOne({ email: decoded.email });
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' });
+    }
+    console.log('user:', user);
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+    user.password = hashedPassword;
+    await user.save();
+
+    res.json({ success: true });
+  } catch (error) {
+    console.log('Error in change forgot password page ', error.message);
+    return res.status(500).send({ success: false, error: error.message });
+  }
+};
