@@ -1,30 +1,100 @@
-import User from '../models/User.js'
-import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import User from '../models/User.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import config from '../config/env.config.js';
+import sentAnEmailForResetPassword from '../utils/forgotPassword.js';
 
 export const handleRegister = async (req, res) => {
   try {
-    const { username, surname, email, password, role } = req.body
+    const { username, surname, email, password, role } = req.body;
 
-    console.log('register: data is ', req.body)
+    console.log('register: data is ', req.body);
 
     if (!username || !surname || !email || !password) {
-      return res.status(400).json({ message: 'All fields are required' })
+      return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12)
+    const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = new User({
       username,
       surname,
       email,
       password: hashedPassword,
       role,
-    })
-    const result = await newUser.save()
+    });
+    const result = await newUser.save();
 
-    console.log('User is registered', result)
-    res.json(result)
+    console.log('User is registered', result);
+    res.json(result);
   } catch (error) {
-    return res.status(500).json({ message: 'Something went wrong' })
+    return res.status(500).json({ message: 'Something went wrong' });
   }
-}
+};
+
+export const handleLogin = async (req, res) => {
+  try {
+    console.log('login: data is ', req.body);
+
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const user = await User.findOne({ email });
+    console.log('user:', user);
+
+    if (!user) {
+      return res.send({
+        success: false,
+        error: 'Email or password is incorrect',
+      });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log('isMatch is ', isMatch);
+
+    if (!isMatch) {
+      return res.send({
+        success: false,
+        error: 'Email or password not correct',
+      });
+    }
+
+    const token = jwt.sign({ email: user.email }, config.jwtSecret, {
+      expiresIn: '1d',
+    });
+    console.log('token is ', token);
+    res.json({ success: true, token: token });
+  } catch (error) {
+    console.log('error in login  ', error.message);
+    return res.status(500).send({ success: false, error: error.message });
+  }
+};
+
+export const handleForgotPassword = async (req, res) => {
+  try {
+    console.log('forgot password: data is ', req.body);
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' });
+    }
+    console.log('user:', user);
+
+    const token = jwt.sign({ email: user.email }, config.jwtSecret, {
+      expiresIn: '1d',
+    });
+
+    //sentAnEmailForResetPassword(email, token);
+    sentAnEmailForResetPassword(token, user.email);
+    console.log('token is ', token);
+
+    res.json({ success: true, token: token });
+  } catch (error) {
+    return res.status(500).send({ success: false, error: error.message });
+  }
+};
