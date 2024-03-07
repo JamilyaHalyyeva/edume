@@ -1,26 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import UserRolesDialog from "../components/UserRolesDialog";
-import { useDialog } from "../context/DialogProvider";
+import { useState } from "react";
 
 function HomePage() {
-  const { openDialog } = useDialog();
-  const navigate = useNavigate();
+  const [openDialog, setOpenDialog] = useState(false);
   const handleButtonClick = () => {
-    openDialog(
-      "This is a sample dialog description.",
-      () => {
-        // Student Selected button clicked
-        localStorage.setItem("role", "student");
-        navigate("/register");
-        console.log("Student Selected !");
-      },
-      () => {
-        // Teacher Selected button clicked
-        localStorage.setItem("role", "teacher");
-        navigate("/register");
-        console.log("Canceled!");
-      }
-    );
+    setOpenDialog(true);
   };
   return (
     <div className="bg-gray-100 h-screen flex items-center justify-center">
@@ -38,7 +22,7 @@ function HomePage() {
           Open Dialog
         </button>
       </div>
-      <UserRolesDialog />
+      <UserRolesDialog isDialogOpen={openDialog} />
     </div>
   );
 }
