@@ -11,7 +11,7 @@ import animal10 from "../assets/images/animal10.png";
 import animal11 from "../assets/images/animal11.png";
 import animal12 from "../assets/images/animal12.png";
 import animal13 from "../assets/images/animal13.png";
-import animal14 from "../assets/images/animal14.png";
+
 import animal15 from "../assets/images/animal15.png";
 import animal16 from "../assets/images/animal16.png";
 import animal17 from "../assets/images/animal17.png";
@@ -22,7 +22,7 @@ import children2 from "../assets/images/children2.png";
 
 import children4 from "../assets/images/children4.png";
 import children5 from "../assets/images/children5.png";
-import children6 from "../assets/images/children6.png";
+
 import children7 from "../assets/images/children7.png";
 import children8 from "../assets/images/children8.png";
 import children9 from "../assets/images/children9.png";
@@ -106,11 +106,7 @@ const pngFileNames = [
     src: animal13,
     alt: "animal13.png",
   },
-  {
-    id: 14,
-    src: animal14,
-    alt: "animal14.png",
-  },
+
   {
     id: 15,
     src: animal15,
@@ -132,27 +128,26 @@ const pngFileNames = [
     alt: "animal18.png",
   },
   { id: 19, src: animal19, alt: "animal19.png" },
-
   { id: 20, src: children1, alt: "children1.png" },
   { id: 21, src: children2, alt: "children2.png" },
-
   { id: 23, src: children4, alt: "children4.png" },
   { id: 24, src: children5, alt: "children5.png" },
-  { id: 25, src: children6, alt: "children6.png" },
   { id: 26, src: children7, alt: "children7.png" },
   { id: 27, src: children8, alt: "children8.png" },
   { id: 28, src: children9, alt: "children9.png" },
   { id: 29, src: children10, alt: "children10.png" },
   { id: 30, src: teacher1, alt: "teacher1.png" },
-  { id: 31, src: teacher2, alt: "teacher2.png" },
+
   { id: 32, src: teacher3, alt: "teacher3.png" },
   { id: 33, src: teacher4, alt: "teacher4.png" },
-  { id: 34, src: teacher5, alt: "teacher5.png" },
+  { id: 39, src: teacher10, alt: "teacher10.png" },
+
   { id: 35, src: teacher6, alt: "teacher6.png" },
   { id: 36, src: teacher7, alt: "teacher7.png" },
   { id: 37, src: teacher8, alt: "teacher8.png" },
+  { id: 31, src: teacher2, alt: "teacher2.png" },
   { id: 38, src: teacher9, alt: "teacher9.png" },
-  { id: 39, src: teacher10, alt: "teacher10.png" },
+  { id: 34, src: teacher5, alt: "teacher5.png" },
 ];
 
 const AvatarImageGallery = () => {
