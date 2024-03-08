@@ -1,4 +1,6 @@
 import {Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import { Price } from "./pages/pricing/Price";
 
 
 
@@ -7,7 +9,8 @@ export default function AppRoutes() {
     
    
     <Routes>
-      <Route path="/" />
+     <Route path="/" exact Component={Home}/>
+     <Route path="/pricing" exact Component={Price}/>
     </Routes>
   
   );

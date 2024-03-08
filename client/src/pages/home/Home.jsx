@@ -1,11 +1,30 @@
 import React from 'react'
-import Hero from "../../pages/home/Hero"
+import Hero from "../hero/Hero"
 
-export default function Home() {
+import { AboutCard } from '../about/AboutCard'
+import { CourseCard } from '../../coursecard/CourseCard'
+import { OnlineCourses } from '../../coursecard/OnlineCourses'
+import { Test } from '../../components/testimonial/Test'
+import { Blog } from '../../components/blog/Blog'
+import { Hblog } from '../../components/blog/Hblog'
+
+
+ const Home = () => {
   return (
     <div>
-    <Hero/>
+        <Hero/>
+        <AboutCard/>
+        <CourseCard/>
+        <OnlineCourses/>
+        <Hblog/>
+        <Blog/>
+        <Test/>
     
-</div>
+        
+   
+      
+    </div>
   )
 }
+
+export default Home
