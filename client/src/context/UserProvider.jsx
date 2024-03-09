@@ -1,10 +1,12 @@
 // userContext.js
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -15,6 +17,7 @@ const UserProvider = ({ children }) => {
       localStorage.setItem("token", token); // Save token in localStorage for persistence
       setUser(userData);
       setIsAuthenticated(true);
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error in loginUser:", error.message);
       // Handle login error (show message, redirect, etc.)
@@ -23,6 +26,8 @@ const UserProvider = ({ children }) => {
 
   const registerUser = async (userData) => {
     try {
+      const role = localStorage.getItem("role") || "student"; // Set default role to "student"
+      userData.role = role;
       await axios.post("/api/auth/register", userData);
       // Optionally, you can automatically log in the user after registration
       loginUser(userData);
