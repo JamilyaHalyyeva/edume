@@ -1,20 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import TeacherDashboard from "../components/TeacherDashboard";
 import StudentDashboard from "../components/StudentDashboard";
+import DashboardLayout from "../components/DashboarLayout";
 
 const DashboardPage = () => {
   const navigate = useNavigate();
-  // Assuming you have the user's role stored in a variable (replace 'userRole' with the actual variable)
-  const userRole = localStorage.getItem("role"); // Replace with the actual user role (e.g., 'student' or 'teacher')
+  const userRole = localStorage.getItem("role");
 
-  // Redirect to home page if the user's role is not valid
+  // Handling invalid roles
   if (userRole !== "student" && userRole !== "teacher") {
-    return navigate("/");
+    console.error("Invalid user role:", userRole);
+    navigate("/"); // Redirect to the home page
+    return null; // Returning null to prevent rendering any content
+  }
+
+  // Redirect to login if the user is not authenticated or role is not available
+  if (!userRole) {
+    return navigate("/login");
   }
 
   return (
     <div>
-      {userRole === "teacher" ? <TeacherDashboard /> : <StudentDashboard />}
+      <DashboardLayout>
+        {userRole === "teacher" ? <TeacherDashboard /> : <StudentDashboard />}
+      </DashboardLayout>
     </div>
   );
 };
