@@ -1,8 +1,9 @@
 // userContext.js
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import config from "../config/env.config";
+import { decodeToken } from "../util/authUtils";
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
@@ -10,9 +11,27 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    // Check for the user token in localStorage on component mount
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      // Decode the token to get user information
+      const decodedToken = decodeToken(storedToken);
+
+      if (decodedToken) {
+        // Set user and authentication status
+        setUser(decodedToken);
+        setIsAuthenticated(true);
+      }
+    }
+  }, []);
+
   const loginUser = async (userData) => {
     try {
-      const response = await axios.post("/api/auth/login", userData);
+      const response = await axios.post(
+        `${config.apiBaseUrl}/api/auth/login`,
+        userData
+      );
       const { token } = response.data;
       localStorage.setItem("token", token); // Save token in localStorage for persistence
       setUser(userData);
@@ -28,7 +47,8 @@ const UserProvider = ({ children }) => {
     try {
       const role = localStorage.getItem("role") || "student"; // Set default role to "student"
       userData.role = role;
-      await axios.post("/api/auth/register", userData);
+      console.log(config.apiBaseUrl);
+      await axios.post(`${config.apiBaseUrl}/api/auth/register`, userData);
       // Optionally, you can automatically log in the user after registration
       loginUser(userData);
     } catch (error) {

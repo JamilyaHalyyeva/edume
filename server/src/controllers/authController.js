@@ -60,9 +60,18 @@ export const handleLogin = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ email: user.email }, config.jwtSecret, {
-      expiresIn: '1d',
-    });
+    const token = jwt.sign(
+      {
+        email: user.email,
+        userName: user.userName,
+        surname: user.surname,
+        role: user.role,
+      },
+      config.jwtSecret,
+      {
+        expiresIn: '1d',
+      },
+    );
     console.log('token is ', token);
     res.json({ success: true, token: token });
   } catch (error) {
