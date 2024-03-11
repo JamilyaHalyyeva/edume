@@ -26,3 +26,16 @@
 .margin{
     margin-top: 40.3%;
 }
+@media screen and (max-width:768px){
+  .margin{
+        height: 40vh;
+    }
+  .back{
+        background-position: right;
+        padding-top: 50%;
+        height: 80vh;
+    }
+  .back.row{
+        width: 100%;
+    }
+ }

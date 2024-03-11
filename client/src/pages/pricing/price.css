@@ -53,3 +53,25 @@
 img{
     margin-bottom: 50px;
 }
+@media screen and (max-width:768px){
+    .margin{
+          height: 40vh;
+      }
+    .back{
+          background-position: center;
+          padding-top: 50%;
+          height: 80vh;
+         
+      }
+      .back .row{
+        width: 100%;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+      }
+    
+   
