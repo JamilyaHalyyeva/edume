@@ -33,8 +33,10 @@ const UserProvider = ({ children }) => {
         userData
       );
       const { token } = response.data;
+      if (!token) throw new Error("Invalid User");
+      const decodedToken = decodeToken(token);
       localStorage.setItem("token", token); // Save token in localStorage for persistence
-      setUser(userData);
+      setUser(decodedToken);
       setIsAuthenticated(true);
       navigate("/dashboard");
     } catch (error) {
