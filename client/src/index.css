@@ -8,6 +8,9 @@ body{
    
   
 }
+html{
+    scroll-behavior: smooth;
+}
 
 *{
     padding: 0;
@@ -33,10 +36,10 @@ body{
     border-radius: 50%;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3);
-    color: #1eb2a6;
+    color: #FF773D;
 }
 .icon:hover{
-    background-color: #1eb2a6;
+    background-color:rgba(241, 193, 104);
     color: #fff;
 }
 .icon i{
@@ -53,7 +56,7 @@ li{
 button{
     padding: 17px 30px;
     background-color: #fff;
-    color: #1eb2a6;
+    color: #FF773D;
     font-weight: 600;
     border: none;
     margin: 30px 10px 0 0;
@@ -69,7 +72,7 @@ button:hover{
     box-shadow: none;
 }
 .primary-btn{
-    background-color: #1eb2a6;
+    background-color: #FF773D;
     color: #fff;
 }
 #heading{
@@ -80,12 +83,12 @@ button:hover{
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #1eb2a6;
+    color: #FF773D;
 }
 #heading h1{
     font-size: 45px;
     margin: 20px 0;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 p{
     line-height: 30px;
@@ -135,12 +138,12 @@ p{
 .outline-btn{
     margin: 0;
     box-shadow: none;
-    border: 2px solid #1eb2a6;
+    border: 2px solid #FF773D;
     width: 100%;
     transition: 0.5s;
 }
 .outline-btn:hover{
-    background-color: #1eb2a6;
+    background-color: #FF773D;
     color: #fff;
     
 }
@@ -169,3 +172,4 @@ p{
         margin-top: 85%;
     }
 }
+

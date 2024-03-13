@@ -1,5 +1,5 @@
 .hero{
-    background-image: url("../../../public/girl-student-standing-with-colorful-folders.jpg");
+    background-image: url("../../../public/happy-young-woman-sitting-floor-using-laptop-gray-wall.jpg");
     background-size: cover;
   background-attachment: fixed;
     height: 100vh;
@@ -21,7 +21,7 @@
 
 }
 .row{
-    width: 50%;
+    width: 100%;
 }
 button{
     padding: 17px 30px;
@@ -42,7 +42,7 @@ button:hover{
     box-shadow: none;
 }
 .primary-btn{
-    background-color: #1eb2a6;
+    background-color: #FF773D;
     color: #fff;
 }
 #heading{
@@ -55,13 +55,14 @@ button:hover{
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #1eb2a6;
+    color: rgba(241, 193, 104);
    
 }
 #heading h1{
     font-size: 45px;
     margin: 20px 0;
     text-transform: capitalize;
+    color: #FF773D;
 }
 p{
     line-height: 30px;
@@ -75,7 +76,7 @@ p{
         height: 40vh;
     }
     .hero{
-        background-position: right;
+        background-position: center;
         padding-top: 50%;
         height: 80vh;
     }

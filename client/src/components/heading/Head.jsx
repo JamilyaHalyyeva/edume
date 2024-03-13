@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export const Head = () => {
+  const[click, setClick] = useState(false)
+
   const[courses, setCourses] =useState("")
   const[data, setData] = useState([])
   const [filteredCourses, setFilteredCourses] = useState([]);
@@ -39,34 +41,42 @@ useEffect(() => {
   
   
   return (
-    <div>
+    <>
          <section className='head'>
             <div className="container flexSB">
                 <div className="logo">
                     <h1>EDUME</h1>
                     <span>ONLINE EDUCATION & LEARNING</span>
                 </div>
-                <div className='search'>
-                  
-                    <input type="text" placeholder="Search..." onChange={e=>setCourses(e.target.value)}/>
                 
-                    
-                 
-                </div>
+                <nav className="flexSB">
+                <ul className={click ? "mobile-nav" : "flexSB"} onClick={()=> setClick(false)}>
+                    <li><Link to="/">Home</Link></li>
+                    <li><a href="#courses">Courses</a></li>
+                   
+                    <li><a href="#info">About</a></li>
+                   
+                   <li><a href="#pricing">Pricing</a></li>
+                   <li><a href="#lessons">Lessons</a></li>
+                   
+                    <li><a href="#contact">Contact</a></li>
+                  
+                    <button className='btn'>
+                    <Link>Login</Link>
+                    </button>
+                  
+
+                  </ul>
+                  
+
+                  <button className='toggle' onClick={()=> setClick(!click)}>
+                    {click ? <i className='fas fa-times'></i> : <i className='fas fa-bars'></i>}
+                </button>
+                </nav>
                 
-                <div className='social'>
-                  
-                   <i className='fab fa-facebook-f icon'></i>
-                   <i className='fab fa-instagram icon'></i>
-                   <i className='fab fa-twitter icon'></i>
-                   <i className='fab fa-youtube icon'></i>
-                  
-                   <i className='fa fa-user-plus icon'></i>
-
-
-
-
-                </div>
+             
+                
+              
             </div>
 
 
@@ -87,6 +97,6 @@ useEffect(() => {
           )}
         </div>
       )}
-    </div>
+    </>
   )
 }

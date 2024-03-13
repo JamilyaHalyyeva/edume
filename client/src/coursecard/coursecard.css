@@ -1,61 +1,55 @@
 .courseCard{
-    padding: 50px 0;
+    padding: 40px 0;
+    margin-left: 50px;
 
 
+
+    
 }
-.courseCard .items{
-    background-color: #fff;
-    padding: 30px;
-    text-align: center;
-}
+
 .courseCard .img{
-    width:80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #1eb2a6;
-
-    padding: 15px;
+    width:100px;
+    height: 100px;
+  
+    
 }
+
 .courseCard img{
     width: 100%;
     height: 100%;
-    
     object-fit: cover;
+   margin-left: 70px;
 }
 .courseCard .text{
     margin-left: 15px;
-    text-align: left;
+    text-align: center;
 
+}
+.courseCard h1{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 20px 0;
+    transition: 0.5s;
+    margin-left: 70px;
+    color: rgb(241, 193, 104);
 }
 .courseCard .text h1{
     font-size: 30px;
     font-weight: 600;
     line-height: 45px;
+    color: #FF773D;
+    padding-left: 100px;
 
 }
-.courseCard .rate{
-    margin: 20px 0;
-    color: #1eb2a6;
 
-}
-.courseCard .rate i{
-    font-size: 13px;
-    margin-right: 5px;
-}
-.courseCard .details .dimg img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-top: 20px;
-
-}
 .courseCard .details .box{
    display: flex;
    align-items: center;
-   color: gray;
+   color: white;
 }
 .courseCard .details span{
-    color: #1eb2a6;
+    color: #fff;
     font-weight: 600;
     font-size: 14px;
 }
@@ -69,25 +63,27 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 45px;
-    color: #1eb2a6;
+    color: #FF773D;
 }
 .grid2{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 30px;
-}
-.outline-btn{
-    margin: 0;
-    box-shadow: none;
-    border: 2px solid #1eb2a6;
-    width: 100%;
-    transition: 0.5s;
-}
-.outline-btn:hover{
-    background-color: #1eb2a6;
-    color: #fff;
     
+
 }
+.grid2 .box{
+    box-shadow: 0 5px 25px -2px rgba(0 0 0 /6%);
+    background-color: #FFF6F3;
+    padding: 30px 20px;
+    transition: 0.5s;
+    margin-left: 20px;
+   
+}
+
+
+
+
 .grid3{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -98,7 +94,7 @@
 }
 .online .box{
     box-shadow: 0 5px 25px -2px rgba(0 0 0 /6%);
-    background-color: #fff;
+    background-color: #FFF6F3;
     padding: 30px 20px;
     
     transition: 0.5s;
@@ -121,22 +117,24 @@
     font-weight: 500;
     line-height: 30px;
     margin: 20px 0;
+    color: rgb(241, 193, 104);
 }
 .online span{
-    background-color: #fff;
+    background-color: #FFF6F3;
     padding: 5px 20px;
     font-weight: 500;
     font-size: 15px;
-    color: #1eb2a6;
+    color: #FF773D;
     border-radius: 5px;
     
 }
+
 .online .box .show{
     opacity: 0;
 }
 .online.box:hover{
     
-    background-color: #1eb2a6;
+    background-color: #FF773D;
    border-radius: 5px;
     cursor: pointer;
 }
@@ -147,7 +145,7 @@
     left: 0;
 }
 .online.box:hover span{
-    background-color: #1eb2a6;
+    background-color: #FF773D;
     color: #fff;
 }
 .online.box:hover h1{
@@ -159,12 +157,23 @@
 @media screen and (max-width:768px){
     .grid2{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat( 2, 1fr);
         
     }
     .grid3{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+@media screen and (max-width:375px){
+    .grid2{
+        display: grid;
+        grid-template-columns: repeat( 1, 1fr);
+    }
+    .grid3{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
     }
 
 }

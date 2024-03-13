@@ -1,0 +1,26 @@
+/* Slogan.css */
+.slogan-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 100px;
+    padding: 50px;
+  }
+  
+  .slogan-text {
+    font-size: 24px;
+    color: #FF773D;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #FFF6F3; /* Light orange */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50%;
+  
+  }
+
+  @media screen and (min-width:375px){
+    .slogan-text{
+        font-size: 18px;
+    }
+  }

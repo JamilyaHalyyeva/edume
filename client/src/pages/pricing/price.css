@@ -1,21 +1,81 @@
 .price{
-    padding: 40px;
+    padding: 30px;
     text-align: center;
     margin-bottom: 60px;
+    border-radius: 20px;
+  
+    
+}
+h3{
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 45px;
+    color: #FF773D;
+    
 }
 .price h1{
     font-size: 50px;
     margin: 20px 0;
-    color: #1eb2a6;
+    color: #FF773D;
+    font-weight: 500;
+    margin-right: 30px;
 }
 .price h1 span{
     font-size: 20px;
     margin-right:5px ;
-    color: #000;
+    color: #FF773D;
+    font-weight: 500;
 }
 .price p{
     color: gray;
     margin: 40px 0;
+}
+.price ul{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 40px 0;
+    
+    padding: 10px;
+    gap: 30px;
+   
+    
+
+}
+.outline-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: 1px solid #FF773D;
+    border-radius: 30px;
+    font-size: 15px;
+    color: #FF773D;
+    transition: 0.5s;
+    cursor: pointer;
+    width: 400px;
+   
+}
+.price h2{
+    font-size: 20px;
+    font-weight: 600;
+    
+    color: #FF773D;
+
+}
+.price ul li{
+    
+    font-size: 16px;
+    font-weight: 400;
+    color:gray;
+   
+    
+}
+.price li i{
+    font-size: 20px;
+    color: #FF773D;
+    margin-right: 5px;
 }
 .shadow{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -38,12 +98,14 @@
 }
 .faq h2{
     font-weight: 500;
+    color: #FF773D;
 }
 .faq p{
     padding: 5px;
+    color: gray;
 }
 .faq .accordion:hover{
-    background-color: #1eb2a6;
+    background-color: #FF773D;
     color: #fff;
     cursor: pointer;
 }
@@ -52,6 +114,9 @@
 }
 img{
     margin-bottom: 50px;
+}
+button{
+    color: #FF773D;
 }
 @media screen and (max-width:768px){
     .margin{
@@ -73,5 +138,14 @@ img{
     }
 
       }
+      @media screen and (max-width:375px){
+       .grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+        
+      }
+   
     
    

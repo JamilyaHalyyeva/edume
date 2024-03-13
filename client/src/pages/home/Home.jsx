@@ -7,18 +7,26 @@ import { OnlineCourses } from '../../coursecard/OnlineCourses'
 import { Test } from '../../components/testimonial/Test'
 import { Blog } from '../../components/blog/Blog'
 import { Hblog } from '../../components/blog/Hblog'
+import { PriceCard } from '../pricing/PriceCard'
+import { Price } from '../pricing/Price'
+import { Contact } from '../../components/contact/Contact'
+import { Slogan } from '../../components/slogan/Slogan'
+import { Info } from '../../components/info/Info'
 
 
  const Home = () => {
   return (
     <div>
         <Hero/>
-        <AboutCard/>
         <CourseCard/>
+       <AboutCard/>
+       <Slogan/>
+       <Info/>
+        <Price/>
         <OnlineCourses/>
-        <Hblog/>
-        <Blog/>
-        <Test/>
+        
+       
+        <Contact/>
     
         
    

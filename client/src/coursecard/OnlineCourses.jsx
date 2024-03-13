@@ -5,7 +5,7 @@ import onlineLessons from "../online"
 export const OnlineCourses = () => {
   return (
     <>
-    <section className="online" id="online-courses">
+    <section className="online" id="lessons">
         <div className="container">
             <Title subtitle='CLASSES' title='Browse Our Online classes'/>
             <div className="content grid3">

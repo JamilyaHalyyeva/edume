@@ -1,15 +1,15 @@
 .newsletter{
-    background-color: #1eb2a6;
+    background-color: #FFF6F3;
     margin-top: 70px;
     padding: 50px 0;
-    color: #fff;
+    color: #FF773D;
 }
 .newsletter .left,
 .newsletter .right{
     padding-right: 50px;
 }
 .newsletter h1{
-    color: #fff;
+    color: #FF773D;
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 15px;
@@ -29,7 +29,7 @@
 }
 .newsletter i{
     padding: 12px;
-    color: #1eb2a6;
+    color: #FF773D;
     background-color: #fff;
 }
 footer{
@@ -53,9 +53,16 @@ footer .container{
         font-size: 20px;
         
     }
+    @media only screen and (min-width: 375px) {
+        footer .container{
+            display: grid;
+            grid-template-columns:repeat(1, 1fr);
+            
+        }
+    }
 }
 footer .logo span{
-    color: #1eb2a6;
+    color: #FF773D;
     font-size: 14px;
 }
 footer .logo p{
@@ -63,7 +70,7 @@ footer .logo p{
     margin: 30px 0 15px 0;
 }
 footer .logo .icon{
-    background-color: #1eb2a6;
+    background-color: #FF773D;
     color: white;
     margin-right: 10px;
 }
@@ -77,7 +84,7 @@ footer .logo ul li{
 }
 footer .link li::before {
     content: "→";
-    color: #1eb2a6;
+    color: #FF773D;
     margin-right: 5px;
 
 }
@@ -93,7 +100,7 @@ footer .last ul li{
 footer .last i{
     width: 60px;
     font-size: 20px;
-    color: #1eb2a6;
+    color: #FF773D;
     
 }
 .legal{

@@ -23,13 +23,30 @@
 }
 .aboutHome .items{
     margin-top: 50px;
+    gap: 20px;
 }
-.aboutHome .item{
+.aboutHome .items ul{
     background-color: #fff;
     margin-top: 50px;
     padding: 20px;
     transition: 0.5s;
+   
 }
+
+
+.right .items ul li{
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: gray;
+    transition: 0.5s;
+   
+}
+.right .items i{
+    font-size: 20px;
+    color: #FF773D;
+    margin-right: 10px;
+}
+
 img{
     width: 60%;
     height: 90%;
@@ -40,7 +57,7 @@ img{
     margin-bottom: 15px;
 }
 .aboutHome .item:hover{
-    background-color: #1eb2a6;
+    background-color: rgba(241, 193, 104);
     color: #fff;
     cursor: pointer;
     box-shadow: 0 5px 25px -2px rgba(0 0 0 /6%);

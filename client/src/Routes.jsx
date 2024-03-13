@@ -10,7 +10,7 @@ export default function AppRoutes() {
    
     <Routes>
      <Route path="/" exact Component={Home}/>
-     <Route path="/pricing" exact Component={Price}/>
+
     </Routes>
   
   );

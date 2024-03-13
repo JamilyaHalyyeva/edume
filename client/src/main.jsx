@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Header/>
     <Routes>
     
-    <Route path="/about" exact Component={About}/>
+    
    
 
     </Routes>
