@@ -58,8 +58,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=" w-full h-screen flex item-center justify-center p-10">
-      <div className="w-2/5 rounded-l-2xl flex flex-col justify-start items-center  bg-gray-100">
+    <div className=" w-full h-screen flex item-center justify-center 2xl:p-10">
+      <div className="2xl:w-2/5  2xl:rounded-l-2xl xl:w-1/2 lg:w-1/2 md:w-1/2 sm:hidden md:flex xs:hidden flex-col justify-center items-center  bg-gray-100">
         <div className=" flex justify-center  items-center flex-row">
           <motion.div
             initial={{ y: 30 }} // Initial position (above the viewport)
@@ -170,7 +170,7 @@ const LoginPage = () => {
             </motion.div>
           </div>
           <div>
-            <img src={LOGO} className="w-15rem h-15rem flex " />
+            <img src={LOGO} className=" flex " />
           </div>
 
           <div>
@@ -284,7 +284,7 @@ const LoginPage = () => {
             </motion.div>
           </div>
         </div>
-        <div className="footerDiv justify-between  w-2/6 rounded-xl flex absolute bottom-10 mb-4 p-5 ml-10 h-20 shadow-2xl bg-slate-100/50">
+        <div className=" justify-between  w-2/6 rounded-xl flex absolute bottom-10 mb-4 p-5 ml-10 h-20 shadow-2xl bg-slate-100/50">
           <span className="text text-gray-700 text-lg font-extrabold">
             Don&apos;t have an account?
           </span>
@@ -298,11 +298,20 @@ const LoginPage = () => {
           </Link>
         </div>
       </div>
-      <div className="w-2/5 rounded-r-2xl  flex flex-col justify-center items-center bg-gray-100">
-        <div className=" flex justify-center items-center flex-col">
+      <div className=" 2xl:w-2/5 2xl:rounded-r-2xl   xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-full  xs:w-full flex flex-col justify-center items-center bg-gray-100">
+        <div className="2xl:hidden xl:hidden lg:hidden md:hidden mb-10 xs:mb-1 flex-row">
+          <img
+            src={LOGO}
+            className="w-[15rem] h-[15rem] xs:w-[10rem] xs:h-[10rem]  flex "
+          />
+        </div>
+        <div className=" flex justify-center items-center flex-row">
           <img src={EDUME} className="w-40 " />
         </div>
-        <form className="mt-8 space-y-6 w-4/5 p-10" onSubmit={handleLogin}>
+        <form
+          className="mt-8 space-y-6 w-4/5 p-10 xs:p-5 flex-row"
+          onSubmit={handleLogin}
+        >
           <div className="email-wrapper">
             <label htmlFor="email" className="sr-only item-center"></label>
             {/* <span className="email-icon">
@@ -381,6 +390,16 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
+        <div className="2xl:hidden xl:hidden lg:hidden md:hidden  sm:hidden  justify-center item-center flex-row  w-4/5 rounded-xl flex ">
+          <Link to={"/register"}>
+            <button
+              type="submit"
+              className="group relative w-[10rem] flex justify-center py-2 px-4  text-sm font-medium rounded-2xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            >
+              Sign up
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
