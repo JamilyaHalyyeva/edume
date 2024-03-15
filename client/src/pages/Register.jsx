@@ -1,24 +1,13 @@
-// RegisterPage.js
 import { useState } from "react";
 import { useUser } from "../context/UserProvider";
 import LOGO from "../assets/logo.png";
 import REGISPANDA from "../assets/panda.png";
-// import GOOGLEICON from "../assets/googleicon.png";
+
 import EDUME from "../assets/edume.png";
 import { Link } from "react-router-dom";
-// import BIO from "../assets/bio.png";
-// import { motion } from "framer-motion";
-// import CHIM from "../assets/chim.png";
-// import COMP from "../assets/comp.png";
-// import MATH from "../assets/math.png";
-// import CUL from "../assets/cul.png";
-// import MUS from "../assets/mus.png";
-// import ENG from "../assets/eng.png";
-// import StudentPreProfilePage from "./StudentPreProfilePage";
 
 const RegisterPage = () => {
-  const { registerUser } = useUser();
-
+  const { updateUserInRegistrationProcess } = useUser();
   const [username, setUsername] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +19,7 @@ const RegisterPage = () => {
   const [passwordError, setPasswordError] = useState("");
 
   // const role = localStorage.getItem("role");
-  const handleRegister = async () => {
+  const handleNext = async () => {
     try {
       // Validate username
       if (!username) {
@@ -64,19 +53,26 @@ const RegisterPage = () => {
         setPasswordError("");
       }
 
-      // Call registerUser method
-      await registerUser({ username, surname, email, password });
+      const localRole = localStorage.getItem("role");
+      console.log(localRole);
+      const roleVal = localRole === null ? "student" : localRole;
+      updateUserInRegistrationProcess({
+        username,
+        surname,
+        email,
+        password,
+        role: roleVal,
+      });
 
       // Redirect or perform other actions after successful registration
     } catch (error) {
+      console.error("Error in registerUser:", error.message);
       setError("Registration failed"); // Handle registration error
     }
   };
 
   return (
     <>
-      {/* {role && role.toString() === "student" && <StudentPreProfilePage />} */}
-      {/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */}
       <div className=" w-full h-screen flex item-center justify-center 2xl:p-10">
         <div className="2xl:w-2/5  2xl:rounded-l-2xl xl:w-1/2 lg:w-1/2 md:w-1/2 sm:hidden md:flex xs:hidden flex-col justify-center items-center  bg-gray-100">
           <div className="registerImage ">
@@ -115,7 +111,7 @@ const RegisterPage = () => {
             </div>
             <form
               className="mt-8 space-y-6 w-3/2 p-10 sm:p-1 xs:p-8 xs:ml-3   flex-row"
-              onSubmit={handleRegister}
+              onSubmit={handleNext}
             >
               <div className="username-wrapper sm:m-0">
                 <label
@@ -186,10 +182,10 @@ const RegisterPage = () => {
               {error && <div className="text-red-500">{error}</div>}
               <button
                 type="button"
-                onClick={handleRegister}
+                onClick={handleNext}
                 className="group  items-center min-h-12 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-3xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
-                Register
+                Next
               </button>
             </form>
           </div>

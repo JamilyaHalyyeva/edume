@@ -1,11 +1,14 @@
-import UserRolesDialog from "../components/UserRolesDialog";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function HomePage() {
   const navigate = useNavigate();
-  const [openDialog, setOpenDialog] = useState(false);
-  const handleButtonClick = () => {
-    setOpenDialog(true);
+
+  const handleButtonClick = (prm) => {
+    if (prm === "teacher") {
+      localStorage.setItem("role", "teacher");
+    } else {
+      localStorage.setItem("role", "student");
+    }
+    navigate("/register");
   };
   const handleLoginClick = () => {
     navigate("/login");
@@ -20,10 +23,16 @@ function HomePage() {
           This is a simple homepage using React and Tailwind CSS.
         </p>
         <button
-          onClick={handleButtonClick}
+          onClick={() => handleButtonClick("teacher")}
           className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
         >
-          Open Dialog
+          Teacher
+        </button>
+        <button
+          onClick={() => handleButtonClick("student")}
+          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Student
         </button>
         <button
           onClick={handleLoginClick}
@@ -32,7 +41,6 @@ function HomePage() {
           Login
         </button>
       </div>
-      <UserRolesDialog isDialogOpen={openDialog} />
     </div>
   );
 }

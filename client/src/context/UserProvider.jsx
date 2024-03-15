@@ -10,7 +10,7 @@ const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const [userToBeRegistered, setUserToBeRegistered] = useState(null);
   useEffect(() => {
     // Check for the user token in localStorage on component mount
     const storedToken = localStorage.getItem("token");
@@ -23,6 +23,9 @@ const UserProvider = ({ children }) => {
         setUser(decodedToken);
         setIsAuthenticated(true);
       }
+    } else {
+      setIsAuthenticated(false);
+      navigate("/");
     }
   }, []);
 
@@ -65,9 +68,25 @@ const UserProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+  const updateUserInRegistrationProcess = (userData) => {
+    setUserToBeRegistered((prevState) => ({ ...prevState, ...userData }));
+    if (userData.role === "student") {
+      navigate("/student-pre-register");
+    } else {
+      navigate("/teacher-pre-register");
+    }
+  };
+
   return (
     <UserContext.Provider
-      value={{ user, isAuthenticated, loginUser, registerUser, logoutUser }}
+      value={{
+        user,
+        isAuthenticated,
+        loginUser,
+        registerUser,
+        logoutUser,
+        updateUserInRegistrationProcess,
+      }}
     >
       {children}
     </UserContext.Provider>
