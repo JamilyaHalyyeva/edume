@@ -132,8 +132,8 @@ const LoginPage = () => {
               src={CUL}
               alt="Floating Image"
               style={{
-                width: "80px",
-                height: "80px",
+                width: "90px",
+                height: "90px",
 
                 position: "absolute",
               }}
@@ -144,10 +144,10 @@ const LoginPage = () => {
         <div className=" flex justify-center items-center flex-row">
           <div className="ml-[2rem]">
             <motion.div
-              initial={{ y: -40 }} // Initial position (above the viewport)
+              initial={{ y: -30 }} // Initial position (above the viewport)
               animate={{
-                x: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
-                y: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
+                y: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
+                // x: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
                 transition: {
                   repeat: Infinity,
                   duration: 5,
@@ -177,7 +177,7 @@ const LoginPage = () => {
             <motion.div
               initial={{ y: -30 }} // Initial position (above the viewport)
               animate={{
-                x: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
+                // x: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
                 y: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
                 transition: {
                   repeat: Infinity,
@@ -192,8 +192,8 @@ const LoginPage = () => {
                 src={COMP}
                 alt="Floating Image"
                 style={{
-                  width: "80px",
-                  height: "80px",
+                  width: "90px",
+                  height: "90px",
 
                   position: "absolute",
                 }}
@@ -206,8 +206,8 @@ const LoginPage = () => {
             <motion.div
               initial={{ y: -30 }} // Initial position (above the viewport)
               animate={{
+                y: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
                 x: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
-                y: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
                 transition: {
                   repeat: Infinity,
                   duration: 5,
@@ -231,9 +231,9 @@ const LoginPage = () => {
           </div>
           <div>
             <motion.div
-              initial={{ y: -30 }} // Initial position (above the viewport)
+              initial={{ y: -20 }} // Initial position (above the viewport)
               animate={{
-                x: [-40, 30, -40], // Animate x position from -50 to 50 and back to -50
+                x: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
                 y: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
                 transition: {
                   repeat: Infinity,
@@ -260,8 +260,8 @@ const LoginPage = () => {
             <motion.div
               initial={{ y: -30 }} // Initial position (above the viewport)
               animate={{
-                y: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
-                x: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
+                x: [-30, 30, -30], // Animate x position from -50 to 50 and back to -50
+                y: [30, -30, 30], // Animate x position from -50 to 50 and back to -50
                 transition: {
                   repeat: Infinity,
                   duration: 5,
