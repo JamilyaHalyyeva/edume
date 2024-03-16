@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import config from './env.config.js';
-import Class from '../models/Class.js';
+import ClassType from '../models/ClassType.js';
 import Grade from '../models/Grade.js';
 
 export default async function connectToDatabase() {
@@ -15,12 +15,12 @@ export default async function connectToDatabase() {
 
 async function initializeData() {
   try {
-    // Clear existing data in Class and Grades collections
-    await Class.deleteMany();
+    // Clear existing data in ClassTypes and Grades collections
+    await ClassType.deleteMany();
     await Grade.deleteMany();
 
     // Insert initial data
-    await Class.insertMany([
+    await ClassType.insertMany([
       { name: 'Math' },
       { name: 'Physics' },
       { name: 'Chemistry' },
@@ -33,7 +33,7 @@ async function initializeData() {
       { name: 'Spanish' },
       { name: 'Latin' },
 
-      // Add more classes as needed
+      // Add more classTypes as needed
     ]);
 
     const gradesData = Array.from({ length: 14 }, (_, i) => ({ name: i + 1 }));

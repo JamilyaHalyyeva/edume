@@ -1,23 +1,23 @@
 /**
  * @swagger
  * tags:
- *   name: Class
- *   description: API endpoints for class
+ *   name: ClassType
+ *   description: API endpoints for classType
  */
 import express from 'express';
 import { handleGetClasses } from '../../controllers/classController.js';
 
-const classRouter = express.Router();
+const classTypeRouter = express.Router();
 
 /**
  * @swagger
- * /api/class:
+ * /api/classType:
  *   get:
- *     summary: Get all class
- *     tags: [Class]
+ *     summary: Get all classTypes
+ *     tags: [ClassType]
  *     responses:
  *       '200':
- *         description: A list of class
+ *         description: A list of classTypes
  *         content:
  *           application/json:
  *             schema:
@@ -32,6 +32,6 @@ const classRouter = express.Router();
  *       '500':
  *         description: Internal server error
  */
-classRouter.get('/', handleGetClasses);
+classTypeRouter.get('/', handleGetClasses);
 
-export default classRouter;
+export default classTypeRouter;
