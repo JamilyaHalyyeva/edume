@@ -17,7 +17,7 @@ const authRouter = express.Router();
 
 /**
  * @swagger
- * /auth/register:
+ * /api/auth/register:
  *   post:
  *     summary: Register a new user
  *     tags: [Authentication]
@@ -49,7 +49,7 @@ authRouter.post('/register', handleRegister);
 
 /**
  * @swagger
- * /auth/login:
+ * /api/auth/login:
  *   post:
  *     summary: Login as an existing user
  *     tags: [Authentication]
@@ -74,7 +74,7 @@ authRouter.post('/login', handleLogin);
 
 /**
  * @swagger
- * /auth/forgotpassword:
+ * /api/auth/forgotpassword:
  *   post:
  *     summary: Request to reset forgotten password
  *     tags: [Authentication]
@@ -97,7 +97,7 @@ authRouter.post('/forgotpassword', handleForgotPassword);
 
 /**
  * @swagger
- * /auth/changeforgotpassword:
+ * /api/auth/changeforgotpassword:
  *   patch:
  *     summary: Change password after resetting
  *     tags: [Authentication]
