@@ -9,6 +9,12 @@ const options = {
       version: '1.0.0',
       description: 'Documentation for Express API',
     },
+    security: [], // Define the security scheme for Bearer token authentication
+    components: {
+      securitySchemes: {
+        bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, // Define the Bearer token security scheme
+      },
+    },
   },
   apis: ['./src/routes/api/*.js'], // Path to the API routes folder
 };
