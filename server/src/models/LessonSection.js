@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import SectionContent from './SectionContent';
+import SectionContent from './SectionContent.js';
 
 const lessonSectionSchema = new mongoose.Schema({
   name: { type: String, required: true },
