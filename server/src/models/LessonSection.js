@@ -3,6 +3,7 @@ import SectionContent from './SectionContent.js';
 
 const lessonSectionSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  order: { type: Number, required: true },
   sectionContents: [SectionContent.schema],
   lesson: { type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' },
 });
