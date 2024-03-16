@@ -7,6 +7,7 @@ import connectToDatabase from './config/mongoose.config.js';
 import cors from 'cors';
 import { swaggerUI, specs } from './middlewares/swaggerMiddleware.js';
 import classRouter from './routes/api/classRoutes.js';
+import gradeRouter from './routes/api/gradeRoutes.js';
 const app = express();
 
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 app.use('/api', defaultRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/class', classRouter);
+app.use('/api/grade', gradeRouter);
 
 const PORT = config.port || 3000;
 app.listen(PORT, () => {
