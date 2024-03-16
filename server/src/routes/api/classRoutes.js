@@ -1,8 +1,8 @@
 /**
  * @swagger
  * tags:
- *   name: Classes
- *   description: API endpoints for classes
+ *   name: Class
+ *   description: API endpoints for class
  */
 import express from 'express';
 import { handleGetClasses } from '../../controllers/classController.js';
@@ -13,11 +13,11 @@ const classRouter = express.Router();
  * @swagger
  * /api/class:
  *   get:
- *     summary: Get all classes
+ *     summary: Get all class
  *     tags: [Class]
  *     responses:
  *       '200':
- *         description: A list of classes
+ *         description: A list of class
  *         content:
  *           application/json:
  *             schema:
