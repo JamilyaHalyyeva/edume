@@ -11,6 +11,10 @@ const sectionContentSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  order: {
+    type: Number,
+    required: true,
+  },
 
   lessonSection: { type: mongoose.Schema.Types.ObjectId, ref: 'LessonSection' },
   test: [TestModel.schema],
