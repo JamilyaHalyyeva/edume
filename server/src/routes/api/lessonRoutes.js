@@ -83,6 +83,8 @@ lessonRouter.get('/:lessonId', authMiddleware, handleGetLessonById);
  *             properties:
  *               name:
  *                 type: string
+ *               order:
+ *                type: number
  *               grade:
  *                 type: string
  *                 description: Grade ID
@@ -121,6 +123,8 @@ lessonRouter.post('/', authMiddleware, handlePostLesson);
  *             properties:
  *               name:
  *                 type: string
+ *               order:
+ *                type: number
  *               grade:
  *                 type: string
  *                 description: Grade ID

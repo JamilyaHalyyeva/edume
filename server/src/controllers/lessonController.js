@@ -13,9 +13,10 @@ export const handleGetLessons = async (req, res) => {
 export const handlePostLesson = async (req, res) => {
   try {
     const userId = req.userId;
-    const { name, grade, classType } = req.body;
+    const { name, grade, classType, order } = req.body;
     const lesson = new Lesson({
       name,
+      order,
       grade,
       classType,
       userId,
@@ -45,10 +46,10 @@ export const handleGetLessonById = async (req, res) => {
 export const handlePatchLesson = async (req, res) => {
   try {
     const lessonId = req.params.lessonId;
-    const { name, grade, classType } = req.body;
+    const { name, grade, classType, order } = req.body;
     const updatedLesson = await Lesson.findByIdAndUpdate(
       lessonId,
-      { name, grade, classType },
+      { name, grade, classType, order },
       { new: true },
     );
     if (!updatedLesson) {

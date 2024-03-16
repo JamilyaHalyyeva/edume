@@ -6,6 +6,10 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  order: {
+    type: Number,
+    required: true,
+  },
   grade: { type: mongoose.Schema.Types.ObjectId, ref: 'Grade' },
   classType: { type: mongoose.Schema.Types.ObjectId, ref: 'ClassType' },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
