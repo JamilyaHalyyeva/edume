@@ -6,7 +6,8 @@ import sentAnEmailForResetPassword from '../utils/forgotPassword.js';
 
 export const handleRegister = async (req, res) => {
   try {
-    const { username, surname, email, password, role } = req.body;
+    const { username, surname, email, password, role, grade, avatar } =
+      req.body;
 
     console.log('register: data is ', req.body);
 
@@ -21,6 +22,8 @@ export const handleRegister = async (req, res) => {
       email,
       password: hashedPassword,
       role,
+      avatar,
+      grade,
     });
     const result = await newUser.save();
 
@@ -67,6 +70,8 @@ export const handleLogin = async (req, res) => {
         userName: user.userName,
         surname: user.surname,
         role: user.role,
+        avatar: user.avatar,
+        grade: user.grade,
       },
       config.jwtSecret,
       {
