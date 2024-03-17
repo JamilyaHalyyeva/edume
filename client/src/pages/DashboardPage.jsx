@@ -7,7 +7,6 @@ import { useUser } from "../context/UserProvider";
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { isAuthenticated, user } = useUser();
-  const userRole = localStorage.getItem("role");
 
   // Handling invalid roles
   if (!isAuthenticated) {
