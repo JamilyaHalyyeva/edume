@@ -37,8 +37,8 @@ import teacher7 from "../assets/images/teacher7.png";
 import teacher8 from "../assets/images/teacher8.png";
 import teacher9 from "../assets/images/teacher9.png";
 import teacher10 from "../assets/images/teacher10.png";
-
-import ClassCards from "./ClassCards";
+import { useRegister } from "../context/RegisterProvider";
+import { useEffect, useState } from "react";
 
 const pngFileNames = [
   {
@@ -151,23 +151,41 @@ const pngFileNames = [
 ];
 
 const AvatarImageGallery = () => {
+  const { updateUserToBeRegistered } = useRegister();
+  const [selectedAvatar, setSelectedAvatar] = useState("animal5.png");
+  useEffect(() => {
+    updateUserToBeRegistered({ avatar: "animal5.png" });
+  }, []);
+
+  const handleAvatarClick = (event) => {
+    console.log(event.target.alt);
+    if (event.target.alt !== undefined) {
+      setSelectedAvatar(event.target.alt);
+      updateUserToBeRegistered({ avatar: event.target.alt });
+    }
+  };
+
   return (
-    <div className="container mx-auto mt-8 p-10 bg-gray-100  flex justify-center items-center flex-col ">
-      <h2 className="text-2xl font-bold mb-10">Select Your Avatar </h2>
+    <div className="container mx-auto mt-2  bg-gray-100  flex justify-center items-center flex-col ">
+      <h2 className="text-2xl font-bold mb-5">Select Your Avatar </h2>
       <div className="w-4/5">
-        <div className="grid grid-cols-12 gap-1">
+        <div className="grid grid-cols-8 gap-1">
           {pngFileNames.map((image) => (
-            <div key={image.id} className="flex flex-col items-center">
+            <div
+              key={image.id}
+              onClick={handleAvatarClick}
+              className={`flex flex-col items-center avatar ${
+                image.alt === selectedAvatar ? "selected-avatar" : ""
+              } rounded-full h-20 w-20 object-cover  m-3 `}
+            >
               <img
                 src={image.src} // Adjust the path accordingly
                 alt={image.alt}
-                className="rounded-full h-16 w-16 object-cover mb-2"
               />
             </div>
           ))}
         </div>
       </div>
-      <ClassCards />
     </div>
   );
 };

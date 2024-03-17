@@ -7,7 +7,7 @@ const Card = ({ title, content, isSelected, onCardClick }) => {
     <div
       onClick={handleOnClick}
       className={`max-w-xs overflow-hidden border-2 shadow-md shadow-orange-200 m-4 ${
-        isSelected ? "bg-orange-200" : ""
+        isSelected ? "selected-grade" : ""
       }`}
     >
       {/* Card Image (if needed) */}
