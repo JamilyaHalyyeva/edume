@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { useUser } from "../context/UserProvider";
+import { useEffect, useState } from "react";
+
 import LOGO from "../assets/logo.png";
 import REGISPANDA from "../assets/panda.png";
 
 import EDUME from "../assets/edume.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRegister } from "../context/RegisterProvider";
 
 const RegisterPage = () => {
-  const { updateUserInRegistrationProcess } = useUser();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -17,8 +18,17 @@ const RegisterPage = () => {
   const [surnameError, setSurnameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const { updateUserToBeRegistered, userToBeRegistered } = useRegister();
 
-  // const role = localStorage.getItem("role");
+  useEffect(() => {
+    if (userToBeRegistered) {
+      userToBeRegistered.username && setUsername(userToBeRegistered.username);
+      userToBeRegistered.surname && setSurname(userToBeRegistered.surname);
+      userToBeRegistered.email && setEmail(userToBeRegistered.email);
+      userToBeRegistered.password && setPassword(userToBeRegistered.password);
+    }
+  }, []);
+
   const handleNext = async () => {
     try {
       // Validate username
@@ -56,13 +66,19 @@ const RegisterPage = () => {
       const localRole = localStorage.getItem("role");
       console.log(localRole);
       const roleVal = localRole === null ? "student" : localRole;
-      updateUserInRegistrationProcess({
+      updateUserToBeRegistered({
         username,
         surname,
         email,
         password,
         role: roleVal,
       });
+
+      if (roleVal === "student") {
+        navigate("/register/student");
+      } else {
+        navigate("/register/teacher");
+      }
 
       // Redirect or perform other actions after successful registration
     } catch (error) {

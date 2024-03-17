@@ -26,7 +26,8 @@ const LoginPage = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
+    event.preventDefault();
     try {
       // Validate email
       if (!email || !/^\S+@\S+\.\S+$/.test(email)) {

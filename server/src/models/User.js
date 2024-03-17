@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -29,6 +29,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-})
-const User = mongoose.model('User', userSchema, 'users')
-export default User
+  grade: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Grade',
+    required: false,
+  },
+  avatar: {
+    type: String,
+    required: true,
+  },
+});
+const User = mongoose.model('User', userSchema, 'users');
+export default User;

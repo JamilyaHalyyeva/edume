@@ -10,7 +10,7 @@ const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userToBeRegistered, setUserToBeRegistered] = useState(null);
+
   useEffect(() => {
     // Check for the user token in localStorage on component mount
     const storedToken = localStorage.getItem("token");
@@ -48,33 +48,10 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (userData) => {
-    try {
-      const role = localStorage.getItem("role") || "student"; // Set default role to "student"
-      userData.role = role;
-      console.log(config.apiBaseUrl);
-      await axios.post(`${config.apiBaseUrl}/api/auth/register`, userData);
-      // Optionally, you can automatically log in the user after registration
-      loginUser(userData);
-    } catch (error) {
-      console.error("Error in registerUser:", error.message);
-      // Handle registration error (show message, redirect, etc.)
-    }
-  };
-
   const logoutUser = () => {
     localStorage.removeItem("token"); // Remove token from localStorage
     setUser(null);
     setIsAuthenticated(false);
-  };
-
-  const updateUserInRegistrationProcess = (userData) => {
-    setUserToBeRegistered((prevState) => ({ ...prevState, ...userData }));
-    if (userData.role === "student") {
-      navigate("/student-pre-register");
-    } else {
-      navigate("/teacher-pre-register");
-    }
   };
 
   return (
@@ -83,9 +60,7 @@ const UserProvider = ({ children }) => {
         user,
         isAuthenticated,
         loginUser,
-        registerUser,
         logoutUser,
-        updateUserInRegistrationProcess,
       }}
     >
       {children}
