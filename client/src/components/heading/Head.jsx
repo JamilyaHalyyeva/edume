@@ -1,43 +1,11 @@
-import { useEffect, useState,  } from 'react'
+
+import {  useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import axios from 'axios';
-
-export const Head = () => {
+export const Head =() =>{
   const[click, setClick] = useState(false)
+  
 
-  const[courses, setCourses] =useState("")
-  const[data, setData] = useState([])
-  const [filteredCourses, setFilteredCourses] = useState([]);
-
-
-useEffect(()=>{
-
-  const fetchCourses = async () =>{
-    const res = await axios.get("http://localhost:3000")
-    setData(res.data)
-  }
-  fetchCourses()
-
-}, [])
-
-
-
-// Filter courses based on user input
-useEffect(() => {
-  setFilteredCourses(
-    data.filter(course => course.courseName.toLowerCase().includes(courses.toLowerCase()))
-  );
-}, [courses, data]);
-
-
-
-
-  //const search = (data)=>{
-   // return data.filter(course => course.courseName.toLowerCase().includes(courses.toLowerCase()))
-  //}
-  //const filteredCourses = search(aboutCourses)
- 
   
   
   return (
@@ -51,7 +19,7 @@ useEffect(() => {
                 
                 <nav className="flexSB">
                 <ul className={click ? "mobile-nav" : "flexSB"} onClick={()=> setClick(false)}>
-                    <li><Link to="/">Home</Link></li>
+                <li><a href="#home">Home</a></li>
                     <li><a href="#courses">Courses</a></li>
                    
                     <li><a href="#info">About</a></li>
@@ -81,22 +49,7 @@ useEffect(() => {
 
 
         </section>
-       {/* Display the filtered courses only if search is performed */}
-       {courses !== "" && (
-        <div className="containerSearch">
-          {filteredCourses.map(course => (
-            <div key={course.id} className="course-item">
-              {/* Display course information with a link to the course details */}
-              <Link to={`/courses/${course.id}`}>
-                <h2>{course.courseName}</h2>
-              </Link>
-            </div>
-          ))}
-          {filteredCourses.length === 0 && (
-            <div>No results found.</div>
-          )}
-        </div>
-      )}
+    
     </>
   )
 }

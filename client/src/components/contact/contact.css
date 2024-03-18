@@ -8,7 +8,7 @@
 
  .container .left img{
     
-    width: 50%;
+    width: 70%;
     object-fit: cover;
     margin-right: 50px;
    
@@ -63,9 +63,12 @@
 
 
   @media only screen and (max-width: 768px) {
-    .right form {
+    .right .row form {
       width: 75%;
     
+    }
+    .right .row form textarea{
+      width: 100px;
     }
     .container1{
       flex-direction: column;
@@ -74,14 +77,20 @@
  
 
   @media only screen and (max-width: 375px) {
-    .right form{
-      width: 70%;
+    .right .row form{
+      width: 100%;
+      
+     
     }
-    .container1{
+    .container{
       flex-direction: column;
      }
-     .container img{
-      width: 50%;
+     .container .left img{
+      width: 100%;
+      object-fit: cover;
+      margin-right: 0;
+      margin-bottom: 20px;
+ 
       
      }
   

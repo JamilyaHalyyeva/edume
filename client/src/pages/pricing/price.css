@@ -3,6 +3,7 @@
     text-align: center;
     margin-bottom: 60px;
     border-radius: 20px;
+   
   
     
 }
@@ -144,8 +145,19 @@ button{
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
         }
+        .price{
+            width: 100%;
+        }
+        .outline-btn{
+            width: 80%;
+        }
+       
+       
+        }
+    
         
-      }
+      
+
    
     
    

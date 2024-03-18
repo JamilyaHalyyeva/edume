@@ -22,12 +22,18 @@ body{
     background-color: #f8f8f8;
 }
 .container{
-    max-width: 85%;
+    max-width: 80%;
     margin: auto;
+   
 }
-.flexSB{
+.container .box{
+    width: 75%;
+
+
+}
+ .flexSB{
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
 }
 .icon{
     width: 40px;

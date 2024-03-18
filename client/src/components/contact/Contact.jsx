@@ -6,16 +6,19 @@ export const Contact = () => {
   return (
     <>
     <section className="contact" id='contact'>
-        <div className="container1 flexSB">
-            <div className="left1 row">
-                <img src="https://dkckbwr4t7ug6.cloudfront.net/assets/application/characters/pgt_bubble-8566814cd7e5b5c0abe993502a63b1ecd3960a1cc8e69ee1d7c6809e087998d5.svg" alt="" />
+        <div className="container flexSB">
+            <div className="left row">
+                <img src="https://thepixelcurve.com/wp/edubin/language-school/wp-content/uploads/sites/53/2023/08/HR785234.png" alt="" />
 
             </div>
             <div className="right row">
-                <form action="">
-                    <Title subtitle="Send us a message" />
+           
+                <form >
+                <Title subtitle="Send us a message" />
                     <input type="text" placeholder="Name" />
                     <input type="text" placeholder="Email" />
+                    <input type="text" placeholder="Subject" />
+
                    
                     <textarea placeholder="Message"></textarea>
                     <button type="submit">Submit</button>

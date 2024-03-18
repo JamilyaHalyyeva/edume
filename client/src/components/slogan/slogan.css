@@ -23,4 +23,10 @@
     .slogan-text{
         font-size: 18px;
     }
+    .slogan-container{
+      width: 100%;
+      padding: 50px 0 50px 0;
+      line-height: 45px;
+    }
+    
   }

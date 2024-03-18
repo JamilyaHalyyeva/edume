@@ -61,6 +61,56 @@ footer .container{
         }
     }
 }
+@media screen and (max-width:280px){
+    
+    footer.container{
+        display: grid;
+        grid-template-columns:repeat(1, 1fr);
+       
+        
+    }
+    .logo h1{
+        font-size: 20px;
+    }
+   
+  .newsletter h1{
+        font-size: 14px;
+        
+   
+}
+.logo p{
+    font-size: 12px;
+}
+ .logo .icon{
+    font-size: 10px;
+    
+    
+}
+ .logo i{
+    
+     
+}
+.link ul li{
+    font-size: 11px;
+}
+.link h3 {
+    font-size: 14px;
+}
+.last h3{
+    font-size: 14px;
+}
+.last ul li{
+    font-size: 11px;
+}
+.last p{
+    font-size: 11px;
+}
+.last .fa{
+    font-size: 14px;
+}
+
+}
+
 footer .logo span{
     color: #FF773D;
     font-size: 14px;

@@ -1,7 +1,6 @@
 .aboutHome{
-    
-
     height:auto;
+ 
     
 }
 .aboutHome #heading{
@@ -12,12 +11,10 @@
     
     width: 100%;
     object-fit: contain;
-
-
-
-    
     
 }
+
+
 .aboutHome .right{
     padding: 80px 50px;
 }
@@ -47,11 +44,7 @@
     margin-right: 10px;
 }
 
-img{
-    width: 60%;
-    height: 90%;
-    
-}
+
 .aboutHome .item h3{
     font-size: 20px;
     margin-bottom: 15px;
@@ -123,4 +116,8 @@ img{
         font-size: 18px;
     }
 
+}
+@media screen and (max-width:375px){
+  
+   
 }
