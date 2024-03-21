@@ -6,7 +6,7 @@ const DashboardLayout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <div style={{ marginLeft: "200px", padding: "20px" }}>{children}</div>
+      <div style={{}}>{children}</div>
     </div>
   );
 };
