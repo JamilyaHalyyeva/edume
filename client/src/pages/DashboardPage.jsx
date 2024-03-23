@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import TeacherDashboard from "../components/TeacherDashboard";
 import StudentDashboard from "../components/StudentDashboard";
-import DashboardLayout from "../components/DashboarLayout";
 import { useUser } from "../context/UserProvider";
+import TeacherLayout from "../components/TeacherLayout";
+import StudentLayout from "../components/StudentLayout";
 
 const DashboardPage = () => {
   const navigate = useNavigate();
@@ -16,13 +17,15 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <DashboardLayout>
-        {user.userRole === "teacher" ? (
+      {user.userRole === "teacher" ? (
+        <TeacherLayout>
           <TeacherDashboard />
-        ) : (
+        </TeacherLayout>
+      ) : (
+        <StudentLayout>
           <StudentDashboard />
-        )}
-      </DashboardLayout>
+        </StudentLayout>
+      )}
     </div>
   );
 };

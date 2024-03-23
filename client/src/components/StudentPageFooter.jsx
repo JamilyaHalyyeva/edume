@@ -1,10 +1,13 @@
-import React from "react";
 import LOGO from "../assets/logo.png";
-
+import BGIMAGE from "../assets/bgimage.png";
 const StudentPageFooter = () => {
   return (
-    <div className="w-full  justify-between   items-center">
-      <footer className="bg-gray-300 dark:bg-gray-900">
+    <div className="flex flex-col w-full  justify-between   items-center">
+      <div
+        className=" bg-cover  -m-8  w-10/12 h-[12rem] "
+        style={{ backgroundImage: `url(${BGIMAGE})` }}
+      ></div>
+      <footer className=" w-full bg-gray-300 dark:bg-gray-900">
         <div className="mx-auto w-10/12  p-4  ">
           <div className="md:flex md:justify-between ">
             <div className="mb-6 md:mb-0">

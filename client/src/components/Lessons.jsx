@@ -103,39 +103,46 @@ const Lessons = () => {
 
   const lessonsToShow = showAll ? allLessons : lessons;
   return (
-    <div
-      className="  mt-5 justify-center items-center flex-wrap gap-4
+    <div>
+      <div className="justify-start  items-start  font-serif flex w-full ">
+        <div className=" justify-start items-center  ">
+          <h1 className="text-2xl mt-4">All Lessons in EduMe!! </h1>
+        </div>
+      </div>
+      <div
+        className="  mt-5 justify-center items-center flex-wrap gap-4
     grid grid-cols-4 mb-[1rem] "
-    >
-      {/* Loop through lessons array and generate LessonCard components */}
-      {lessonsToShow.map((lesson) => (
-        <LessonsCard
-          key={lesson.id}
-          description={lesson.description}
-          imageSrc={lesson.imageSrc}
-          bgColor={lesson.bgColor}
-        />
-      ))}
-      {!showAll && (
-        <div
-          className="col-span-4  mt-6 cursor-pointer  font-serif text-center text-gray-800 "
-          onClick={() => setShowAll(true)}
-        >
-          <button className="rounded-3xl bg-orange-400 w-[8rem] h-[3rem]  shadow-2xl  hover:shadow-orange-600">
-            All Lessons
-          </button>
-        </div>
-      )}
-      {showAll && (
-        <div
-          className="col-span-4 cursor-pointer mt-6 font-serif text-center text-gray-800  "
-          onClick={() => setShowAll(false)}
-        >
-          <button className="  rounded-3xl bg-orange-400 w-[8rem] h-[3rem] shadow-2xl  hover:shadow-orange-600">
-            Less Lessons
-          </button>
-        </div>
-      )}
+      >
+        {/* Loop through lessons array and generate LessonCard components */}
+        {lessonsToShow.map((lesson) => (
+          <LessonsCard
+            key={lesson.id}
+            description={lesson.description}
+            imageSrc={lesson.imageSrc}
+            bgColor={lesson.bgColor}
+          />
+        ))}
+        {!showAll && (
+          <div
+            className="col-span-4  mt-6 cursor-pointer  font-serif text-center text-gray-800 "
+            onClick={() => setShowAll(true)}
+          >
+            <button className="rounded-3xl bg-orange-400 w-[8rem] h-[3rem]  shadow-2xl  hover:shadow-orange-600">
+              All Lessons
+            </button>
+          </div>
+        )}
+        {showAll && (
+          <div
+            className="col-span-4 cursor-pointer mt-6 font-serif text-center text-gray-800  "
+            onClick={() => setShowAll(false)}
+          >
+            <button className="  rounded-3xl bg-orange-400 w-[8rem] h-[3rem] shadow-2xl  hover:shadow-orange-600">
+              Less Lessons
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
