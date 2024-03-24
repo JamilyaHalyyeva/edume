@@ -10,7 +10,7 @@ const ClassCards = () => {
   const [gradeData, setGradeData] = useState([]);
   const handleCardClick = (grade) => {
     setSelectedGrade(grade);
-    updateUserToBeRegistered({ grade: grade });
+    updateUserToBeRegistered({ grade: grade._id });
   };
 
   useEffect(() => {
