@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import LOGO from "../assets/logo.png";
 import { useUser } from "../context/UserProvider.jsx";
+import EDUME from "../assets/edume.png";
 import avatars from "../assets/avatars/avatars.js";
 
 const Navbar = () => {
@@ -8,10 +9,15 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-200 p-2">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-gray-800 font-bold text-lg">
-          <img className="w-[4rem] h-[4rem]" src={LOGO} alt="" />
-        </Link>
-        <div className="space-x-10 text-xl text-gray-800 ">
+        <div className="flex space-x-4 justify-center items-center">
+          <Link to="/" className="text-gray-800 font-bold text-lg">
+            <img className="w-[5rem] h-[5rem]" src={LOGO} alt="" />
+          </Link>
+          <Link to="/" className="text-gray-800 font-bold text-lg">
+            <img className="w-[7rem] h-[3rem]" src={EDUME} alt="" />
+          </Link>
+        </div>
+        <div className="space-x-10 text-2xl text-gray-800 ">
           <Link to="/about">About</Link>
           <Link to="/teacher">Teacher</Link>
           <Link to="/price">Price</Link>

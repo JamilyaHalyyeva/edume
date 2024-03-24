@@ -10,16 +10,69 @@ import lesson9 from "../lessons/lesson9.png";
 import lesson10 from "../lessons/lesson10.png";
 
 const lessons = [
-  { id: 1, src: lesson1, alt: "lesson1.png" },
-  { id: 2, src: lesson2, alt: "lesson2.png" },
-  { id: 3, src: lesson3, alt: "lesson3.png" },
-  { id: 4, src: lesson4, alt: "lesson4.png" },
-  { id: 5, src: lesson5, alt: "lesson5.png" },
-  { id: 6, src: lesson6, alt: "lesson6.png" },
-  { id: 7, src: lesson7, alt: "lesson7.png" },
-  { id: 8, src: lesson8, alt: "lesson8.png" },
-  { id: 9, src: lesson9, alt: "lesson9.png" },
-  { id: 10, src: lesson10, alt: "lesson10.png" },
+  {
+    id: 1,
+    name: "Biologie",
+    imageSrc: lesson1,
+    bgColor: "bg-green-300",
+  },
+  {
+    id: 2,
+    name: "Math",
+    imageSrc: lesson2,
+    bgColor: "bg-red-400",
+  },
+  {
+    id: 3,
+    name: "History",
+    imageSrc: lesson3,
+    bgColor: "bg-blue-400",
+  },
+  {
+    id: 4,
+    name: "Music",
+    imageSrc: lesson4,
+    bgColor: "bg-pink-400",
+  },
+
+  {
+    id: 5,
+    name: "Geography",
+    imageSrc: lesson5,
+    bgColor: "bg-yellow-400",
+  },
+  {
+    id: 6,
+    name: "Physics",
+    imageSrc: lesson6,
+    bgColor: "bg-green-400",
+  },
+  {
+    id: 7,
+    name: "Biology",
+    imageSrc: lesson7,
+    bgColor: "bg-purple-400",
+  },
+
+  {
+    id: 9,
+    name: "English",
+    imageSrc: lesson9,
+    bgColor: "bg-cyan-400",
+  },
+  {
+    id: 10,
+    name: "German",
+    imageSrc: lesson10,
+    bgColor: "bg-indigo-400",
+  },
+
+  {
+    id: 8,
+    name: "French",
+    imageSrc: lesson8,
+    bgColor: "bg-orange-400",
+  },
 ];
 
 export default lessons;
