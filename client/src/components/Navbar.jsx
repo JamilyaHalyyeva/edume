@@ -29,8 +29,10 @@ const Navbar = () => {
             </div>
           </Link>
           <div className="flex flex-col text-gray-800 text-md">
-            <div>{user.userName}</div>
-            <div>{user.grade.name}</div>
+            <div>
+              {user.userName} {user.surname}
+            </div>
+            <div>Grade: {user.grade.name}</div>
           </div>
         </div>
       </div>
