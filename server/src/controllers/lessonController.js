@@ -2,8 +2,8 @@ import Lesson from '../models/Lesson.js';
 
 export const handleGetLessons = async (req, res) => {
   try {
-    const userId = req.userId;
-    const lessons = await Lesson.find({ userId: userId });
+    console.log('req.grade:', req.grade);
+    const lessons = await Lesson.find({ grade: req.grade });
     res.json({ success: true, lessons: lessons });
   } catch (error) {
     return res.status(500).send({ success: false, error: error.message });

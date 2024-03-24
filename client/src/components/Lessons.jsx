@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LessonsCard from "./LessonsCard";
 import { useState } from "react";
 
@@ -13,95 +13,115 @@ import lesson7Image from "../assets/lessons/lesson7.png";
 import lesson8Image from "../assets/lessons/lesson8.png";
 import lesson9Image from "../assets/lessons/lesson9.png";
 import lesson10Image from "../assets/lessons/lesson10.png";
+import axios from "axios";
+import config from "../config/env.config";
 // Import images for other lessons as needed
 
 const Lessons = () => {
   const [showAll, setShowAll] = useState(false);
+  const [lessonList, setLessonList] = useState([]);
   // Array containing lesson data
-  const lessons = [
+
+  const allLessons = [
     {
       id: 1,
-      description: "Biologie",
+      name: "Biologie",
       imageSrc: lesson1Image,
       bgColor: "bg-green-300",
     },
     {
       id: 2,
-      description: "Mathematik",
+      name: "Math",
       imageSrc: lesson2Image,
       bgColor: "bg-red-400",
     },
     {
       id: 3,
-      description: "History",
+      name: "History",
       imageSrc: lesson3Image,
       bgColor: "bg-blue-400",
     },
     {
       id: 4,
-      description: "Music",
+      name: "Music",
       imageSrc: lesson4Image,
       bgColor: "bg-pink-400",
     },
-  ];
-
-  const allLessons = [
-    ...lessons,
 
     {
       id: 5,
-      description: "Geography",
+      name: "Geography",
       imageSrc: lesson5Image,
       bgColor: "bg-yellow-400",
     },
     {
       id: 6,
-      description: "Physics",
+      name: "Physics",
       imageSrc: lesson6Image,
       bgColor: "bg-green-400",
     },
     {
       id: 7,
-      description: "Biology",
+      name: "Biology",
       imageSrc: lesson7Image,
       bgColor: "bg-purple-400",
-    },
-    {
-      id: 2,
-      description: "Mathematik",
-      imageSrc: lesson2Image,
-      bgColor: "bg-red-400",
     },
 
     {
       id: 9,
-      description: "English",
+      name: "English",
       imageSrc: lesson9Image,
       bgColor: "bg-cyan-400",
     },
     {
       id: 10,
-      description: "German",
+      name: "German",
       imageSrc: lesson10Image,
       bgColor: "bg-indigo-400",
     },
-    {
-      id: 3,
-      description: "History",
-      imageSrc: lesson3Image,
-      bgColor: "bg-blue-400",
-    },
+
     {
       id: 8,
-      description: "French",
+      name: "French",
       imageSrc: lesson8Image,
       bgColor: "bg-orange-400",
     },
   ];
 
   // Add more lesson data as needed
+  useEffect(() => {
+    const fetchLessons = async () => {
+      try {
+        const response = await axios.get(
+          `${config.apiBaseUrl}/api/gradeClassType`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
+        console.log(response.data);
+        const filteredLessons = [];
+        response.data.map((data) => {
+          console.log(data.classType.name);
+          let match = allLessons.find((lesson) => {
+            return lesson.name === data.classType.name;
+          });
+          if (match) {
+            filteredLessons.push(match);
+          }
+        });
 
-  const lessonsToShow = showAll ? allLessons : lessons;
+        setLessonList(filteredLessons);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchLessons();
+  }, []);
+
+  const lessonsToShow = showAll ? lessonList : lessonList.slice(0, 4);
   return (
     <div>
       <div className="justify-start  items-start  font-serif flex w-full ">
@@ -117,7 +137,7 @@ const Lessons = () => {
         {lessonsToShow.map((lesson) => (
           <LessonsCard
             key={lesson.id}
-            description={lesson.description}
+            name={lesson.name}
             imageSrc={lesson.imageSrc}
             bgColor={lesson.bgColor}
           />
