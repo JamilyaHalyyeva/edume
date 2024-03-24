@@ -1,10 +1,11 @@
+import { useUser } from "../../context/UserProvider.jsx";
+import avatars from "../../assets/avatars/avatars.js";
 import { Link } from "react-router-dom";
-import LOGO from "../assets/logo.png";
-import { useUser } from "../context/UserProvider.jsx";
-import avatars from "../assets/avatars/avatars.js";
+import LOGO from "../../assets/logo.png";
 
-const Navbar = () => {
+const TopBar = () => {
   const { user } = useUser();
+
   return (
     <nav className="bg-gray-200 p-2">
       <div className="container mx-auto flex justify-between items-center">
@@ -29,8 +30,8 @@ const Navbar = () => {
             </div>
           </Link>
           <div className="flex flex-col text-gray-800 text-md">
-            <div>{user.userName}</div>
-            <div>{user.grade.name}</div>
+            <div>{user.userName}</div> {/* Profile Name */}
+            <div>{user.grade}</div> {/* Profile Grade */}
           </div>
         </div>
       </div>
@@ -38,4 +39,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default TopBar;

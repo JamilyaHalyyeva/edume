@@ -1,9 +1,9 @@
-import React from "react";
+import TopBar from "./TopBar/TopBar.jsx";
 
 const TeacherLayout = ({ children }) => {
   return (
     <div>
-      TeacherLayout
+      <TopBar />
       {children}
     </div>
   );
