@@ -20,7 +20,7 @@ const DashboardPage = () => {
 
   return (
     <div>
-      {user.userRole === "teacher" ? (
+      {user.role === "teacher" ? (
         <TeacherLayout>
           <TeacherDashboard />
         </TeacherLayout>
