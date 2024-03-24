@@ -9,6 +9,7 @@ const config = {
   smtp_port: process.env.SMTP_PORT,
   smtp_user: process.env.SMTP_USER,
   smtp_pass: process.env.SMTP_PASS,
+  seedData: process.env.SEED_DATA,
 
   // Add other environment variables here
 };
