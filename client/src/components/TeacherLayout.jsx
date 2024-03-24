@@ -3,10 +3,12 @@ import SideBar from "./sideBar/SideBar.jsx";
 
 const TeacherLayout = ({ children }) => {
   return (
-    <div className="flex flex-row h-screen v-screen overflow-hidden">
+    <div className="flex h-screen w-screen overflow-hidden">
       <SideBar />
-      <TopBar />
-      {children}
+      <div className="flex flex-col flex-1">
+        <TopBar />
+        <main className="overflow-auto">{children}</main>
+      </div>
     </div>
   );
 };

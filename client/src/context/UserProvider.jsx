@@ -9,25 +9,31 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check for the user token in localStorage on component mount
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      // Decode the token to get user information
-      const decodedToken = decodeToken(storedToken);
-
-      if (decodedToken) {
-        // Set user and authentication status
-        setUser(decodedToken);
-        setIsAuthenticated(true);
+    const checkAuthStatus = async () => {
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        const decodedToken = decodeToken(storedToken);
+        if (decodedToken) {
+          setUser(decodedToken);
+          setIsAuthenticated(true);
+        } else {
+          // Token is invalid or expired
+          setIsAuthenticated(false);
+          navigate("/"); // Or to the login page
+        }
+      } else {
+        setIsAuthenticated(false);
+        navigate("/"); // Or to the login page
       }
-    } else {
-      setIsAuthenticated(false);
-      navigate("/");
-    }
-  }, []);
+      setIsLoading(false); // Authentication check complete
+    };
+
+    checkAuthStatus();
+  }, [navigate]);
 
   const loginUser = async (userData) => {
     try {
@@ -59,6 +65,7 @@ const UserProvider = ({ children }) => {
       value={{
         user,
         isAuthenticated,
+        isLoading,
         loginUser,
         logoutUser,
       }}
