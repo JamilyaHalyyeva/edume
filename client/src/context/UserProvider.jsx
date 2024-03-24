@@ -33,7 +33,7 @@ const UserProvider = ({ children }) => {
     };
 
     checkAuthStatus();
-  }, [navigate]);
+  }, []);
 
   const loginUser = async (userData) => {
     try {
