@@ -1,8 +1,10 @@
-import TopBar from "./TopBar/TopBar.jsx";
+import TopBar from "./topBar/TopBar.jsx";
+import SideBar from "./sideBar/SideBar.jsx";
 
 const TeacherLayout = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-row h-screen v-screen overflow-hidden">
+      <SideBar />
       <TopBar />
       {children}
     </div>
