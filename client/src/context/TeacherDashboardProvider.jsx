@@ -5,8 +5,14 @@ const TeacherDashboardContext = createContext();
 
 // Create a provider for the teacher's dashboard
 const TeacherDashboardProvider = ({ children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <TeacherDashboardContext.Provider value={{}}>
+    <TeacherDashboardContext.Provider value={{ isSidebarOpen, toggleSidebar }}>
       {children}
     </TeacherDashboardContext.Provider>
   );

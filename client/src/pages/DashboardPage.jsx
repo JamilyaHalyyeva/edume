@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TeacherDashboard from "../components/TeacherDashboard";
 
@@ -5,29 +6,38 @@ import { useUser } from "../context/UserProvider";
 import TeacherLayout from "../components/TeacherLayout";
 import StudentLayout from "../components/StudentLayout";
 import { StudentDashboardProvider } from "../context/StudentDashboardProvider";
+import { TeacherDashboardProvider } from "../context/TeacherDashboardProvider.jsx";
 
 const DashboardPage = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useUser();
+  const { isAuthenticated, isLoading, user } = useUser();
 
-  console.log("User", user);
-  console.log("isAuthenticated", isAuthenticated);
-  // Handling invalid roles
-  if (!isAuthenticated) {
-    console.error("User is not authenticated");
-    return navigate("/Login"); // Redirect to the home page
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      // If not loading and not authenticated, redirect to login
+      navigate("/login");
+    }
+  }, [isLoading, isAuthenticated, navigate]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Show loading indicator while checking authentication
   }
 
+  // After loading, render content based on user's role
   return (
     <div>
-      {user.role === "teacher" ? (
-        <TeacherLayout>
-          <TeacherDashboard />
-        </TeacherLayout>
-      ) : (
+      {user && user.role === "teacher" ? (
+        <TeacherDashboardProvider>
+          <TeacherLayout>
+            <TeacherDashboard />
+          </TeacherLayout>
+        </TeacherDashboardProvider>
+      ) : user && user.role === "student" ? (
         <StudentDashboardProvider>
-          <StudentLayout />
+          <StudentLayout></StudentLayout>
         </StudentDashboardProvider>
+      ) : (
+        <div>You do not have access to this page</div> // Handle unexpected roles or missing user data
       )}
     </div>
   );
