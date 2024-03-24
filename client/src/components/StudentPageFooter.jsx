@@ -1,29 +1,30 @@
 import LOGO from "../assets/logo.png";
 import BGIMAGE from "../assets/bgimage.png";
+import EDUME from "../assets/edume.png";
 const StudentPageFooter = () => {
   return (
     <div className="flex flex-col w-full  justify-between   items-center">
       <div
-        className=" bg-cover  -m-8  w-10/12 h-[12rem] "
+        className=" bg-cover  -m-4  w-10/12 h-[12rem] "
         style={{ backgroundImage: `url(${BGIMAGE})` }}
       ></div>
-      <footer className=" w-full bg-gray-300 dark:bg-gray-900">
+      <footer className=" w-full bg-gray-500">
         <div className="mx-auto w-10/12  p-4  ">
           <div className="md:flex md:justify-between ">
             <div className="mb-6 md:mb-0">
               <a href="http://localhost:5173/" className="flex items-center">
-                <img src={LOGO} className="h-20 w-20" />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                  EduMe
+                <img src={LOGO} className="h-[8rem] w-[8]" />
+                <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
+                  <img className="w-[7rem] h-[3rem]" src={EDUME} alt="" />
                 </span>
               </a>
             </div>
             <div className="grid grid-cols-6  gap-8 sm:gap-6 sm:grid-cols-3">
               <div className="ml-20">
-                <h2 className="mb-6 text-sm   font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-md  font-semibold text-gray-900 uppercase dark:text-white">
                   Resources
                 </h2>
-                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <ul className="text-white font-medium">
                   <li className="mb-4">
                     <a href="https://flowbite.com/" className="hover:underline">
                       Flowbite
@@ -40,10 +41,10 @@ const StudentPageFooter = () => {
                 </ul>
               </div>
               <div className="ml-20">
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">
                   Follow us
                 </h2>
-                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <ul className="text-white font-medium">
                   <li className="mb-4">
                     <a
                       href="https://github.com/themesberg/flowbite"
@@ -63,10 +64,10 @@ const StudentPageFooter = () => {
                 </ul>
               </div>
               <div className="ml-20">
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">
                   Legal
                 </h2>
-                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <ul className="text-white font-medium">
                   <li className="mb-4">
                     <a href="#" className="hover:underline">
                       Privacy Policy
@@ -81,9 +82,9 @@ const StudentPageFooter = () => {
               </div>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-6 border-gray-200 sm:mx-autolg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            <span className="text-sm text-white sm:text-center dark:text-gray-400">
               © 2023{" "}
               <a href="https://flowbite.com/" className="hover:underline">
                 Flowbite™
@@ -91,12 +92,9 @@ const StudentPageFooter = () => {
               . All Rights Reserved.
             </span>
             <div className="flex mt-4 sm:justify-center sm:mt-0">
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              >
+              <a href="#" className="text-white hover:text-gray-900">
                 <svg
-                  className="w-4 h-4"
+                  className="w-6 h-6"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -110,12 +108,9 @@ const StudentPageFooter = () => {
                 </svg>
                 <span className="sr-only">Facebook page</span>
               </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-              >
+              <a href="#" className="text-white hover:text-gray-900 ms-5">
                 <svg
-                  className="w-4 h-4"
+                  className="w-6 h-6"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -125,12 +120,9 @@ const StudentPageFooter = () => {
                 </svg>
                 <span className="sr-only">Discord community</span>
               </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-              >
+              <a href="#" className="text-white hover:text-gray-900 ms-5">
                 <svg
-                  className="w-4 h-4"
+                  className="w-6 h-6"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -144,12 +136,9 @@ const StudentPageFooter = () => {
                 </svg>
                 <span className="sr-only">Twitter page</span>
               </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-              >
+              <a href="#" className="text-white hover:text-gray-900 ms-5">
                 <svg
-                  className="w-4 h-4"
+                  className="w-6 h-6"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -163,12 +152,9 @@ const StudentPageFooter = () => {
                 </svg>
                 <span className="sr-only">GitHub account</span>
               </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-              >
+              <a href="#" className="text-white hover:text-gray-900 ms-5">
                 <svg
-                  className="w-4 h-4"
+                  className="w-6 h-6"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
