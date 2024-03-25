@@ -7,7 +7,7 @@ const PriceCard = () => {
     <>
     
       {price.map((item, index) => (
-        <div key={index}  className=" shadow py-6 px-6 text-center rounded-md mb-8 justify-center lg:w-96 xl:w-80 2xl:w-72 sm:w-80   md:w-72 flex-row"> {/* Added mb-8 for margin-bottom */}
+        <div key={index}  className=" shadow py-8 px-8 text-center rounded-md mb-8 justify-center lg:w-96 xl:w-80 2xl:w-72 sm:w-80   md:w-62 flex-row"> {/* Added mb-8 for margin-bottom */}
           <h3 className="text-2xl font-semibold text-orange-500 md:text-lg">{item.type}</h3>
           <ul className="mt-6 space-y-4 "> {/* Replaced gap with space-y for spacing between list items */}
             {item.features.map((feature, i) => (

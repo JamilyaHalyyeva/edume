@@ -13,8 +13,8 @@ export const OnlineCourses = () => {
                     <div className=" w-20 h-20 flex items-center justify-center"> {/* Added flex classes to center the image */}
                         <img src={item.cover} alt="" className="w-full h-full object-cover " />
                     </div>
-                    <h1 className="text-lg font-medium text-orange-500 mt-4 ">{item.courseName}</h1>
-                    <span className="bg-white px-4 py-2 font-medium text-orange-500 text-sm rounded-lg s:hidden">
+                    <h1 className="text-sm font-light text-orange-500 mt-4  s:hidden">{item.courseName}</h1>
+                    <span className="bg-white px-4 py-2 font-normal text-orange-500 text-sm rounded-lg">
                         {item.courses}
                     </span>
                 </div>
