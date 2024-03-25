@@ -10,7 +10,7 @@ export const Info = () => {
 
     <div className="flex justify-around w-70  ">
         <div className="w-full ml-20 p-6 items-center"> {/* Adjusted width of the grid container */}
-            <div className="flex justify-center grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap- mr-6 space-x-3 ">
+            <div className="justify-center grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 mr-6 space-x-3 ">
                 {homeAbout.map((item, index) => (
                     <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md  ">
                         <div className="flex flex-col items-center w-70 ">
