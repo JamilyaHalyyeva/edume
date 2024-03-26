@@ -1,13 +1,23 @@
 import TopBar from "./topBar/TopBar.jsx";
 import SideBar from "./sideBar/SideBar.jsx";
+import { useTeacherDashboard } from "../context/TeacherDashboardProvider.jsx";
 
 const TeacherLayout = ({ children }) => {
+  const { isSidebarOpen, isCompact } = useTeacherDashboard(); // Get sidebar state
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       <SideBar />
-      <div className="flex flex-col flex-1">
+      <div className={`flex flex-col flex-1 `}>
+        {" "}
+        {/* Add conditional padding */}
         <TopBar />
-        <main className="overflow-auto">{children}</main>
+        <main
+          className={`flex flex-col flex-1 ${
+            isSidebarOpen === false ? "" : isCompact ? "pl-20" : "pl-64"
+          }`}
+        >
+          {children}
+        </main>
       </div>
     </div>
   );
