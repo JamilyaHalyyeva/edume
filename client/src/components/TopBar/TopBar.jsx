@@ -1,65 +1,32 @@
 import { useUser } from "../../context/UserProvider.jsx";
 import avatars from "../../assets/avatars/avatars.js";
-import LOGO from "../../assets/logo.png";
+
 import { useState } from "react";
 import { useTeacherDashboard } from "../../context/TeacherDashboardProvider.jsx";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TopBar = () => {
   const { user } = useUser();
-  const { toggleSidebar } = useTeacherDashboard();
+  const { toggleSidebar, isSidebarOpen } = useTeacherDashboard(); // Added to toggle the sidebar
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Changed to false to start with the dropdown closed
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
   return (
     <nav className="bg-white border-gray-200  dark:bg-gray-900">
-      <div className=" w-full mx-auto bg-gray-50 p-4 flex items-center justify-between">
-        <button
-          onClick={toggleSidebar}
-          data-drawer-target="default-sidebar"
-          data-drawer-toggle="default-sidebar"
-          aria-controls="default-sidebar"
-          type="button"
-          className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        >
-          <span className="sr-only">Open sidebar</span>
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              clipRule="evenodd"
-              fillRule="evenodd"
-              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-            ></path>
-          </svg>
-        </button>
-
-        <div className="max-w-screen-xl w-full flex flex-wrap items-center justify-between mx-auto p-2">
-          <div>
-            <a
-              href="#"
-              className="flex items-center space-x-3 rtl:space-x-reverse"
-            >
-              <img src={LOGO} className="h-8" alt="Logo" />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                EduMe
-              </span>
-            </a>
-          </div>
-
+      <div className=" w-full mx-auto bg-gray-50 p-2 flex items-center justify-between">
+        <div className="max-w-screen-3xl w-full flex flex-wrap items-center justify-between mx-auto p-2">
+          <div></div>
           <div className="relative flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button
               type="button"
-              className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="flex text-xl bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               onClick={toggleDropdown}
             >
               <span className="sr-only">Open user menu</span>
               <img
-                className="w-8 h-8 rounded-full"
+                className="w-14 h-14 rounded-full"
                 src={avatars.find((avatar) => avatar.alt === user.avatar).src}
                 alt="User"
               />
@@ -112,6 +79,24 @@ const TopBar = () => {
                   </a>
                 </li>
               </ul>
+            </div>
+            <div>
+              {" "}
+              <button
+                onClick={toggleSidebar}
+                data-drawer-target="default-sidebar"
+                data-drawer-toggle="default-sidebar"
+                aria-controls="default-sidebar"
+                type="button"
+                className="inline-flex items-center p-2 text-xl text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              >
+                <span className="sr-only">Open sidebar</span>
+                {isSidebarOpen ? (
+                  <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+                ) : (
+                  <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+                )}
+              </button>
             </div>
           </div>
         </div>

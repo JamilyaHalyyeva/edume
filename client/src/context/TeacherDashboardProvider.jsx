@@ -1,18 +1,20 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 // Create a context for the teacher's dashboard
 const TeacherDashboardContext = createContext();
 
 // Create a provider for the teacher's dashboard
 const TeacherDashboardProvider = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isCompact, setIsCompact] = useState(true);
+  const toggleCompactMode = () => setIsCompact(!isCompact);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
   return (
-    <TeacherDashboardContext.Provider value={{ isSidebarOpen, toggleSidebar }}>
+    <TeacherDashboardContext.Provider
+      value={{ isSidebarOpen, toggleSidebar, isCompact, toggleCompactMode }}
+    >
       {children}
     </TeacherDashboardContext.Provider>
   );
