@@ -18,17 +18,20 @@ const SideBar = () => {
     {
       id: 1,
       name: "Dashboard",
-      icon: <FontAwesomeIcon icon={faGauge}></FontAwesomeIcon>,
+      icon: <FontAwesomeIcon icon={faGauge} />,
+      link: "/dashboard",
     },
     {
       id: 2,
       name: "Lessons",
-      icon: <FontAwesomeIcon icon={faListSquares}></FontAwesomeIcon>,
+      icon: <FontAwesomeIcon icon={faListSquares} />,
+      link: "/dashboard/lessons",
     },
     {
       id: 3,
       name: "Students",
-      icon: <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>,
+      icon: <FontAwesomeIcon icon={faUsers} />,
+      link: "/dashboard/students",
     },
   ];
 
@@ -63,6 +66,7 @@ const SideBar = () => {
                 title={!isCompact ? element.name : ""}
                 icon={element.icon}
                 isCompact={isCompact}
+                to={element.link}
               />
             ))}
           </ul>

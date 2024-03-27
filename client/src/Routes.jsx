@@ -7,11 +7,30 @@ import ProfilePage from "./pages/ProfilePage";
 import StudentPreProfilePage from "./pages/StudentPreProfilePage";
 import TeacherPreProfilePage from "./pages/TeacherPreProfilePage";
 import { RegisterProvider } from "./context/RegisterProvider";
+import LessonList from "./components/lessonList/LessonList";
+import StudentList from "./components/studentList/StudentList";
+
+import TeacherDashboard from "./components/TeacherDashboard.jsx";
+import StudentDashboard from "./components/StudentDashboard.jsx";
+import { useUser } from "./context/UserProvider.jsx";
+
 const AppRoutes = () => {
+  const { user } = useUser();
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/dashboard/*" element={<DashboardPage />}>
+        {user && user.role === "teacher" ? (
+          <>
+            <Route index element={<TeacherDashboard />} />
+            <Route path="lessons" element={<LessonList />} />
+            <Route path="students" element={<StudentList />} />
+          </>
+        ) : (
+          <Route index element={<StudentDashboard />} />
+          // Define additional student-specific routes here if necessary
+        )}
+      </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/register/*" element={<RegisterRoutes />} />
@@ -30,4 +49,5 @@ const RegisterRoutes = () => {
     </RegisterProvider>
   );
 };
+
 export default AppRoutes;

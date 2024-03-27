@@ -28,9 +28,7 @@ const DashboardPage = () => {
     <div>
       {user && user.role === "teacher" ? (
         <TeacherDashboardProvider>
-          <TeacherLayout>
-            <TeacherDashboard />
-          </TeacherLayout>
+          <TeacherLayout></TeacherLayout>
         </TeacherDashboardProvider>
       ) : user && user.role === "student" ? (
         <StudentDashboardProvider>

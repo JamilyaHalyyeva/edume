@@ -7,12 +7,14 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TopBar = () => {
-  const { user } = useUser();
+  const { user, logoutUser } = useUser();
   const { toggleSidebar, isSidebarOpen } = useTeacherDashboard(); // Added to toggle the sidebar
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Changed to false to start with the dropdown closed
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-
+  const handleLogout = () => {
+    logoutUser();
+  };
   return (
     <nav className="bg-white border-gray-200  dark:bg-gray-900">
       <div className=" w-full mx-auto bg-gray-50 p-2 flex items-center justify-between">
@@ -71,12 +73,14 @@ const TopBar = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Sign out
-                  </a>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white w-full text-left"
+                    >
+                      Sign out
+                    </button>
+                  </li>
                 </li>
               </ul>
             </div>
