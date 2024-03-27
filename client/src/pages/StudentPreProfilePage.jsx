@@ -8,7 +8,7 @@ const StudentPreProfilePage = () => {
   const { registerUser } = useRegister();
   return (
     <div className="bg-gray-100">
-      <div className="flex justify-start   pt-0 pb-2 pl-20 pr-20 mr-40 ">
+      <div className="flex justify-start   pt-10 pb-2 pl-10 pr-20 mr-40 ">
         <button
           onClick={() => navigate("/register")}
           className="group relative w-[10rem] flex justify-center py-2 px-4  text-sm font-medium rounded-2xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
@@ -18,7 +18,7 @@ const StudentPreProfilePage = () => {
       </div>
       <AvatarImageGallery />
       <ClassCards />
-      <div className="flex justify-end  pt-0 pb-2 pl-20 pr-20 mr-40 ">
+      <div className="flex justify-end  pt-10 pb-2 pl-20 pr-20 mr-10 ">
         <button
           onClick={() => registerUser()}
           className="group relative w-[10rem] flex justify-center py-2 px-4  text-sm font-medium rounded-2xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"

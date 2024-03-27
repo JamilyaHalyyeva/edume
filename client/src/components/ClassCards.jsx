@@ -22,9 +22,9 @@ const ClassCards = () => {
     });
   }, []);
   return (
-    <div className="mx-auto mt-10 pl-20 pr-20 bg-gray-100 flex flex-wrap justify-center flex-col items-center ">
+    <div className="mx-auto mt-10 pl-20  pr-20 bg-gray-100 flex flex-wrap flex-col justify-center items-center ">
       <h2 className="text-2xl font-bold mb-4">Select Your Grade </h2>
-      <div className="grid grid-cols-8 gap-1 w-11/12 mt-10 ">
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full mt-5">
         {gradeData.length > 0 &&
           gradeData.map((grade) => (
             <Card
