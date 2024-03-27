@@ -12,7 +12,7 @@ const LessonCard = (param) => {
   return (
     <div
       onClick={handleClick}
-      className=" h-[9rem] w-[11rem]  md:h-[12rem] md:w-[14rem] lg:h-[13rem] lg:w-[15rem]  overflow-hidden justify-center items-center  shadow-xl hover:shadow-orange-500 hover:bg-orange-300  bg-gray-50  flex flex-col  rounded-2xl  "
+      className=" h-[9rem] w-[11rem]  md:h-[12rem] md:w-[14rem] lg:h-[13rem] lg:w-[14rem] xl:w-[15rem] lx:h[14rem] overflow-hidden justify-center items-center  shadow-xl hover:shadow-orange-500 hover:bg-orange-300  bg-gray-50  flex flex-col  rounded-2xl  "
     >
       <img
         className={`${param.bgColor} "  w-[3rem] sm:w-[3rem ] md:w-[3rem] lg:w-[4rem]  rounded-md "`}

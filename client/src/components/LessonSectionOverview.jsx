@@ -10,7 +10,7 @@ const LessonSectionOverview = () => {
     changePage(pages.LESSON_OVERVIEW);
   };
   return (
-    <div>
+    <div className="mt-[10rem]">
       LessonSectionOverview
       <div>
         <button onClick={handleOnBackClick}>back </button>

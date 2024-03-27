@@ -6,19 +6,25 @@ const Card = ({ title, content, isSelected, onCardClick }) => {
   return (
     <div
       onClick={handleOnClick}
-      className={`max-w-xs overflow-hidden border-2 shadow-md shadow-orange-200 m-4 ${
-        isSelected ? "selected-grade" : ""
+      className={`flex flex-col rounded-xl justify-center items-center overflow-hidden border-2 border-gray-300 shadow-xl cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 ${
+        isSelected
+          ? "border-orange-500  shadow-orange-300 bg-orange-100"
+          : "bg-white"
       }`}
     >
       {/* Card Image (if needed) */}
       {/* <img className="w-full" src="your-image-url.jpg" alt="Card" /> */}
 
-      <div className="px-6 py-4 flex flex-col justify-center items-center">
+      <div className="p-4 ">
         {/* Card Title */}
-        <div className="font-bold text-3xl text-gray-500 mb-2">{title}</div>
+        <div className="font-bold text-xl text-gray-800 mb-2 text-center">
+          {title}
+        </div>
 
         {/* Card Content */}
-        <p className="text-orange-400 text-base font-bold">{content}</p>
+        <p className="text-orange-500 text-base font-semibold text-center">
+          {content}
+        </p>
       </div>
     </div>
   );
