@@ -6,7 +6,7 @@ import StudentPageFooter from "./StudentPageFooter";
 const StudentLayout = ({ children }) => {
   const { currentPage } = useStudentDashboardContext();
   return (
-    <div>
+    <div className="w-full">
       <Navbar />
       <div style={{}}>{children}</div>
       <div>{currentPage.component}</div>

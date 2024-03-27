@@ -52,10 +52,7 @@ const Lessons = () => {
           <h1 className="text-2xl mt-4">All Lessons in EduMe!! </h1>
         </div>
       </div>
-      <div
-        className="  mt-5 justify-center items-center flex-wrap gap-4
-    grid grid-cols-4 mb-[1rem] "
-      >
+      <div className="mt-5 justify-center items-center  gap-2 sm:gap-4 2xl:gap-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 mb-[3rem] ">
         {/* Loop through lessons array and generate LessonCard components */}
         {lessonsToShow.map((lesson) => (
           <LessonsCard
@@ -65,22 +62,22 @@ const Lessons = () => {
             bgColor={lesson.bgColor}
           />
         ))}
-        {!showAll && (
-          <div
-            className="col-span-4  mt-6 cursor-pointer  font-serif text-center text-gray-800 "
-            onClick={() => setShowAll(true)}
-          >
-            <button className="rounded-3xl bg-orange-400 w-[9rem] h-[3rem]  shadow-2xl  hover:shadow-orange-600">
+        {lessonList.length > 4 && !showAll && (
+          <div className="col-span-full mt-6 text-center">
+            <button
+              className="rounded-3xl bg-orange-400 w-[9rem] h-[3rem] shadow-2xl hover:shadow-orange-600"
+              onClick={() => setShowAll(true)}
+            >
               All Lessons
             </button>
           </div>
         )}
         {showAll && (
-          <div
-            className="col-span-4 cursor-pointer mt-6 font-serif text-center text-gray-800  "
-            onClick={() => setShowAll(false)}
-          >
-            <button className="  rounded-3xl bg-orange-400 w-[9rem] h-[3rem] shadow-2xl  hover:shadow-orange-600">
+          <div className="col-span-full mt-6 text-center">
+            <button
+              className="rounded-3xl bg-orange-400 w-[9rem] h-[3rem] shadow-2xl hover:shadow-orange-600"
+              onClick={() => setShowAll(false)}
+            >
               Less Lessons
             </button>
           </div>
