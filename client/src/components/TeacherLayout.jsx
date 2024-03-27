@@ -1,6 +1,7 @@
 import TopBar from "./topBar/TopBar.jsx";
 import SideBar from "./sideBar/SideBar.jsx";
 import { useTeacherDashboard } from "../context/TeacherDashboardProvider.jsx";
+import { Outlet } from "react-router-dom";
 
 const TeacherLayout = ({ children }) => {
   const { isSidebarOpen, isCompact } = useTeacherDashboard(); // Get sidebar state
@@ -16,7 +17,7 @@ const TeacherLayout = ({ children }) => {
             isSidebarOpen === false ? "" : isCompact ? "pl-20" : "pl-64"
           }`}
         >
-          {children}
+          <Outlet />
         </main>
       </div>
     </div>
