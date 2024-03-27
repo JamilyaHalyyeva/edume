@@ -22,7 +22,7 @@ const ClassCards = () => {
     });
   }, []);
   return (
-    <div className="container mx-auto mt-10 pl-20 pr-20 bg-gray-100 flex flex-wrap justify-center flex-col items-center ">
+    <div className="mx-auto mt-10 pl-20 pr-20 bg-gray-100 flex flex-wrap justify-center flex-col items-center ">
       <h2 className="text-2xl font-bold mb-4">Select Your Grade </h2>
       <div className="grid grid-cols-8 gap-1 w-11/12 mt-10 ">
         {gradeData.length > 0 &&

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const StudentNavbar = (param) => {
   return (
     <div
-      className={`${param.color} bg-opacity-50 justify-center items-center grid  w-[22rem] h-[15rem]  rounded-2xl shadow-xl`}
+      className={`${param.color} bg-opacity-50 justify-center items-center grid  w-[22rem] h-[14rem] lg:w-[18rem] xl:w-[18rem] 2xl:w-[22rem] md:w-[30rem] rounded-2xl shadow-xl`}
     >
       <Link to="/lessons">
         <div className="flex justify-center items-center">
