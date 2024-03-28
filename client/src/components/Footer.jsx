@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <>
       <section className="bg-orange-100 py-12">
-        <div className="max-w-screen-lg mx-auto flex  justify-between items-center ">
+        <div className="max-w-screen-lg mx-auto grid grid-col-1 px-2 items-center md:flex justify-between">
           <div className="pr-12">
             <h1 className="text-orange-500 text-2xl font-semibold mb-2">Newsletter - Stay tuned and get the latest update</h1>
             <span className="text-orange-400">Far far away, behind the word mountains</span>
@@ -16,7 +16,7 @@ export const Footer = () => {
         </div>
       </section>
       <footer className="bg-gray-200 py-12">
-        <div className="max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="max-w-screen-lg mx-auto px-2 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="w-full md:w-70">
             <h1 className="text-3xl font-bold text-orange-500">EDUME</h1>
             <span className="text-orange-500">online education & learning</span>
@@ -61,7 +61,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center">
                 <i className="fa fa-envelope mr-2 text-orange-500"></i>
-                <span>example@example.com</span>
+                <span>ex@example.com</span>
               </li>
             </ul>
           </div>

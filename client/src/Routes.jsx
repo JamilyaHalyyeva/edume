@@ -7,7 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import StudentPreProfilePage from "./pages/StudentPreProfilePage";
 import TeacherPreProfilePage from "./pages/TeacherPreProfilePage";
 import { RegisterProvider } from "./context/RegisterProvider";
-import Home from "./pages/home/Home"
+import Home from "./pages/Home"
 const AppRoutes = () => {
   return (
     

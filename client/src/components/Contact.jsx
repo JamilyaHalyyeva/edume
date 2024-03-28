@@ -8,7 +8,7 @@ export const Contact = () => {
         <div className="max-w-screen-lg mx-auto flex justify-center items-center ">
           <div className="w-2/4 mr-10 ">
           
-            <img src="https://thepixelcurve.com/wp/edubin/language-school/wp-content/uploads/sites/53/2023/08/HR785234.png" alt=""/>
+            <img src="https://thepixelcurve.com/wp/edubin/language-school/wp-content/uploads/sites/53/2023/08/HR785234.png" alt="" className=' hidden md:block'/>
           </div>
           <div className="right">
             <form className="w-80 max-w-md p-4 border border-gray-300 rounded bg-white">

@@ -1,18 +1,18 @@
-import React from 'react';
+
 import { Title } from './Title';
 
 export const AboutCard = () => {
   return (
     <>
-      <section className="bg-orange-100">
-        <div className="max-w-screen-lg flex flex-col md:flex-row justify-between mx-auto">
+      <section className="bg-orange-100 pt-4">
+        <div className="max-w-screen-lg flex flex-col px-2 md:flex-row justify-between mx-auto">
           <div className="md:w-1/2">
             <img src="https://dkckbwr4t7ug6.cloudfront.net/assets/application/layouts/welcome_banner_blobby-50966447b463d5608a2fb27ae8eae0eab091cc1e2f881408166bd6086492c953.svg" alt="" className="w-full object-contain" />
           </div>
           <div className="md:w-1/2 md:pl-10">
             <Title subtitle="LEARN ANYTHING" title="Benefits About Online Learning" />
-            <div className="items mt-10 mb-10 ">
-              <ul className="bg-white py-6 px-6 rounded-md transition duration-500 sm:mt-5 md:mt-10 lg:mt-15">
+            <div className="items mt-10 mb-10 shadow-lg ">
+              <ul className="bg-white  py-6 px-6 rounded-md transition duration-500 sm:mt-5 md:mt-10 lg:mt-15">
                 {[
                   { text: "Flexibility: Learn at your own pace, anytime, anywhere.", icon: "fa fa-clock" },
                   { text: "Accessibility: Access quality education globally, regardless of location or ability.", icon: "fa fa-globe" },
