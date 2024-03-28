@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TeacherDashboard from "../components/TeacherDashboard";
 
 import { useUser } from "../context/UserProvider";
 import TeacherLayout from "../components/TeacherLayout";

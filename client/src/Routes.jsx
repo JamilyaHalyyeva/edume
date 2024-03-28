@@ -13,6 +13,7 @@ import StudentList from "./components/studentList/StudentList";
 import TeacherDashboard from "./components/TeacherDashboard.jsx";
 import StudentDashboard from "./components/StudentDashboard.jsx";
 import { useUser } from "./context/UserProvider.jsx";
+import LessonForm from "./components/lessonList/LessonForm.jsx";
 
 const AppRoutes = () => {
   const { user } = useUser();
@@ -24,6 +25,7 @@ const AppRoutes = () => {
           <>
             <Route index element={<TeacherDashboard />} />
             <Route path="lessons" element={<LessonList />} />
+            <Route path="lessons/new" element={<LessonForm />} />
             <Route path="students" element={<StudentList />} />
           </>
         ) : (

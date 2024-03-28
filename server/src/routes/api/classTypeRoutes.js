@@ -5,7 +5,7 @@
  *   description: API endpoints for classType
  */
 import express from 'express';
-import { handleGetClasses } from '../../controllers/classController.js';
+import { handleGetClasses } from '../../controllers/classTypeController.js';
 
 const classTypeRouter = express.Router();
 
