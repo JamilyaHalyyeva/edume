@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../../config/env.config.js";
+import { useNavigate } from "react-router-dom";
 
-const LessonForm = ({ lesson, onSave }) => {
+const LessonForm = (lesson) => {
   const [formData, setFormData] = useState({
     name: "",
     order: "",
@@ -12,6 +13,7 @@ const LessonForm = ({ lesson, onSave }) => {
   const [grades, setGrades] = useState([]);
   const [classTypes, setClassTypes] = useState([]);
   const [gradeClassTypes, setGradeClassTypes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchGrades();
@@ -52,32 +54,34 @@ const LessonForm = ({ lesson, onSave }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const apiEndpoint = lesson
-      ? `${config.apiBaseUrl}/api/lesson/${lesson._id}`
-      : `${config.apiBaseUrl}/api/lesson`;
-    const method = lesson ? axios.put : axios.post;
-    await method(apiEndpoint, formData);
-    onSave();
+    console.log("lesson: ", lesson);
+    const apiEndpoint =
+      lesson && lesson._id
+        ? `${config.apiBaseUrl}/api/lesson/${lesson._id}`
+        : `${config.apiBaseUrl}/api/lesson`;
+    const method = lesson && lesson._id ? axios.put : axios.post;
+    const response = await method(apiEndpoint, formData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    if (response.status >= 200 && response.status < 300) {
+      // If successful, navigate to the Dashboard/Lessons page
+      navigate("/dashboard/Lessons");
+    }
   };
 
   const filteredClassTypes = formData.grade
     ? classTypes.filter((ct) =>
         gradeClassTypes.some((gct) => {
-          //   console.log(
-          //     `${gct.grade._id} === ${formData.grade} && ${gct.classType._id} === ${ct._id}`
-          //   );
           return (
-            gct.grade._id === formData.grade._id && gct.classType._id === ct._id
+            gct.grade._id === formData.grade && gct.classType._id === ct._id
           );
         })
       )
     : classTypes;
 
-  console.log("formData: ", formData);
-  console.log("grades: ", grades);
-  console.log("classTypes: ", classTypes);
-  console.log("filteredClassTypes:", filteredClassTypes);
-  console.log("gradeClassTypes: ", gradeClassTypes);
   return (
     <div className="p-4 max-w-4xl mx-auto">
       <form

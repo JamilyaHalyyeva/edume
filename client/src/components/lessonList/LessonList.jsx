@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import config from "../../config/env.config.js";
+import Table from "../Shared/Table/Table.jsx";
 
 const LessonList = () => {
   const [lessons, setLessons] = useState([]);
@@ -28,7 +29,12 @@ const LessonList = () => {
 
     fetchLessons();
   }, []);
-
+  const columns = [
+    { header: "Name", accessor: "name" },
+    { header: "Grade", accessor: "grade" },
+    { header: "Class Type", accessor: "classType" },
+    { header: "Actions", accessor: "actions" },
+  ];
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
@@ -41,7 +47,38 @@ const LessonList = () => {
         </Link>
       </div>
       <ul className="bg-white shadow rounded-lg">
-        {lessons &&
+        <Table
+          columns={columns}
+          data={lessons.map((lesson) => ({
+            name: lesson.name,
+            grade: lesson.grade.name,
+            classType: lesson.classType.name,
+            actions: (
+              <div>
+                <Link
+                  to={`/dashboard/lessons/manage/${lesson._id}`}
+                  className="text-green-700 mr-2"
+                >
+                  Manage
+                </Link>
+                <Link
+                  to={`/dashboard/lessons/edit/${lesson._id}`}
+                  className="text-blue-500 mr-2"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteLesson(lesson._id)}
+                  className="text-red-500"
+                >
+                  Delete
+                </button>
+              </div>
+            ),
+          }))}
+        ></Table>
+
+        {/* {lessons &&
           lessons.map((lesson) => (
             <li
               key={lesson._id}
@@ -63,7 +100,7 @@ const LessonList = () => {
                 </button>
               </div>
             </li>
-          ))}
+          ))} */}
       </ul>
     </div>
   );
