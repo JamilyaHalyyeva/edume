@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import axios from "axios";
 import config from "../config/env.config";
-import lessons from "../assets/lessons/lessons.js";
+import lessons from "../assets/classTypes/classTypeImageObjects.js";
 // Import images for other lessons as needed
 
 const Lessons = () => {
