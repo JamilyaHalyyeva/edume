@@ -7,7 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import StudentPreProfilePage from "./pages/StudentPreProfilePage";
 import TeacherPreProfilePage from "./pages/TeacherPreProfilePage";
 import { RegisterProvider } from "./context/RegisterProvider";
-import LessonList from "./components/LessonList/LessonList";
+import LessonList from "./components/LessonList/LessonList.jsx";
 import StudentList from "./components/studentList/StudentList";
 
 import TeacherDashboard from "./components/TeacherDashboard.jsx";

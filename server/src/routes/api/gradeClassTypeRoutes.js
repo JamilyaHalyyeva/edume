@@ -49,5 +49,5 @@ const gradeClassTypeRouter = express.Router();
  *       500:
  *         description: Internal server error
  */
-gradeClassTypeRouter.get('/', authMiddleware, handleGetGradeClassTypes);
+gradeClassTypeRouter.get('/', handleGetGradeClassTypes);
 export default gradeClassTypeRouter;
