@@ -10,6 +10,7 @@ import classTypeRouter from './routes/api/classTypeRoutes.js';
 import gradeRouter from './routes/api/gradeRoutes.js';
 import lessonRouter from './routes/api/lessonRoutes.js';
 import gradeClassTypeRouter from './routes/api/gradeClassTypeRoutes.js';
+import lessonSectionRouter from './routes/api/lessonSectionRoutes.js';
 const app = express();
 
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use('/api/classType', classTypeRouter);
 app.use('/api/grade', gradeRouter);
 app.use('/api/lesson', lessonRouter);
 app.use('/api/gradeClassType', gradeClassTypeRouter);
+app.use('/api/lessonSection', lessonSectionRouter);
 const PORT = config.port || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -8,7 +8,11 @@ export const handleGetLessons = async (req, res) => {
       ? await Lesson.find({ grade: req.grade })
           .populate('grade')
           .populate('classType')
-      : await Lesson.find({}).populate('grade').populate('classType');
+          .populate('lessonSections')
+      : await Lesson.find({})
+          .populate('grade')
+          .populate('classType')
+          .populate('lessonSections');
     res.json({ success: true, lessons: lessons });
   } catch (error) {
     return res.status(500).send({ success: false, error: error.message });
@@ -38,7 +42,16 @@ export const handleGetLessonById = async (req, res) => {
     const lessonId = req.params.lessonId;
     const lesson = await Lesson.findById(lessonId)
       .populate('grade')
-      .populate('classType');
+      .populate('classType')
+      .populate({
+        path: 'lessonSections',
+        select: 'name order sectionContents',
+        populate: {
+          path: 'sectionContents',
+          select: 'name videoUrl documentUrl', // Adjust based on your SectionContent model
+        },
+      });
+    console.log('lesson:', lesson);
     if (!lesson) {
       return res
         .status(404)

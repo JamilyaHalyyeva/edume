@@ -5,6 +5,8 @@ export const handleGetGradeClassTypes = async (req, res) => {
   try {
     const gradeClassTypes = req.grade
       ? await GradeClassType.find({ grade: req.grade })
+          .populate('classType')
+          .populate('grade')
       : await GradeClassType.find().populate('classType').populate('grade');
     console.log('gradeClassTypes:', gradeClassTypes);
     res.json(gradeClassTypes);
