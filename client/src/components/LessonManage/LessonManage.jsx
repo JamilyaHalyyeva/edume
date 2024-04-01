@@ -5,13 +5,13 @@ import axios from "axios";
 import TreeLesson from "../LessonTree/TreeLesson.jsx";
 import LessonSection from "./LessonSection.jsx";
 import { useLessonManagement } from "../../context/LessonManagementProvider.jsx";
+import LessonSubSection from "./LessonSubSection.jsx";
 
 const LessonManage = () => {
   const { lessonId } = useParams();
   const {
+    isNewSubSectionOrSubSectionSelected,
     isNewSectionOrSectionSelected,
-    isNewSection,
-    selectedSection,
     lesson,
     setLesson,
   } = useLessonManagement();
@@ -77,9 +77,14 @@ const LessonManage = () => {
         </div>
         {/* here is the action panel for adding sections and contents */}
         <div className="flex flex-col w-full shadow mx-2 p-2">
-          {lesson && isNewSectionOrSectionSelected ? (
+          {isNewSectionOrSectionSelected ? (
             <div className="flex flex-col">
               <LessonSection />
+            </div>
+          ) : isNewSubSectionOrSubSectionSelected ? (
+            // Add your code for isNewSubSectionOrSubSectionSelected condition here
+            <div className="flex flex-col">
+              <LessonSubSection />
             </div>
           ) : (
             <div className="flex flex-row text-black">

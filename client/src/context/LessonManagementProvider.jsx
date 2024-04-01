@@ -9,13 +9,30 @@ const LessonManagementProvider = ({ children }) => {
   const [isNewSectionOrSectionSelected, setIsNewSectionOrSectionSelected] =
     useState(false);
   const [isNewSection, setIsNewSection] = useState(false);
+  const [
+    isNewSubSectionOrSubSectionSelected,
+    setIsNewSubSectionOrSubSectionSelected,
+  ] = useState(false);
+  const [isNewSubSection, setIsNewSubSection] = useState(false);
+
   const [currentSection, setCurrentSection] = useState({ name: "" });
   const handleAddSectionClick = () => {
     console.log("Add Section Clicked");
     setIsNewSectionOrSectionSelected(true);
     setIsNewSection(true);
   };
+  const handleAddSubSectionClick = (sectionId) => {
+    console.log("Add SubSection Clicked");
+    console.log("Section Id: ", sectionId);
+    setIsNewSubSectionOrSubSectionSelected(true);
+    setIsNewSubSection(true);
+  };
 
+  const cancelNewSection = () => {
+    setIsNewSectionOrSectionSelected(false);
+    setIsNewSection(false);
+    setCurrentSection({ name: "" });
+  };
   const saveNewSection = () => {
     console.log("saveNewSection: ", currentSection);
 
@@ -50,6 +67,9 @@ const LessonManagementProvider = ({ children }) => {
     saveNewSectionAsync();
   };
 
+  const saveNewSubSection = () => {
+    console.log("saveNewSubSection: ", currentSection);
+  };
   const fetchLesson = async (lessonId) => {
     try {
       const response = await axios.get(
@@ -73,12 +93,16 @@ const LessonManagementProvider = ({ children }) => {
       value={{
         lesson,
         isNewSectionOrSectionSelected,
+        isNewSubSectionOrSubSectionSelected,
         isNewSection,
         currentSection,
         setCurrentSection,
         handleAddSectionClick,
+        handleAddSubSectionClick,
         setLesson,
         saveNewSection,
+        cancelNewSection,
+        saveNewSubSection,
       }}
     >
       {children}

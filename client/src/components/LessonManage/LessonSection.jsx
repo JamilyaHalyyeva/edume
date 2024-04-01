@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import { useLessonManagement } from "../../context/LessonManagementProvider.jsx";
 
 const LessonSection = (props) => {
-  const { isNewSection, currentSection, setCurrentSection, saveNewSection } =
-    useLessonManagement();
+  const {
+    isNewSection,
+    currentSection,
+    setCurrentSection,
+    saveNewSection,
+    cancelNewSection,
+  } = useLessonManagement();
 
   const nameOnChangeHandler = (e) => {
     setCurrentSection({ ...currentSection, name: e.target.value });
@@ -13,6 +18,11 @@ const LessonSection = (props) => {
     console.log("onSectionInfoSaveClickHandler: ", currentSection);
     saveNewSection();
     // save the section info
+  };
+  const onSectionInfoCancelClickHandler = () => {
+    console.log("onSectionInfoCancelClickHandler: ", currentSection);
+    cancelNewSection();
+    // cancel the section info
   };
   return (
     <div className="flex flex-col justify-start">
@@ -32,6 +42,12 @@ const LessonSection = (props) => {
               />
             </div>
             <div className="flex flex-row justify-end">
+              <button
+                onClick={onSectionInfoCancelClickHandler}
+                className="btn bg-red-300 p-2 mr-2 rounded-md text-black"
+              >
+                Cancel
+              </button>
               <button
                 onClick={onSectionInfoSaveClickHandler}
                 className="btn bg-purple-300 p-2 rounded-md text-black"
