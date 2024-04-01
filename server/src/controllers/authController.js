@@ -6,8 +6,16 @@ import sentAnEmailForResetPassword from '../utils/forgotPassword.js';
 
 export const handleRegister = async (req, res) => {
   try {
-    const { username, surname, email, password, role, grade, avatar } =
-      req.body;
+    const {
+      username,
+      surname,
+      email,
+      password,
+      role,
+      grade,
+      avatar,
+      teacherClassTypeGrades,
+    } = req.body;
 
     console.log('register: data is ', req.body);
 
@@ -24,6 +32,7 @@ export const handleRegister = async (req, res) => {
       role,
       avatar,
       grade,
+      teacherClassTypeGrades,
     });
     const result = await newUser.save();
 

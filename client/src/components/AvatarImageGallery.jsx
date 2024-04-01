@@ -3,10 +3,23 @@ import { useRegister } from "../context/RegisterProvider";
 import { useEffect, useState } from "react";
 
 const AvatarImageGallery = () => {
-  const { updateUserToBeRegistered } = useRegister();
-  const [selectedAvatar, setSelectedAvatar] = useState("animal5.png");
+  const { updateUserToBeRegistered, userToBeRegistered } = useRegister();
+  const [selectedAvatar, setSelectedAvatar] = useState(
+    userToBeRegistered.role === "teacher" ? "teacher4.png" : "panda.png"
+  );
+  const [avatarList, setAvatarList] = useState([]);
   useEffect(() => {
-    updateUserToBeRegistered({ avatar: "animal5.png" });
+    if (userToBeRegistered.role === "teacher") {
+      const teacherAvatars = avatars.filter(
+        (avatar) => avatar.type === "teacher"
+      );
+      setAvatarList(teacherAvatars);
+    } else {
+      const studentAvatars = avatars.filter(
+        (avatar) => avatar.type === "student"
+      );
+      setAvatarList(studentAvatars);
+    }
   }, []);
 
   const handleAvatarClick = (event) => {
@@ -22,7 +35,7 @@ const AvatarImageGallery = () => {
       <h2 className="text-2xl font-bold mb-5">Select Your Avatar </h2>
       <div className="w-full sm:w-4/5 lg:w-3/4 xl:w-2/3">
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 lg:gap-5 lg:p-4  2xl:grid-cols-10 2xl:gap-5 2xl:p-4 gap-2 p-4">
-          {avatars.map((image) => (
+          {avatarList.map((image) => (
             <div
               key={image.id}
               onClick={handleAvatarClick}
