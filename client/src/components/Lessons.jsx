@@ -16,7 +16,7 @@ const Lessons = () => {
     const fetchLessons = async () => {
       try {
         const response = await axios.get(
-          `${config.apiBaseUrl}/api/gradeClassType`,
+          `${config.apiBaseUrl}/api/gradeClassType/myClassTypes`,
           {
             headers: {
               "Content-Type": "application/json",

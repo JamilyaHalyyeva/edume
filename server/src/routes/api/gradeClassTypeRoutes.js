@@ -5,7 +5,10 @@
  *   description: API endpoints for classType
  */
 import express from 'express';
-import { handleGetGradeClassTypes } from '../../controllers/gradeClassTypeController.js';
+import {
+  handleGetGradeClassTypes,
+  handleGetMyGradeClassTypes,
+} from '../../controllers/gradeClassTypeController.js';
 import authMiddleware from '../../middlewares/authMiddleware.js';
 
 const gradeClassTypeRouter = express.Router();
@@ -50,4 +53,11 @@ const gradeClassTypeRouter = express.Router();
  *         description: Internal server error
  */
 gradeClassTypeRouter.get('/', handleGetGradeClassTypes);
+
+gradeClassTypeRouter.get(
+  '/myClassTypes',
+  authMiddleware,
+  handleGetMyGradeClassTypes,
+);
+
 export default gradeClassTypeRouter;
