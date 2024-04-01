@@ -7,12 +7,16 @@ import ProfilePage from "./pages/ProfilePage";
 import StudentPreProfilePage from "./pages/StudentPreProfilePage";
 import TeacherPreProfilePage from "./pages/TeacherPreProfilePage";
 import { RegisterProvider } from "./context/RegisterProvider";
-import LessonList from "./components/lessonList/LessonList";
+import LessonList from "./components/LessonList/LessonList";
 import StudentList from "./components/studentList/StudentList";
 
 import TeacherDashboard from "./components/TeacherDashboard.jsx";
 import StudentDashboard from "./components/StudentDashboard.jsx";
 import { useUser } from "./context/UserProvider.jsx";
+import LessonForm from "./components/LessonList/LessonForm.jsx";
+import LessonEdit from "./components/LessonList/LessonEdit.jsx";
+import LessonManage from "./components/LessonManage/LessonManage.jsx";
+import { LessonManagementProvider } from "./context/LessonManagementProvider.jsx";
 
 const AppRoutes = () => {
   const { user } = useUser();
@@ -24,6 +28,16 @@ const AppRoutes = () => {
           <>
             <Route index element={<TeacherDashboard />} />
             <Route path="lessons" element={<LessonList />} />
+            <Route path="lessons/new" element={<LessonForm />} />
+            <Route path="lessons/edit:lessonId" element={<LessonEdit />} />
+            <Route
+              path="lessons/manage/:lessonId"
+              element={
+                <LessonManagementProvider>
+                  <LessonManage />
+                </LessonManagementProvider>
+              }
+            />
             <Route path="students" element={<StudentList />} />
           </>
         ) : (

@@ -24,7 +24,7 @@ const Lessons = () => {
             },
           }
         );
-        console.log(response.data);
+        console.log("response", response.data);
         const filteredLessons = [];
         response.data.map((data) => {
           console.log(data.classType.name);

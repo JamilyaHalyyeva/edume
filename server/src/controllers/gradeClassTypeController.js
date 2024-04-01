@@ -3,12 +3,11 @@ import GradeClassType from '../models/GradeClassType.js';
 
 export const handleGetGradeClassTypes = async (req, res) => {
   try {
-    console.log('req.grade:', req.grade);
-    const grade = await Grade.findOne({ name: '2' });
-    console.log('grade:', grade);
-    const gradeClassTypes = await GradeClassType.find({ grade: req.grade })
-      .populate('classType')
-      .populate('grade');
+    const gradeClassTypes = req.grade
+      ? await GradeClassType.find({ grade: req.grade })
+          .populate('classType')
+          .populate('grade')
+      : await GradeClassType.find().populate('classType').populate('grade');
     console.log('gradeClassTypes:', gradeClassTypes);
     res.json(gradeClassTypes);
   } catch (error) {
