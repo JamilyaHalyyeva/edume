@@ -1,15 +1,15 @@
-import lesson1 from "../lessons/lesson1.png";
-import lesson2 from "../lessons/lesson2.png";
-import lesson3 from "../lessons/lesson3.png";
-import lesson4 from "../lessons/lesson4.png";
-import lesson5 from "../lessons/lesson5.png";
-import lesson6 from "../lessons/lesson6.png";
-import lesson7 from "../lessons/lesson7.png";
-import lesson8 from "../lessons/lesson8.png";
-import lesson9 from "../lessons/lesson9.png";
-import lesson10 from "../lessons/lesson10.png";
+import lesson1 from "./lesson1.png";
+import lesson2 from "./lesson2.png";
+import lesson3 from "./lesson3.png";
+import lesson4 from "./lesson4.png";
+import lesson5 from "./lesson5.png";
+import lesson6 from "./lesson6.png";
+import lesson7 from "./lesson7.png";
+import lesson8 from "./lesson8.png";
+import lesson9 from "./lesson9.png";
+import lesson10 from "./lesson10.png";
 
-const lessons = [
+const classTypeImageObjects = [
   {
     id: 1,
     name: "Biologie",
@@ -75,4 +75,4 @@ const lessons = [
   },
 ];
 
-export default lessons;
+export default classTypeImageObjects;
