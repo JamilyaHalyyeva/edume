@@ -1,58 +1,48 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "../Card";
 import { useRegister } from "../../context/RegisterProvider";
 
 const TeacherGradeCards = (props) => {
-  const { updateUserToBeRegistered, userToBeRegistered } = useRegister();
-  const [selectedGrades, setSelectedGrades] = useState([]);
+  const { userToBeRegistered, removeGrade, addGrade } = useRegister();
 
-  const handleCardClick = (grade) => {
-    if (selectedGrades.includes(grade)) {
-      setSelectedGrades(selectedGrades.filter((g) => g !== grade));
-      updateUserToBeRegistered({
-        teacherClassTypeGrades: [
-          ...userToBeRegistered.teacherClassTypeGrades.filter(
-            (g) => g.grade !== grade
-          ),
-        ],
-      });
-      return;
-    }
-    setSelectedGrades([...selectedGrades, grade]);
+  const toggleSelected = (grade) => {
+    console.log("toggleSelected-_grade:", grade);
     if (
       userToBeRegistered.teacherClassTypeGrades &&
-      userToBeRegistered.teacherClassTypeGrades.length > 0
+      userToBeRegistered.teacherClassTypeGrades.find(
+        (g) =>
+          g.grade._id === grade._id && g.classType._id === props.classType._id
+      )
     ) {
-      updateUserToBeRegistered({
-        teacherClassTypeGrades: [
-          ...userToBeRegistered.teacherClassTypeGrades,
-          {
-            classType: { _id: props.classType._id, name: props.classType.name },
-            grade: grade,
-          },
-        ],
-      });
+      removeGrade({ grade: grade, classType: props.classType });
     } else {
-      updateUserToBeRegistered({
-        teacherClassTypeGrades: [
-          {
-            classType: { _id: props.classType._id, name: props.classType.name },
-            grade: grade,
-          },
-        ],
-      });
+      addGrade({ grade: grade, classType: props.classType });
     }
-
-    console.log(grade);
   };
-  useEffect(() => {}, [props.grades]);
+
+  const isSelected = (grade) => {
+    return (
+      userToBeRegistered.teacherClassTypeGrades &&
+      userToBeRegistered.teacherClassTypeGrades.find(
+        (g) =>
+          g.grade._id === grade._id && g.classType._id === props.classType._id
+      )
+    );
+  };
+  const handleCardClick = (grade) => {
+    toggleSelected(grade);
+  };
+  useEffect(() => {}, [
+    props.grades,
+    userToBeRegistered.teacherClassTypeGrades,
+  ]);
   return (
-    <div className="w-full flex flex-row h-auto">
+    <div className="w-full flex flex-row h-auto gap-2 mb-4">
       {props.grades.map((grade) => (
         <Card
           key={grade._id}
           title={`${grade.name}.`}
-          isSelected={selectedGrades.includes(grade)}
+          isSelected={isSelected(grade)}
           content={"Grade"}
           onCardClick={() => handleCardClick(grade)}
         />

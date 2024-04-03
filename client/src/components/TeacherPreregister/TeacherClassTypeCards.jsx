@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 import config from "../../config/env.config";
 import classTypeImageObjects from "../../assets/classTypes/classTypeImageObjects.js";
 import TeacherGradeCards from "./TeacherGradeCards.jsx";
 import { useRegister } from "../../context/RegisterProvider.jsx";
+import CustomDropdown from "../Shared/Dropdown/CustomDropdown.jsx";
 const TeacherClassTypeCards = () => {
-  const { updateUserToBeRegistered, userToBeRegistered } = useRegister();
+  const { removeAllGradesWithClassType } = useRegister();
   const [classTypeList, setClassTypeList] = useState([]);
   const [gradeClassTypes, setGradeClassTypes] = useState([]);
   const [selectedClassType, setSelectedClassType] = useState("");
@@ -32,17 +34,6 @@ const TeacherClassTypeCards = () => {
 
         console.log("filteredClassTypes:", filteredClassTypes);
         setClassTypeList(filteredClassTypes);
-        //filterin from previously selected classType from userToBeRegistered
-        if (userToBeRegistered.teacherClassTypeGrades) {
-          const myUnselectedClassTypes = classTypeList.filter(
-            (ctl) =>
-              !userToBeRegistered.teacherClassTypeGrades
-                .map((tctg) => tctg.classType._id)
-                .includes(ctl._id)
-          );
-
-          setClassTypeList(myUnselectedClassTypes);
-        }
       } catch (error) {
         console.error(error);
       }
@@ -67,28 +58,30 @@ const TeacherClassTypeCards = () => {
 
     fetchClassTypes();
     fetchGradeClassTypes();
+
+    //when a classType is selected
   }, []);
 
-  const handleChange = (event) => {
-    if (event.target.value === "") {
-      console.log(
-        "userToBeRegistered.teacherClassTypesGrades:",
-        userToBeRegistered.teacherClassTypesGrades
-      );
-      updateUserToBeRegistered({
-        teacherClassTypeGrades: [
-          ...userToBeRegistered.teacherClassTypeGrades.filter(
-            (g) => g.classType._id !== selectedClassType._id
-          ),
-        ],
-      });
+  const handleSelect = (selectedOption) => {
+    console.log("selectedOption:", selectedOption);
+    if (selectedOption === "") {
+      removeAllGradesWithClassType(selectedClassType);
+    } else if (
+      //check if the selected option is changed from the previous one
+      selectedClassType &&
+      selectedOption._id !== selectedClassType._id
+    ) {
+      removeAllGradesWithClassType(selectedClassType);
     }
+
+    //store the selected option in the state
     const mySelectedClassType = classTypeList.find(
-      (ct) => ct._id === event.target.value
+      (ct) => ct._id === selectedOption._id
     );
     setSelectedClassType(mySelectedClassType);
 
-    const myFilteredGrades = filterGrades(event.target.value);
+    //filter the grades based on the selected classType
+    const myFilteredGrades = filterGrades(selectedOption._id);
     setFilteredGrades(myFilteredGrades);
   };
 
@@ -108,24 +101,9 @@ const TeacherClassTypeCards = () => {
   return (
     <div className="w-full ">
       <form className="w-full">
-        <div className="flex justify-start ml-60 items-center">
-          <select
-            id="classTypes"
-            value={
-              selectedClassType && selectedClassType._id
-                ? selectedClassType._id
-                : ""
-            }
-            onChange={handleChange}
-            className="bg-gray-50 w-[10rem] border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-orange-500 block  p-2.5"
-          >
-            <option value="">Choose a lesson</option>
-            {classTypeList.map((classtype) => (
-              <option key={classtype._id} value={classtype._id}>
-                {classtype.name}
-              </option>
-            ))}
-          </select>
+        <div className="flex justify-start ml-20 mb-5 items-center">
+          <CustomDropdown options={classTypeList} onSelect={handleSelect} />
+
           <div className="flex justify-center  items-center">
             <TeacherGradeCards
               grades={filteredGrades}

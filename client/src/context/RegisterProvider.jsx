@@ -37,12 +37,50 @@ const RegisterProvider = ({ children }) => {
     }
   };
 
+  const addGrade = (grade) => {
+    console.log("addGrade-_grade:", grade);
+    //add grade to userToBeRegistered
+    if (userToBeRegistered.teacherClassTypeGrades) {
+      updateUserToBeRegistered({
+        teacherClassTypeGrades: [
+          ...userToBeRegistered.teacherClassTypeGrades,
+          grade,
+        ],
+      });
+    } else {
+      updateUserToBeRegistered({
+        teacherClassTypeGrades: [grade],
+      });
+    }
+  };
+  const removeGrade = (grade) => {
+    //remove grade from userToBeRegistered
+    updateUserToBeRegistered({
+      teacherClassTypeGrades: userToBeRegistered.teacherClassTypeGrades.filter(
+        (g) =>
+          g.grade._id !== grade.grade._id ||
+          g.classType._id !== grade.classType._id
+      ),
+    });
+  };
+  const removeAllGradesWithClassType = (classType) => {
+    //remove all grades with classType from userToBeRegistered
+    updateUserToBeRegistered({
+      teacherClassTypeGrades: userToBeRegistered.teacherClassTypeGrades.filter(
+        (g) => g.classType._id !== classType._id
+      ),
+    });
+  };
+
   return (
     <RegisterContext.Provider
       value={{
         userToBeRegistered,
         updateUserToBeRegistered,
         registerUser,
+        addGrade,
+        removeGrade,
+        removeAllGradesWithClassType,
       }}
     >
       {children}
