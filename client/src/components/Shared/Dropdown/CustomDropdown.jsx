@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const CustomDropdown = ({ options, onSelect }) => {
+const CustomDropdown = ({ options, onSelect, selectedOption }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const CustomDropdown = ({ options, onSelect }) => {
   }, []);
 
   const handleItemClick = (option) => {
-    setSelectedOption(option);
+    console.log("handleItemClick->option:", option);
     onSelect(option);
     setIsOpen(false);
   };

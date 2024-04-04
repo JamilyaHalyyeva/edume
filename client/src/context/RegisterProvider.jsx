@@ -65,11 +65,14 @@ const RegisterProvider = ({ children }) => {
   };
   const removeAllGradesWithClassType = (classType) => {
     //remove all grades with classType from userToBeRegistered
-    updateUserToBeRegistered({
-      teacherClassTypeGrades: userToBeRegistered.teacherClassTypeGrades.filter(
-        (g) => g.classType._id !== classType._id
-      ),
-    });
+    if (userToBeRegistered.teacherClassTypeGrades) {
+      updateUserToBeRegistered({
+        teacherClassTypeGrades:
+          userToBeRegistered.teacherClassTypeGrades.filter(
+            (g) => g.classType._id !== classType._id
+          ),
+      });
+    }
   };
 
   return (
