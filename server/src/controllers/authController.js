@@ -81,6 +81,7 @@ export const handleLogin = async (req, res) => {
         role: user.role,
         avatar: user.avatar,
         grade: user.grade,
+        teacherClassTypeGrades: user.teacherClassTypeGrades,
       },
       config.jwtSecret,
       {
