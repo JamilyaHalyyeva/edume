@@ -89,7 +89,7 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className=" w-full h-screen flex item-center justify-center 2xl:p-10">
+      <div className=" w-full  flex item-center justify-center 2xl:p-10">
         <div className="2xl:w-2/5  2xl:rounded-l-2xl xl:w-1/2 lg:w-1/2 md:w-1/2 sm:hidden md:flex xs:hidden flex-col justify-center items-center  bg-gray-100">
           <div className="registerImage ">
             <img src={REGISPANDA} alt="" className="h-[30rem] w-[30rem] flex" />
@@ -206,11 +206,11 @@ const RegisterPage = () => {
             </form>
           </div>
 
-          <div className="2xl:hidden xl:hidden lg:hidden md:hidden  sm:hidden  justify-center item-center flex-row  w-4/5 rounded-xl flex ">
+          <div className="2xl:hidden xl:hidden lg:hidden mb-10 md:hidden  sm:hidden  justify-center item-center flex-row  w-4/5 rounded-xl flex ">
             <Link to={"/loginpage"}>
               <button
                 type="submit"
-                className="group relative w-[10rem] flex justify-center py-2 px-4  text-sm font-medium rounded-2xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                className="group relative w-[10rem] h-10 flex justify-center py-2 px-4  text-sm font-medium rounded-3xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Sign in
               </button>
