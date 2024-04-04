@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { useTeacherClassGrade } from "../../../context/TeacherClassGradeProvider.jsx";
+import { useRegister } from "../../../context/RegisterProvider.jsx";
 
-const CustomDropdown = ({ options, onSelect, selectedOption }) => {
+const CustomDropdown = ({ onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [selectedOption, setSelectedOption] = useState(null);
+  const { getFilteredOptions, handleClassTypeComboSelect } =
+    useTeacherClassGrade();
   const dropdownRef = useRef(null);
+  const { removeAllGradesWithClassType } = useRegister();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -21,8 +26,21 @@ const CustomDropdown = ({ options, onSelect, selectedOption }) => {
   }, []);
 
   const handleItemClick = (option) => {
-    console.log("handleItemClick->option:", option);
-    onSelect(option);
+    let myOption = {};
+    if (option === "") {
+      myOption = { currentSelection: null };
+      myOption.previousSelection = selectedOption;
+      setSelectedOption(null);
+    } else {
+      myOption.currentSelection = { ...option };
+      myOption.previousSelection = selectedOption;
+      setSelectedOption(myOption.currentSelection);
+    }
+    if (myOption.previousSelection) {
+      removeAllGradesWithClassType(myOption.previousSelection);
+    }
+    handleClassTypeComboSelect(myOption);
+    onSelect(myOption.currentSelection);
     setIsOpen(false);
   };
 
@@ -33,7 +51,7 @@ const CustomDropdown = ({ options, onSelect, selectedOption }) => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 flex justify-between items-center"
+        className="bg-gray-50 w-full  text-lg border border-gray-300 text-gray-900  rounded-lg p-2.5 flex justify-between items-center"
       >
         {selectedOption ? (
           <>
@@ -41,7 +59,7 @@ const CustomDropdown = ({ options, onSelect, selectedOption }) => {
             <img
               src={selectedOption.imageSrc}
               alt={selectedOption.name}
-              className={`w-6 h-6 mr-2 ${selectedOption.bgColor}`}
+              className={`w-6 h-6 ${selectedOption.bgColor}`}
             />
             {selectedOption.name}
           </>
@@ -58,7 +76,7 @@ const CustomDropdown = ({ options, onSelect, selectedOption }) => {
           >
             Remove Selection
           </li>
-          {options.map((option) => (
+          {getFilteredOptions().map((option) => (
             <li
               key={option._id}
               className="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
