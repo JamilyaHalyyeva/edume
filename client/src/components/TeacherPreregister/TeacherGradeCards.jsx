@@ -5,46 +5,45 @@ import { useRegister } from "../../context/RegisterProvider";
 const TeacherGradeCards = (props) => {
   const { userToBeRegistered, removeGrade, addGrade } = useRegister();
 
-  const toggleSelected = (grade) => {
-    console.log("toggleSelected-_grade:", grade);
+  const toggleSelected = (gradeClassType) => {
+    console.log("toggleSelected-_grade:", gradeClassType);
     if (
       userToBeRegistered.teacherClassTypeGrades &&
       userToBeRegistered.teacherClassTypeGrades.find(
         (g) =>
-          g.grade._id === grade._id && g.classType._id === props.classType._id
+          g.grade._id === gradeClassType.grade._id &&
+          g.classType._id === gradeClassType.classType._id
       )
     ) {
-      removeGrade({ grade: grade, classType: props.classType });
+      removeGrade(gradeClassType);
     } else {
-      addGrade({ grade: grade, classType: props.classType });
+      addGrade(gradeClassType);
     }
   };
 
-  const isSelected = (grade) => {
+  const isSelected = (gradeClassType) => {
     return (
       userToBeRegistered.teacherClassTypeGrades &&
       userToBeRegistered.teacherClassTypeGrades.find(
         (g) =>
-          g.grade._id === grade._id && g.classType._id === props.classType._id
+          g.grade._id === gradeClassType.grade._id &&
+          g.classType._id === gradeClassType.classType._id
       )
     );
   };
-  const handleCardClick = (grade) => {
-    toggleSelected(grade);
+  const handleCardClick = (gradeClassType) => {
+    toggleSelected(gradeClassType);
   };
-  useEffect(() => {}, [
-    props.grades,
-    userToBeRegistered.teacherClassTypeGrades,
-  ]);
+  useEffect(() => {}, [props.gradeClassTypes]);
   return (
-    <div className="w-full flex flex-row h-auto gap-2 mb-4">
-      {props.grades.map((grade) => (
+    <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 lg:gap-5 lg:p-4  2xl:grid-cols-10 2xl:gap-5 2xl:p-4 gap-2 p-4">
+      {props.gradeClassTypes.map((gct) => (
         <Card
-          key={grade._id}
-          title={`${grade.name}.`}
-          isSelected={isSelected(grade)}
+          key={gct.grade._id}
+          title={`${gct.grade.name}.`}
+          isSelected={isSelected(gct)}
           content={"Grade"}
-          onCardClick={() => handleCardClick(grade)}
+          onCardClick={() => handleCardClick(gct)}
         />
       ))}
     </div>

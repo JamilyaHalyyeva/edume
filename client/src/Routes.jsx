@@ -17,6 +17,7 @@ import LessonForm from "./components/LessonList/LessonForm.jsx";
 import LessonEdit from "./components/LessonList/LessonEdit.jsx";
 import LessonManage from "./components/LessonManage/LessonManage.jsx";
 import { LessonManagementProvider } from "./context/LessonManagementProvider.jsx";
+import { TeacherClassGradeProvider } from "./context/TeacherClassGradeProvider.jsx";
 
 const AppRoutes = () => {
   const { user } = useUser();
@@ -58,7 +59,14 @@ const RegisterRoutes = () => {
       <Routes>
         <Route path="/" element={<RegisterPage />} />
         <Route path="student" element={<StudentPreProfilePage />} />
-        <Route path="teacher" element={<TeacherPreProfilePage />} />
+        <Route
+          path="teacher"
+          element={
+            <TeacherClassGradeProvider>
+              <TeacherPreProfilePage />
+            </TeacherClassGradeProvider>
+          }
+        />
       </Routes>
     </RegisterProvider>
   );
