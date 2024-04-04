@@ -16,7 +16,10 @@ const ClassCards = () => {
   useEffect(() => {
     axios.get(`${config.apiBaseUrl}/api/grade`).then((res) => {
       console.log(res.data);
-      setGradeData(res.data);
+      const sortedData = res.data.sort(
+        (a, b) => Number(a.name) - Number(b.name)
+      );
+      setGradeData(sortedData);
       updateUserToBeRegistered({ grade: res.data[0]._id });
       setSelectedGrade(res.data[0]);
     });
