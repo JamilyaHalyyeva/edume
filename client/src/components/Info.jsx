@@ -14,9 +14,9 @@ export const Info = () => {
                 {homeAbout.map((item, index) => (
                     <div key={index} className="bg-white p-4 rounded-lg shadow-lg  ">
                         <div className="flex flex-col items-center w-70 ">
-                            <img src={item.cover} alt="" className="w-42 h-40 mb-2 md:full" />
+                            <img src={item.cover} alt="" className="w-full object-contain h-40 mb-2 md:full " />
                             <h2 className="font-semibold text-lg text-gray-700">{item.title}</h2>
-                            <h3 className="text-sm font-normal text-gray-600">{item.description}</h3>
+                            <h3 className="text-sm font-normal hidden text-gray-600 md:block">{item.description}</h3>
                         </div>
                     </div>
                 ))}

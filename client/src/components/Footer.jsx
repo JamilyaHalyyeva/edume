@@ -1,4 +1,5 @@
-
+import LOGO from "../assets/logo.png"
+import EDUME from "../assets/edume.png"
 
 export const Footer = () => {
   return (
@@ -7,10 +8,10 @@ export const Footer = () => {
         <div className="max-w-screen-lg mx-auto grid grid-col-1 px-2 items-center md:flex justify-between">
           <div className="pr-12">
             <h1 className="text-orange-500 text-2xl font-semibold mb-2">Newsletter - Stay tuned and get the latest update</h1>
-            <span className="text-orange-400">Far far away, behind the word mountains</span>
+            <span className="text-orange-400 ">Far far away, behind the word mountains</span>
           </div>
-          <div className="flex pr-12">
-            <input type="text" placeholder="Enter your email address" className="w-full px-4 py-2 border border-gray-300 rounded" />
+          <div className="flex pr-12 mt-2 md:mt-1-0">
+            <input type="text" placeholder="Enter your email address" className="w-full px-4 py-2  border border-gray-300 rounded" />
             <i className="fa fa-paper-plane px-4 py-2 rounded bg-orange-500 text-white"></i>
           </div>
         </div>
@@ -18,9 +19,10 @@ export const Footer = () => {
       <footer className="bg-gray-200 py-12">
         <div className="max-w-screen-lg mx-auto px-2 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="w-full md:w-70">
-            <h1 className="text-3xl font-bold text-orange-500">EDUME</h1>
+            <img src={LOGO} alt="" className="w-16 pb-4 object-contain"/>
+            <img src={EDUME} alt="" className="w-24 pb-2"/>
             <span className="text-orange-500">online education & learning</span>
-            <p className="text-gray-600 leading-7 text-base mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+           
             <div className="flex mt-4 space-x-3">
               <i className="fab fa-facebook-f text-orange-500 hover:text-orange-400 text-xl"></i>
               <i className="fab fa-instagram text-orange-500 hover:text-orange-400 text-xl"></i>

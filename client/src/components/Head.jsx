@@ -1,5 +1,7 @@
 import  { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EDUME from "../assets/edume.png";
+import LOGO from "../assets/logo.png";
 
 
 const SmallScreenNavbar = ()=>{
@@ -9,11 +11,13 @@ const SmallScreenNavbar = ()=>{
                 <li><a href="#home" className="text-gray-800 hover:text-orange-600"></a></li>
                 <li><a href="#courses" className="text-gray-800 hover:text-orange-600">Courses</a></li>
                 <li><a href="#info" className="text-gray-800 hover:text-orange-600">About</a></li>
-                <li><a href="#pricing" className="text-gray-800 hover:text-orange-600">Pricing</a></li>
+                <li ><Link to="/pricePage " >Pricing</Link></li>
+               
+                <li><a href="#pricing" className="text-gray-800 hover:text-orange-600">Package</a></li>
                 <li><a href="#lessons" className="text-gray-800 hover:text-orange-600">Lessons</a></li>
                 <li><a href="#contact" className="text-gray-800 hover:text-orange-600">Contact</a></li>
                 <li>
-                  <button className="btn bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-full text-white px-4 py-2 mb-1 transition duration-500 ease-in-out text-xs">
+                  <button className="btn bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 font-semibold rounded-full text-white px-4 py-2 mb-1 transition duration-500 ease-in-out text-xs">
                     <Link to="/login">Login</Link>
                   </button>
                 </li>
@@ -28,11 +32,12 @@ const MainNavbar = ()=>{
                 <li><a href="#home" className="text-gray-800 hover:text-orange-600"></a></li>
                 <li><a href="#courses" className="text-gray-800 hover:text-orange-600">Courses</a></li>
                 <li><a href="#info" className="text-gray-800 hover:text-orange-600">About</a></li>
-                <li><a href="#pricing" className="text-gray-800 hover:text-orange-600">Pricing</a></li>
+                <li><a href="#pricing" className="text-gray-800 hover:text-orange-600">Package</a></li>
+                <li><Link to="/pricePage">Pricing</Link></li>
                 <li><a href="#lessons" className="text-gray-800 hover:text-orange-600">Lessons</a></li>
                 <li><a href="#contact" className="text-gray-800 hover:text-orange-600">Contact</a></li>
                 <li>
-                  <button className="btn bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-full text-white px-4 py-2 mb-1 transition duration-500 ease-in-out text-xs">
+                  <button className="btn uppercase border-orange-500 bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-full text-white px-4 py-2 mb-1 transition duration-500 ease-in-out text-xs">
                     <Link to="/login">Login</Link>
                   </button>
                 </li>
@@ -46,11 +51,15 @@ export const Head = () => {
   return (
     <>
       <section className='head font-poppins  bg-gray-200'>
-        <div className="container max-w-5xl mx-auto flex justify-between items-center py-2">
+        <div className=" max-w-4xl mx-auto flex justify-between items-center py-2">
+        <div className='items-center'>
+          <img src={LOGO} alt="" className='w-16 block  md:block'  />
+          </div>
           <div className="logo">
-          
-            <h1 className="text-2xl font-semibold text-orange-500">EDUME</h1>
-            <span className="text-yellow-500">ONLINE EDUCATION & LEARNING</span>
+         
+          <img src={EDUME} alt="" className='w-28 hidden md:block'/>
+            
+         
           </div>
 
            <MainNavbar/>

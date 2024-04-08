@@ -8,12 +8,15 @@ import StudentPreProfilePage from "./pages/StudentPreProfilePage";
 import TeacherPreProfilePage from "./pages/TeacherPreProfilePage";
 import { RegisterProvider } from "./context/RegisterProvider";
 import Home from "./pages/Home"
+
+import { PricePage } from "./pages/pricing/PricePage";
 const AppRoutes = () => {
   return (
     
    
     <Routes>
      <Route path="/" exact Component={Home}/>
+     <Route path="/PricePage" exact Component={PricePage}/>
 
       <Route path="/" element={<HomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />

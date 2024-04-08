@@ -14,15 +14,15 @@ export const AboutCard = () => {
             <div className="items mt-10 mb-10 shadow-lg ">
               <ul className="bg-white  py-6 px-6 rounded-md transition duration-500 sm:mt-5 md:mt-10 lg:mt-15">
                 {[
-                  { text: "Flexibility: Learn at your own pace, anytime, anywhere.", icon: "fa fa-clock" },
-                  { text: "Accessibility: Access quality education globally, regardless of location or ability.", icon: "fa fa-globe" },
-                  { text: "Cost-Effectiveness: Save on commuting and materials with digital resources.", icon: "fa fa-money-bill" },
-                  { text: "Variety of Courses: Choose from diverse subjects and niche topics.", icon: "fa fa-book" },
-                  { text: "Interactive Learning: Engage through quizzes, discussions, and multimedia.", icon: "fa fa-comments" },
-                  { text: "Skill Development: Acquire new skills for career growth and adaptation.", icon: "fa fa-cogs" }
+                  { text: "Flexibility: Learn at your own pace, anytime, anywhere.", icon: "fa fa-clock", iconColor: 'text-pink-500'},
+                  { text: "Accessibility: Access quality education globally, regardless of location or ability.", icon: "fa fa-globe", iconColor: 'text-blue-500'},
+                  { text: "Cost-Effectiveness: Save on commuting and materials with digital resources.", icon: "fa fa-money-bill", iconColor: 'text-green-500'},
+                  { text: "Variety of Courses: Choose from diverse subjects and niche topics.", icon: "fa fa-book" , iconColor: 'text-purple-500'},
+                  { text: "Interactive Learning: Engage through quizzes, discussions, and multimedia.", icon: "fa fa-comments", iconColor: 'text-red-500'},
+                  { text: "Skill Development: Acquire new skills for career growth and adaptation.", icon: "fa fa-cogs", iconColor: 'text-orange-500'},
                 ].map((item, index) => (
                   <li key={index} className="text-gray-600 flex items-center mt-2 gap-2 p-2">
-                    <i className={`${item.icon} text-orange-500 mr-2`}></i> {item.text}
+                    <i className={`${item.icon} ${item.iconColor} mr-2 text-2xl`}></i> {item.text}
                   </li>
                 ))}
               </ul>
