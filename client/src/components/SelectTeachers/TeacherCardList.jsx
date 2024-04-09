@@ -5,14 +5,14 @@ import config from "../../config/env.config";
 import TeacherCard from "./TeacherCard";
 
 const TeacherCardList = () => {
-  const { selectedLesson } = useTeacherSelection();
+  const { selectedClassType } = useTeacherSelection();
   const [teachers, setTeachers] = useState([]);
   useEffect(() => {
     const fetchTeachers = async () => {
-      if (selectedLesson) {
+      if (selectedClassType) {
         try {
           const response = await axios.get(
-            `${config.apiBaseUrl}/api/students/listTeachersOfClasTypeGrade/${selectedLesson._id}`,
+            `${config.apiBaseUrl}/api/students/listTeachersOfClasTypeGrade/${selectedClassType._id}`,
             {
               headers: {
                 "Content-Type": "application/json",
@@ -29,13 +29,17 @@ const TeacherCardList = () => {
     };
 
     fetchTeachers();
-  }, [selectedLesson]);
+  }, [selectedClassType]);
   return (
-    <div className="flex flex-row ">
+    <div className=" grid grid-cols-4 gap-3  mt-8 mb-8">
       {teachers &&
         teachers.length > 0 &&
         teachers.map((teacher) => (
-          <TeacherCard key={teacher._id} {...teacher} />
+          <TeacherCard
+            key={teacher._id}
+            {...teacher}
+            classType={selectedClassType}
+          />
         ))}
     </div>
   );
