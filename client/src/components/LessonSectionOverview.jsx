@@ -1,13 +1,9 @@
-import React from "react";
-import {
-  pages,
-  useStudentDashboardContext,
-} from "../context/StudentDashboardProvider";
+import { useNavigate } from "react-router-dom";
 
 const LessonSectionOverview = () => {
-  const { changePage } = useStudentDashboardContext();
+  const navigate = useNavigate();
   const handleOnBackClick = () => {
-    changePage(pages.LESSON_OVERVIEW);
+    navigate("/dashboard/lesson-overview");
   };
   return (
     <div className="mt-[10rem]">

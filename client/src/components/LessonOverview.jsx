@@ -1,16 +1,15 @@
-import {
-  pages,
-  useStudentDashboardContext,
-} from "../context/StudentDashboardProvider";
+import { useNavigate } from "react-router-dom";
+import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
 import LessonOverviewCard from "./LessonOverviewCard";
 
 const LessonOverview = () => {
-  const { currentLesson, changePage } = useStudentDashboardContext();
+  const navigate = useNavigate();
+  const { currentLesson } = useStudentDashboardContext();
   const handleClick = () => {
-    changePage(pages.DASHBOARD);
+    navigate("/dashboard");
   };
   const handleSectionClick = () => {
-    changePage(pages.LESSON_SECTION_OVERVIEW);
+    navigate("/dashboard/lesson-overview/lesson-section-overview");
   };
   const sections = currentLesson?.sections || Array(3).fill();
   return (
@@ -56,14 +55,14 @@ const LessonOverview = () => {
             back{" "}
           </button>
         </div>
-        <div>
+        {/* <div>
           <button
             className="rounded-3xl bg-orange-400 px-6 py-2 shadow-xl hover:shadow-orange-500 transition-all duration-300 ease-in-out"
             onClick={handleSectionClick}
           >
             Next
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
