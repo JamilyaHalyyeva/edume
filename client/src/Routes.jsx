@@ -18,6 +18,10 @@ import LessonEdit from "./components/LessonList/LessonEdit.jsx";
 import LessonManage from "./components/LessonManage/LessonManage.jsx";
 import { LessonManagementProvider } from "./context/LessonManagementProvider.jsx";
 import { TeacherClassGradeProvider } from "./context/TeacherClassGradeProvider.jsx";
+import LessonOverview from "./components/LessonOverview.jsx";
+import LessonSectionOverview from "./components/LessonSectionOverview.jsx";
+import SelectTeacherLayout from "./components/SelectTeachers/SelectTeacherLayout.jsx";
+import { TeacherSelectionProvider } from "./context/TeacherSelectionProvider.jsx";
 
 const AppRoutes = () => {
   const { user } = useUser();
@@ -42,7 +46,23 @@ const AppRoutes = () => {
             <Route path="students" element={<StudentList />} />
           </>
         ) : (
-          <Route index element={<StudentDashboard />} />
+          <>
+            <Route index element={<StudentDashboard />} />
+            <Route path="lesson-overview" element={<LessonOverview />} />
+            <Route
+              path="lesson-overview/lesson-section-overview"
+              element={<LessonSectionOverview />}
+            />
+            <Route
+              path="teacher-selection"
+              element={
+                <TeacherSelectionProvider>
+                  <SelectTeacherLayout />
+                </TeacherSelectionProvider>
+              }
+            />
+          </>
+
           // Define additional student-specific routes here if necessary
         )}
       </Route>
