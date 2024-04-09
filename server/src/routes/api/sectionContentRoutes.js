@@ -13,6 +13,13 @@
  */
 import express from 'express';
 import authMiddleware from '../../middlewares/authMiddleware';
+import {
+  handleDeleteSectionContent,
+  handleGetSectionContentById,
+  handleGetSectionContents,
+  handlePatchSectionContent,
+  handlePostSectionContent,
+} from '../../controllers/sectionContentController';
 
 const sectionContentRouter = express.Router();
 

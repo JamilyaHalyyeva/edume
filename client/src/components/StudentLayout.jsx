@@ -1,15 +1,17 @@
-import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
+import { Outlet } from "react-router-dom";
+
 import Navbar from "./Navbar";
 
 import StudentPageFooter from "./StudentPageFooter";
 
 const StudentLayout = ({ children }) => {
-  const { currentPage } = useStudentDashboardContext();
   return (
     <div className="w-full">
       <Navbar />
-      <div style={{}}>{children}</div>
-      <div>{currentPage.component}</div>
+      <div>
+        {/* here is the outlet */}
+        <Outlet />
+      </div>
       <StudentPageFooter></StudentPageFooter>
     </div>
   );

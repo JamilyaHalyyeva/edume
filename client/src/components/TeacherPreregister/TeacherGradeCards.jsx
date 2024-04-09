@@ -36,7 +36,7 @@ const TeacherGradeCards = (props) => {
   };
   useEffect(() => {}, [props.gradeClassTypes]);
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 lg:gap-5 lg:p-4  2xl:grid-cols-10 2xl:gap-5 2xl:p-4 gap-2 p-4">
+    <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 lg:gap-3 lg:p-2  2xl:grid-cols-8 2xl:gap-5 2xl:p-4 gap-2 p-2">
       {props.gradeClassTypes.map((gct) => (
         <Card
           key={gct.grade._id}

@@ -1,12 +1,12 @@
-import {
-  pages,
-  useStudentDashboardContext,
-} from "../context/StudentDashboardProvider";
+import { useNavigate } from "react-router-dom";
+import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
 
 const LessonCard = (param) => {
-  const { changePage, setCurrentLesson } = useStudentDashboardContext();
+  const navigate = useNavigate();
+  const { setCurrentLesson } = useStudentDashboardContext();
+
   const handleClick = () => {
-    changePage(pages.LESSON_OVERVIEW);
+    navigate("/dashboard/lesson-overview");
     setCurrentLesson(param);
   };
   return (
