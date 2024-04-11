@@ -8,7 +8,7 @@ import StudentPreProfilePage from "./pages/StudentPreProfilePage";
 import TeacherPreProfilePage from "./pages/TeacherPreProfilePage";
 import { RegisterProvider } from "./context/RegisterProvider";
 import LessonList from "./components/LessonList/LessonList.jsx";
-import StudentList from "./components/studentList/StudentList";
+import StudentList from "./components/studentList/StudentList.jsx";
 
 import TeacherDashboard from "./components/TeacherDashboard.jsx";
 import StudentDashboard from "./components/StudentDashboard.jsx";
@@ -22,11 +22,15 @@ import LessonOverview from "./components/LessonOverview.jsx";
 import LessonSectionOverview from "./components/LessonSectionOverview.jsx";
 import SelectTeacherLayout from "./components/SelectTeachers/SelectTeacherLayout.jsx";
 import { TeacherSelectionProvider } from "./context/TeacherSelectionProvider.jsx";
+import { PricePage } from "./pages/pricing/PricePage.jsx";
 
 const AppRoutes = () => {
   const { user } = useUser();
   return (
     <Routes>
+      {/* <Route path="/" exact Component={Home} />
+       */}
+      <Route path="/PricePage" exact element={<PricePage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/dashboard/*" element={<DashboardPage />}>
         {user && user.role === "teacher" ? (

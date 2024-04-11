@@ -1,4 +1,4 @@
-import TopBar from "./topBar/TopBar.jsx";
+import TopBar from "./TopBar/TopBar.jsx";
 import SideBar from "./sideBar/SideBar.jsx";
 import { useTeacherDashboard } from "../context/TeacherDashboardProvider.jsx";
 import { Outlet } from "react-router-dom";
