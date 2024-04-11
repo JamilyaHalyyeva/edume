@@ -4,7 +4,7 @@ import { Title } from './Title';
 export const Contact = () => {
   return (
     <>
-      <section className="mt-50 pt-100 h-auto mx-50 md:mx-20 sm:mx-10 xs:mx-5  bg-transparent pr-4 pb-4 rounded-lg md:bg-orange-500" id='contact'>
+      <section className="mt-50 pt-100 h-auto mx-50 md:mx-20 sm:mx-10 xs:mx-5  bg-transparent pr-4 pb-4 rounded-2xl md:bg-orange-500" id='contact'>
         <div className="max-w-screen-lg mx-auto flex justify-center items-center ">
           <div className="w-2/4 mr-10 ">
           

@@ -6,7 +6,7 @@ import LOGO from "../assets/logo.png";
 
 const SmallScreenNavbar = ()=>{
 
-  return <nav className='bg-gray-300  h-[50vh] w-[100vw] fixed top-[75px] left-0'>
+  return <nav className='bg-gray-300  flex justify-center  h-[50vh] w-[100vw] fixed top-[75px] left-0'>
          <ul className=" block gap-10 space-y-6 px-4 ">
                 <li><a href="#home" className="text-gray-800 hover:text-orange-600"></a></li>
                 <li><a href="#courses" className="text-gray-800 hover:text-orange-600">Courses</a></li>
@@ -52,17 +52,17 @@ export const Head = () => {
     <>
       <section className='head font-poppins  bg-gray-200'>
         <div className=" max-w-4xl mx-auto flex justify-between items-center py-2">
-        <div className='items-center'>
-          <img src={LOGO} alt="" className='w-16 block  md:block'  />
+        <div className=' w-full flex justify-end   item-center lg:justify-center'>
+          <img src={LOGO} alt="" className='w-16 md:block '  />
           </div>
-          <div className="logo">
+          <div className="logo flex w-full justify-start ">
          
-          <img src={EDUME} alt="" className='w-28 hidden md:block'/>
+          <img src={EDUME} alt="" className='hidden md:block md:hidden lg:block lg:w-[10rem]  '/>
             
-         
-          </div>
+       </div>
 
            <MainNavbar/>
+           
           <button className={`toggle md:block bg-transparent text-orange-600 text-xl absolute right-10 top-4${click ? 'block' : 'hidden'} lg:hidden `} onClick={() => setClick(!click)}>
             {click ? <i className='fas fa-times'></i> : <i className='fas fa-bars'></i>}
           </button>

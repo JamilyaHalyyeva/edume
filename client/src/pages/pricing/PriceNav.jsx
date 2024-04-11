@@ -48,7 +48,7 @@ export const PriceNav = () => {
       <section className='head sticky top-0 z-50  h-18 md:h-32 lg:h-20 bg-gray-200'>
       <div className=" max-w-5xl mx-auto flex justify-between items-center py-2">
         <div className=''>
-        <img src={LOGO} alt="" className='w-16 block  md:'  />
+        <img src={LOGO} alt="" className='w-16 block  '  />
           </div>
           <div className="flex justify-start">
          

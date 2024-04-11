@@ -12,7 +12,7 @@ export const AboutCard = () => {
           <div className="md:w-1/2 md:pl-10">
             <Title subtitle="LEARN ANYTHING" title="Benefits About Online Learning" />
             <div className="items mt-10 mb-10 shadow-lg ">
-              <ul className="bg-white  py-6 px-6 rounded-md transition duration-500 sm:mt-5 md:mt-10 lg:mt-15">
+              <ul className="bg-white  py-6 px-6 rounded-2xl transition duration-500 sm:mt-5 md:mt-10 lg:mt-15">
                 {[
                   { text: "Flexibility: Learn at your own pace, anytime, anywhere.", icon: "fa fa-clock", iconColor: 'text-pink-500'},
                   { text: "Accessibility: Access quality education globally, regardless of location or ability.", icon: "fa fa-globe", iconColor: 'text-blue-500'},

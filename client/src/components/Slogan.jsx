@@ -3,7 +3,7 @@
 export const Slogan = () => {
     return (
         <div className="flex justify-center mt-20 px-4 pt-10 gap-8 max-w-screen-lg  flex-col md:flex-row  mx-auto">
-            <h1 className="text-3xl font-normal text-center text-gray-800 bg-orange-100 rounded-lg shadow-md p-4 pt-10  md:text-xl md:w-1/2 md:line-height-10">
+            <h1 className="text-3xl font-normal text-center text-gray-800 bg-orange-100 rounded-2xl shadow-md p-4 pt-10  md:text-xl md:w-1/2 md:line-height-10">
                 Empowering Success Online with Engaging Teachers,
                 <br /> Fun Learning, and Achievable Goals!
                 <br />

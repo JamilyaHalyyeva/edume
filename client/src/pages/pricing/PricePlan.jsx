@@ -14,7 +14,7 @@ export const PricePlan = () => {
               { text: 'Structured learning modules', icon: 'fa fa-book', iconColor: 'text-green-500'},
               { text: 'Limited live sessions with instructors', icon: 'fa fa-users',iconColor: 'text-blue-500' },
               { text: 'Basic progress tracking', icon: 'fa fa-chart-line',iconColor: 'text-pink-500' },
-              { text: 'Standard support services', icon: 'fa fa-life-ring',iconColor: 'text-gray-500' },
+              { text: 'Standard support services', icon: 'fa fa-life-ring',iconColor: 'text-yellow-500' },
               { text: 'Access to select courses for specific grades', icon: 'fa fa-play',iconColor: 'text-purple-500' },
              
              
@@ -48,7 +48,7 @@ export const PricePlan = () => {
     </div>
               <div className=" max-w-screen-md mx-auto grid md:grid-cols-2 p-10">
                 {price.map((item, index) => (
-                  <div key={index} className="shadow-2xl py-8 px-8 text-center rounded-md mb-8 justify-center sm:w-80 bg-white md:w-62  flex-row">
+                  <div key={index} className="shadow-2xl py-8 px-8 text-center rounded-2xl mb-8 justify-center sm:w-80 bg-white md:w-62  flex-row">
                     <div className="bg-yellow-100">
                       <img src={item.cover} alt="" />
                     </div>

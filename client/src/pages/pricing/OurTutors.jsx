@@ -53,7 +53,7 @@ export const OurTutors = () => {
         <div className="w-full ml-10 px-2 py-4 items-center md:w-full"> {/* Adjusted width of the grid container */}
             <div className="justify-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 mr-6 space-x-3 ">
                 {homeAbout.map((item, index) => (
-                    <div key={index} className="shadow rounded-md bg-white ">
+                    <div key={index} className="shadow rounded-2xl bg-white ">
                         <div className="flex flex-col items-center w-70 ">
                             <img src={item.cover} alt="" className="w-full object-contain h-40 mb-2 md:w-full" />
                             <h2 className="font-semibold text-lg text-gray-700">{item.title}</h2>

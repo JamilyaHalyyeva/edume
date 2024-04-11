@@ -39,7 +39,7 @@ const PriceCard = () => {
     <>
   
       {price.map((item, index) => (
-        <div key={index}  className=" shadow-2xl py-8 px-8 text-center rounded-md mb-8  justify-center lg:w-96 xl:w-80 2xl:w-72 sm:w-80 bg-white  md:w-62 flex-row"> {/* Added mb-8 for margin-bottom */}
+        <div key={index}  className=" shadow-2xl py-8 px-8 text-center rounded-2xl mb-8  justify-center lg:w-96 xl:w-80 2xl:w-72 sm:w-80 bg-white  md:w-62 flex-row"> {/* Added mb-8 for margin-bottom */}
         <div className="bg-yellow-100">
         <img src={item.cover} alt="" className="" />
         </div>
