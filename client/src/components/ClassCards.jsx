@@ -10,21 +10,24 @@ const ClassCards = () => {
   const [gradeData, setGradeData] = useState([]);
   const handleCardClick = (grade) => {
     setSelectedGrade(grade);
-    updateUserToBeRegistered({ grade: grade });
+    updateUserToBeRegistered({ grade: grade._id });
   };
 
   useEffect(() => {
     axios.get(`${config.apiBaseUrl}/api/grade`).then((res) => {
       console.log(res.data);
-      setGradeData(res.data);
+      const sortedData = res.data.sort(
+        (a, b) => Number(a.name) - Number(b.name)
+      );
+      setGradeData(sortedData);
       updateUserToBeRegistered({ grade: res.data[0]._id });
       setSelectedGrade(res.data[0]);
     });
   }, []);
   return (
-    <div className="container mx-auto mt-10 pl-20 pr-20 bg-gray-100 flex flex-wrap justify-center flex-col items-center ">
+    <div className="mx-auto mt-10 pl-20  pr-20 bg-gray-100 flex flex-wrap flex-col justify-center items-center ">
       <h2 className="text-2xl font-bold mb-4">Select Your Grade </h2>
-      <div className="grid grid-cols-8 gap-1 w-11/12 mt-10 ">
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full mt-5">
         {gradeData.length > 0 &&
           gradeData.map((grade) => (
             <Card

@@ -12,7 +12,14 @@
  *
  */
 import express from 'express';
-import authMiddleware from '../../middlewares/authMiddleware';
+import authMiddleware from '../../middlewares/authMiddleware.js';
+import {
+  handleDeleteLessonSection,
+  handleGetLessonSectionById,
+  handlePatchLessonSection,
+  handlePostLessonSection,
+  hanleGetLessonSections,
+} from '../../controllers/lessonSectionController.js';
 
 const lessonSectionRouter = express.Router();
 
@@ -30,7 +37,7 @@ const lessonSectionRouter = express.Router();
  *       '200':
  *         description: A list of lesson sections
  */
-lessonSectionRouter.get('/', authMiddleware, hanleGetLessonSectons);
+lessonSectionRouter.get('/', authMiddleware, hanleGetLessonSections);
 
 // Get a lesson section by ID
 /**

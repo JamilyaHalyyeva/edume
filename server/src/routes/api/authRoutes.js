@@ -39,6 +39,8 @@ const authRouter = express.Router();
  *                 type: string
  *               role:
  *                 type: string
+ *               avatar:
+ *                type: string
  *     responses:
  *       '200':
  *         description: User registered successfully

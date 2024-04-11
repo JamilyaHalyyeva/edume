@@ -1,7 +1,8 @@
-import LessonSection from '../models/LessonSection';
+import Lesson from '../models/Lesson.js';
+import LessonSection from '../models/LessonSection.js';
 
 // Get all lesson sections
-export const hanleGetLessonSectons = async (req, res) => {
+export const hanleGetLessonSections = async (req, res) => {
   try {
     const lessonSections = await LessonSection.find();
     res.json({ success: true, lessonSections: lessonSections });
@@ -26,12 +27,23 @@ export const handleGetLessonSectionById = async (req, res) => {
 };
 // Create a new lesson section
 export const handlePostLessonSection = async (req, res) => {
+  console.log('handlePostLessonSection->req.body: ', req.body);
   try {
     const { name, order, lesson } = req.body;
     const lessonSection = new LessonSection({ name, order, lesson });
-    await lessonSection.save();
+    const savedLessonSection = await lessonSection.save();
+
+    console.log('savedLessonSection: ', savedLessonSection);
+    // Find the corresponding Lesson document and update it by pushing the new LessonSection's ID to its lessonSections array
+    const updatedLesson = await Lesson.findByIdAndUpdate(
+      lesson,
+      { $push: { lessonSections: savedLessonSection._id } },
+      { new: true }, // Return the modified document rather than the original by default
+    );
+    console.log('updatedLesson: ', updatedLesson);
     res.json({ success: true, lessonSection: lessonSection });
   } catch (error) {
+    console.log('error: ', error);
     return res.status(500).send({ success: false, error: error.message });
   }
 };
