@@ -3,12 +3,13 @@ import config from './env.config.js';
 import ClassType from '../models/ClassType.js';
 import Grade from '../models/Grade.js';
 import GradeClassType from '../models/GradeClassType.js';
+import User from '../models/User.js';
 
 export default async function connectToDatabase() {
   try {
     await mongoose.connect(config.dbUri);
     console.log('successful connected to DB');
-    if (config.seedData === true) initializeData();
+    if (config.seedData === 'true') initializeData();
   } catch (error) {
     console.log('error connecting to db', error.message);
   }
@@ -16,10 +17,6 @@ export default async function connectToDatabase() {
 
 async function initializeData() {
   try {
-    // Clear existing data in ClassTypes and Grades collections
-    await ClassType.deleteMany();
-    await Grade.deleteMany();
-    await GradeClassType.deleteMany();
     // Insert initial data
     const classTypes = await ClassType.insertMany([
       { name: 'Math' },
@@ -31,7 +28,7 @@ async function initializeData() {
       { name: 'History' },
       { name: 'English' },
       { name: 'German' },
-      { name: 'Spanish' },
+      { name: 'French' },
       { name: 'Latin' },
 
       // Add more classTypes as needed
@@ -100,6 +97,216 @@ async function initializeData() {
 
     // Insert default mappings into GradeClassType
     await GradeClassType.insertMany(defaultMappings);
+
+    const savedGradeClassTypes = await GradeClassType.find()
+      .populate('grade')
+      .populate('classType');
+
+    //Teacher data
+    const teachers = [
+      {
+        username: 'John',
+        surname: 'Doe',
+        email: 'johndoe@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher3.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Math',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Physics',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Chemistry',
+          ),
+        ],
+      },
+      {
+        username: 'Jane',
+        surname: 'Doe',
+        email: 'janedoe@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher1.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Biology',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Music',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Geography',
+          ),
+        ],
+      },
+      {
+        username: 'Michael',
+        surname: 'Smith',
+        email: 'michaelsmith@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher4.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'History',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'English',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'German',
+          ),
+        ],
+      },
+      {
+        username: 'Emily',
+        surname: 'Brown',
+        email: 'emilybrown@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher2.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'French',
+          ),
+          ...savedGradeClassTypes.filter(
+            (gct) => gct.classType.name === 'Latin',
+          ),
+        ],
+      },
+      {
+        username: 'Max',
+        surname: 'Mustermann',
+        email: 'maxmustermann@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher5.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter((gct) =>
+            ['1', '2', '3', '4'].includes(gct.grade.name),
+          ),
+        ],
+      },
+      {
+        username: 'Maria',
+        surname: 'Musterfrau',
+        email: 'mariamusterfrau@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher8.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter((gct) =>
+            ['1', '2', '3', '4'].includes(gct.grade.name),
+          ),
+        ],
+      },
+      {
+        username: 'Alex',
+        surname: 'Schmidt',
+        email: 'alexschmidt@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher6.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) =>
+              ['5', '6', '7', '8'].includes(gct.grade.name) &&
+              ['Physics', 'Biology', 'Chemistry'].includes(gct.classType.name),
+          ),
+        ],
+      },
+      {
+        username: 'Anna',
+        surname: 'Schneider',
+        email: 'annaschneider@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher9.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) =>
+              ['5', '6', '7', '8'].includes(gct.grade.name) &&
+              ['Physics', 'Biology', 'Chemistry'].includes(gct.classType.name),
+          ),
+        ],
+      },
+      {
+        username: 'Peter',
+        surname: 'Müller',
+        email: 'petermuller@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher3.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) =>
+              ['5', '6', '7', '8'].includes(gct.grade.name) &&
+              ['Geography', 'History', 'Latin'].includes(gct.classType.name),
+          ),
+        ],
+      },
+      {
+        username: 'Mary',
+        surname: 'Schulz',
+        email: 'maryschulz@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher9.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) =>
+              ['5', '6', '7', '8'].includes(gct.grade.name) &&
+              ['Geography', 'History', 'Latin'].includes(gct.classType.name),
+          ),
+        ],
+      },
+      {
+        username: 'David',
+        surname: 'Merkel',
+        email: 'davidmerkel@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher3.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter(
+            (gct) =>
+              ['5', '6', '7', '8'].includes(gct.grade.name) &&
+              ['English', 'French', 'German'].includes(gct.classType.name),
+          ),
+        ],
+      },
+      {
+        username: 'David',
+        surname: 'Fischer',
+        email: 'davidfischer@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher7.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter((gct) =>
+            ['9', '10', '11', '12', '13'].includes(gct.grade.name),
+          ),
+        ],
+      },
+      {
+        username: 'Sophie',
+        surname: 'Weber',
+        email: 'sophieweber@gmail.com',
+        password: '123456',
+        role: 'teacher',
+        avatar: 'teacher10.png',
+        teacherClassTypeGrades: [
+          ...savedGradeClassTypes.filter((gct) =>
+            ['9', '10', '11', '12', '13'].includes(gct.grade.name),
+          ),
+        ],
+      },
+    ];
+
+    await User.insertMany(teachers);
 
     console.log('Data initialized successfully');
   } catch (error) {
