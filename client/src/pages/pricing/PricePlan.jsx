@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const PricePlan = () => {
+  const navigate = useNavigate();
+  const handleRegisterStart = (role) => {
+    localStorage.setItem("role", role);
+    navigate("/register");
+  };
+
   const price = [
     {
       id: 1,
       type: "For Teachers",
+      role: "teacher",
       cover:
         "https://assets.production.cdn.sofatutor.net/assets/application/information/tests/exercise_types/tests_people-a7e4bcce607cd070bb44017b2d0c8408d4226dff97a0d108cff69b4ce2b39157.svg",
       features: [
@@ -44,6 +51,7 @@ export const PricePlan = () => {
     {
       id: 2,
       type: "Students Learning Plan",
+      role: "student",
       cover:
         "https://assets.production.cdn.sofatutor.net/assets/application/information/tests/exercise_types/tests_help-d58e64de2bf5b49b951c4352adde96b00a8c6905a71682845d5f6280a43c0497.svg",
       features: [
@@ -111,8 +119,11 @@ export const PricePlan = () => {
                 {item.price}
               </h1>
 
-              <button className="border-orange-500 text-orange-500 border shadow-md font-semibold py-2 px-4 rounded-full transition duration-500 ease-in-out bg-orange-500 text-white  hover:bg-orange-600 ">
-                <Link to="/login">GET STARTED</Link>
+              <button
+                onClick={() => handleRegisterStart(item.role)}
+                className="border-orange-500 text-orange-500 border shadow-md font-semibold py-2 px-4 rounded-full transition duration-500 ease-in-out bg-orange-500 text-white  hover:bg-orange-600 "
+              >
+                GET STARTED
               </button>
             </div>
           ))}
