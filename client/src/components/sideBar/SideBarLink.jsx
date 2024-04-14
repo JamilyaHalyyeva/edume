@@ -15,8 +15,8 @@ const SideBarLink = ({
   console.log("item", item);
   return (
     <li
-      className={`flex flex-col items-start justify-start text-gray-900 rounded-lg  group ${
-        isCompact === false ? "border-2 border-solid" : "border-none"
+      className={`flex flex-col items-start justify-start text-gray-900 rounded-lg  font-sans group ${
+        isCompact === false ? "border-2  shadow-lg" : "border-none"
       }`}
     >
       <div
@@ -25,7 +25,7 @@ const SideBarLink = ({
         } w-full rounded-lg`}
       >
         <Link
-          className={`hover:bg-orange-300`}
+          className="hover:bg-orange-300"
           onClick={() => {
             item && item.children !== undefined && toggleSubMenu();
           }}
@@ -33,7 +33,7 @@ const SideBarLink = ({
           className="flex items-center justify-start py-2"
         >
           <div
-            className={`w-12 h-12 flex justify-center items-center text-2xl text-gray-500  ${
+            className={`w-12 h-12 flex justify-center items-center text-2xl text-orange-400  ${
               isCompact ? "border-2" : ""
             }`}
           >

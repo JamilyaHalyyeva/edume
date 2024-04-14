@@ -51,6 +51,25 @@ const TeacherDashboardProvider = ({ children }) => {
         };
       });
   };
+
+  //get Grads  list for teacher
+  const prepareGradeList = (teacherClassTypeGrades) => {
+    return teacherClassTypeGrades
+      .map((item) => item.grade) // Assuming there is a grade attribute in each class type grade object
+      .reduce(
+        (unique, item) =>
+          unique.some((unItem) => unItem.name === item.name)
+            ? unique
+            : [...unique, item],
+        []
+      )
+      .map((grade) => ({
+        id: grade._id, // Assuming the grade itself can be a unique identifier, adjust as needed
+        name: ` ${grade.name} Grade `, // Adjust the display name as needed
+        link: `/dashboard/students/grade/${grade.name}`,
+      }));
+  };
+
   const sideBarElements = [
     {
       id: 1,
@@ -70,6 +89,7 @@ const TeacherDashboardProvider = ({ children }) => {
       name: "Students",
       icon: <FontAwesomeIcon icon={faUsers} />,
       link: "/dashboard/students",
+      children: [...prepareGradeList(user.teacherClassTypeGrades)],
     },
   ];
 

@@ -57,10 +57,16 @@ export const handleLogin = async (req, res) => {
       .populate('grade')
       .populate({
         path: 'teacherClassTypeGrades',
-        populate: {
-          path: 'classType',
-          model: 'ClassType',
-        },
+        populate: [
+          {
+            path: 'classType',
+            model: 'ClassType',
+          },
+          {
+            path: 'grade',
+            model: 'Grade',
+          },
+        ],
       });
     console.log('user:', user);
 

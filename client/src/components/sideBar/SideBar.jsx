@@ -1,6 +1,7 @@
 import SideBarLink from "./SideBarLink.jsx";
 import "./SideBar.css";
 import LOGO from "../../assets/logo.png";
+import EDUME from "../../assets/edume.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -28,9 +29,7 @@ const SideBar = () => {
             <a href="#" className="flex items-center space-x-3">
               <img src={LOGO} className="h-14 w-14" alt="Logo" />
               {!isCompact && (
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                  EduMe
-                </span>
+                <img src={EDUME} className="h-10 w-[6rem]" alt="Logo" />
               )}
             </a>
           </div>
