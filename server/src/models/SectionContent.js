@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import TestModel from './Test.js';
 
 const sectionContentSchema = new mongoose.Schema({
   videoUrl: {
@@ -17,7 +16,6 @@ const sectionContentSchema = new mongoose.Schema({
   },
 
   lessonSection: { type: mongoose.Schema.Types.ObjectId, ref: 'LessonSection' },
-  test: [TestModel.schema],
 });
 
 const SectionContent = mongoose.model(

@@ -38,7 +38,7 @@ const TeacherDashboardProvider = ({ children }) => {
         });
         console.log("image", image);
         return {
-          id: classType.id,
+          id: classType._id,
           name: classType.name,
           icon: (
             <img

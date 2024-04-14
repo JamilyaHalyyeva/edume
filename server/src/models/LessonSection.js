@@ -1,11 +1,17 @@
 import mongoose from 'mongoose';
-import SectionContent from './SectionContent.js';
 
 const lessonSectionSchema = new mongoose.Schema({
   name: { type: String, required: true },
   order: { type: Number, required: true },
-  sectionContents: [SectionContent.schema],
+  sectionContents: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'SectionContent' },
+  ],
   lesson: { type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' },
+  parentSection: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'LessonSection',
+    default: null,
+  }, // Optional reference to another LessonSection
 });
 
 const LessonSection = mongoose.model(
