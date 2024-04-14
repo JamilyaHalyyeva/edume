@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import config from "../config/env.config";
+import axios from "axios";
 
 const StudentDashboardContext = createContext();
 export const pages = {
@@ -26,9 +28,32 @@ export const pages = {
 const StudentDashboardProvider = ({ children }) => {
   const [currentLesson, setCurrentLesson] = useState(null);
 
+  const checkIfStudentRegisteredAllTeachers = async () => {
+    try {
+      const response = await axios.get(
+        `${config.apiBaseUrl}/api/students/isStudentRegisteredAllTeachers`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error(
+        "Error checking if student is registered in all teachers",
+        error
+      );
+      return false;
+    }
+  };
+
   return (
     <StudentDashboardContext.Provider
       value={{
+        checkIfStudentRegisteredAllTeachers,
         currentLesson,
         setCurrentLesson,
       }}

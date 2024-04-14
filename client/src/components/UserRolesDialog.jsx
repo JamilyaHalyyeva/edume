@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const UserRolesDialog = (params) => {
   const navigate = useNavigate();
-  console.log("isDialogOpen", params.isDialogOpen);
   const [isOpen, setIsOpen] = useState(params.isDialogOpen);
   const handleStudentClick = () => {
     setIsOpen(false);

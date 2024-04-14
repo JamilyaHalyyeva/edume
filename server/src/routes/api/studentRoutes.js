@@ -15,6 +15,8 @@ import express from 'express';
 import {
   getUnregistedClassTypes,
   getTeacherListByClassTypeAndGrade,
+  getIsStudentRegisteredAllTeachers,
+  registerSelectedTeachers,
 } from '../../controllers/studentController.js'; // Adjust the path to your controller file
 
 import authMiddleware from '../../middlewares/authMiddleware.js';
@@ -88,4 +90,75 @@ studentRouter.get(
   getTeacherListByClassTypeAndGrade,
 );
 
+/**
+ * @swagger
+ * /api/students/isStudentRegisteredAllTeachers:
+ *   get:
+ *     summary: Check if student is registered in all teachers
+ *     tags: [Student]
+ *     responses:
+ *       '200':
+ *         description: Successful operation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: boolean
+ *       '400':
+ *         description: Bad request
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Student is not registered in all teachers
+ *     security:
+ *       - bearerAuth: []
+ */
+studentRouter.get(
+  '/isStudentRegisteredAllTeachers',
+  authMiddleware,
+  getIsStudentRegisteredAllTeachers,
+);
+
+/**
+ * @swagger
+ * /api/students/registerSelectedTeachers:
+ *   post:
+ *     summary: Register selected teachers
+ *     tags: [Student]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: array
+ *             items:
+ *               type: object
+ *               properties:
+ *                 teacherId:
+ *                   type: string
+ *                 classTypeId:
+ *                   type: string
+ *     responses:
+ *       '200':
+ *         description: Successful operation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       '400':
+ *         description: Bad request
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Teachers not found
+ *     security:
+ *       - bearerAuth: []
+ */
+studentRouter.post(
+  '/registerSelectedTeachers',
+  authMiddleware,
+  registerSelectedTeachers,
+);
 export default studentRouter;

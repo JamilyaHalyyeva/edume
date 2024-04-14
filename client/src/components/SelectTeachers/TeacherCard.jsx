@@ -8,14 +8,12 @@ const TeacherCard = (props) => {
   const { selectTeacher, isTheTeacherSelectedForTheClassType } =
     useTeacherSelection();
   const handleOnClick = () => {
-    console.log("TeacherCard clicked");
     selectTeacher({
       teacher: props,
       classType: props.classType,
     });
   };
 
-  console.log("props", props);
   return (
     <div
       onClick={handleOnClick}

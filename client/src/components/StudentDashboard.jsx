@@ -4,8 +4,13 @@ import FINISHLESSON from "../assets/exer.png";
 import ONLINELESSON from "../assets/online.png";
 import TEST from "../assets/test.png";
 import StudentNavbarSlider from "./StudentNavbarSlider";
+import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const StudentDashboard = () => {
+  const navigate = useNavigate();
+  const { checkIfStudentRegisteredAllTeachers } = useStudentDashboardContext();
   const myItems = [
     <StudentNavbar
       key="finishLesson"
@@ -26,6 +31,14 @@ const StudentDashboard = () => {
       color={"bg-purple-300"}
     />,
   ];
+
+  useEffect(() => {
+    checkIfStudentRegisteredAllTeachers().then((response) => {
+      if (response === false) {
+        navigate("/dashboard/teacher-selection");
+      }
+    });
+  }, []);
 
   return (
     <div className="flex justify-center items-center flex-col gap-8 w-full md:w-full lg:w-full xl:w-full 2xl:w-full mt-20 ">

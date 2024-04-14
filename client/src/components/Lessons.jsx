@@ -24,10 +24,8 @@ const Lessons = () => {
             },
           }
         );
-        console.log("response", response.data);
         const filteredLessons = [];
         response.data.map((data) => {
-          console.log(data.classType.name);
           let match = lessons.find((lesson) => {
             return lesson.name === data.classType.name;
           });

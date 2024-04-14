@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import config from "../config/env.config";
 import classTypeImageObjects from "../assets/classTypes/classTypeImageObjects";
 const TeacherSelectionContext = createContext();
@@ -8,7 +9,15 @@ const TeacherSelectionProvider = ({ children }) => {
   const [selectedClassType, setSelectedClassType] = useState(null);
   const [selectedTeacherList, setSelectedTeacherList] = useState([]);
   const [classTypeList, setClassTypeList] = useState([]);
-
+  const [isAllTeachersSelected, setIsAllTeachersSelected] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    // Whenever selectedTeacherList changes, check if all teachers are registered
+    checkIfStudentRegisteredAllTeachers();
+    if (classTypeList.length === 0) {
+      fetchClassTypes();
+    }
+  }, [selectedTeacherList, classTypeList]);
   const selectTeacher = (teacherObjectWithClassType) => {
     const isClassTypeAlreadySelected = selectedTeacherList.some(
       (teacherObject) =>
@@ -52,7 +61,7 @@ const TeacherSelectionProvider = ({ children }) => {
         teacherObject.teacher._id === teacherId &&
         teacherObject.classType._id === classTypeId
     );
-    console.log("result", result);
+
     return result;
   };
   const isThereATeacherForTheClassType = (classTypeId) => {
@@ -70,11 +79,26 @@ const TeacherSelectionProvider = ({ children }) => {
       selectedClassTypeIds.includes(classTypeId)
     );
   };
-  useEffect(() => {
-    const fetchClassTypes = async () => {
+  const checkIfStudentRegisteredAllTeachers = () => {
+    if (isAllTheClassTypesHaveTeachers()) {
+      console.log("All teachers are selected");
+      setIsAllTeachersSelected(true);
+    } else {
+      console.log("All teachers are not selected");
+      setIsAllTeachersSelected(false);
+    }
+  };
+  const registerSelectedTeachers = async () => {
+    if (isAllTeachersSelected === true) {
       try {
-        const response = await axios.get(
-          `${config.apiBaseUrl}/api/students/listUnregistedClassTypes`,
+        const response = await axios.post(
+          `${config.apiBaseUrl}/api/students/registerSelectedTeachers`,
+          {
+            selectedTeachers: selectedTeacherList.map((teacherObject) => ({
+              teacherId: teacherObject.teacher._id,
+              classTypeId: teacherObject.classType._id,
+            })),
+          },
           {
             headers: {
               "Content-Type": "application/json",
@@ -82,25 +106,44 @@ const TeacherSelectionProvider = ({ children }) => {
             },
           }
         );
-
-        const filteredClassTypes = [];
-        response.data.map((data) => {
-          console.log(data.classType.name);
-          let match = classTypeImageObjects.find((classTypeImageObject) => {
-            return classTypeImageObject.name === data.classType.name;
-          });
-          if (match) {
-            filteredClassTypes.push({ ...match, _id: data.classType._id });
-          }
-        });
-
-        setClassTypeList(filteredClassTypes);
+        console.log(response.data);
+        if (response.status === 200) {
+          console.log("Teachers registered successfully");
+          navigate("/dashboard");
+        }
       } catch (error) {
         console.error(error);
       }
-    };
-    fetchClassTypes();
-  }, []);
+    }
+  };
+
+  const fetchClassTypes = async () => {
+    try {
+      const response = await axios.get(
+        `${config.apiBaseUrl}/api/students/listUnregistedClassTypes`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+
+      const filteredClassTypes = [];
+      response.data.map((data) => {
+        let match = classTypeImageObjects.find((classTypeImageObject) => {
+          return classTypeImageObject.name === data.classType.name;
+        });
+        if (match) {
+          filteredClassTypes.push({ ...match, _id: data.classType._id });
+        }
+      });
+
+      setClassTypeList(filteredClassTypes);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <TeacherSelectionContext.Provider
@@ -111,7 +154,8 @@ const TeacherSelectionProvider = ({ children }) => {
         isTheTeacherSelectedForTheClassType,
         isThereATeacherForTheClassType,
         classTypeList,
-        isAllTheClassTypesHaveTeachers,
+        isAllTeachersSelected,
+        registerSelectedTeachers,
       }}
     >
       {children}
