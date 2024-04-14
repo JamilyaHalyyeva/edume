@@ -25,6 +25,7 @@ const LessonList = () => {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
+    console.log("LessonList-> fetchLessons ", response.data.lessons);
     setLessons(response.data.lessons);
   };
 
@@ -39,7 +40,7 @@ const LessonList = () => {
     } else {
       setFilteredLessons(lessons);
     }
-  }, [lessonName]);
+  }, [lessonName, lessons]);
   const columns = [
     { header: "Name", accessor: "name" },
     { header: "Grade", accessor: "grade" },

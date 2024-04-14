@@ -1,20 +1,60 @@
 import Lesson from '../models/Lesson.js';
+import LessonSection from '../models/LessonSection.js';
+async function populateSections(sections) {
+  try {
+    for (let i = 0; i < sections.length; i++) {
+      // Ensure the object is a Mongoose document before converting
+      if (typeof sections[i].toObject === 'function') {
+        sections[i] = sections[i].toObject();
+      }
+
+      const childSections = await LessonSection.find({
+        parentSection: sections[i]._id,
+      }).populate('sectionContents');
+
+      // Convert child sections to objects if necessary
+      sections[i].childSections = childSections.map((cs) =>
+        cs.toObject ? cs.toObject() : cs,
+      );
+
+      console.log(
+        `Populating for section ${sections[i]._id}: Found ${childSections.length} child sections`,
+      );
+      await populateSections(sections[i].childSections); // Recursively populate child sections
+    }
+  } catch (error) {
+    console.error('Error populating sections:', error);
+  }
+}
 
 export const handleGetLessons = async (req, res) => {
   try {
-    console.log('req.grade:', req.grade);
+    const lessons = await Lesson.find({ user: req.userId })
+      .populate('grade')
+      .populate('classType')
+      .populate({
+        path: 'lessonSections',
+        match: { parentSection: null },
+        populate: { path: 'sectionContents' }, // Ensuring deep population from the start might help
+      });
 
-    const lessons = req.grade
-      ? await Lesson.find({ grade: req.grade })
-          .populate('grade')
-          .populate('classType')
-          .populate('lessonSections')
-      : await Lesson.find({})
-          .populate('grade')
-          .populate('classType')
-          .populate('lessonSections');
-    res.json({ success: true, lessons: lessons });
+    // Convert lessons to objects for manipulation
+    const lessonsWithPopulatedSections = lessons.map((lesson) => {
+      const lessonObj = lesson.toObject();
+      return populateSections(lessonObj.lessonSections).then(() => lessonObj); // Ensure the async population is completed
+    });
+
+    // Wait for all lessons to be processed
+    Promise.all(lessonsWithPopulatedSections)
+      .then((completedLessons) =>
+        res.json({ success: true, lessons: completedLessons }),
+      )
+      .catch((error) => {
+        console.error('Error processing lessons:', error);
+        return res.status(500).send({ success: false, error: error.message });
+      });
   } catch (error) {
+    console.error('Error retrieving lessons:', error);
     return res.status(500).send({ success: false, error: error.message });
   }
 };
@@ -45,20 +85,28 @@ export const handleGetLessonById = async (req, res) => {
       .populate('classType')
       .populate({
         path: 'lessonSections',
-        select: 'name order sectionContents',
+        match: { parentSection: null }, // Only get top-level sections
         populate: {
           path: 'sectionContents',
-          select: 'name videoUrl documentUrl', // Adjust based on your SectionContent model
+          select: 'name videoUrl documentUrl',
         },
       });
-    console.log('lesson:', lesson);
+
     if (!lesson) {
       return res
         .status(404)
         .json({ success: false, message: 'Lesson not found' });
     }
-    res.json({ success: true, lesson: lesson });
+
+    // Convert lesson to plain object to manipulate
+    const lessonObject = lesson.toObject();
+
+    // Recursively populate each top-level section
+    await populateSections(lessonObject.lessonSections);
+
+    res.json({ success: true, lesson: lessonObject });
   } catch (error) {
+    console.error('Error retrieving lesson:', error);
     return res.status(500).send({ success: false, error: error.message });
   }
 };

@@ -38,7 +38,7 @@ const AppRoutes = () => {
             <Route index element={<TeacherDashboard />} />
             <Route path="lessons/:lessonName?" element={<LessonList />} />
             <Route path="lessons/new" element={<LessonForm />} />
-            <Route path="lessons/edit:lessonId" element={<LessonEdit />} />
+            <Route path="lessons/edit/:lessonId" element={<LessonEdit />} />
             <Route
               path="lessons/manage/:lessonId"
               element={

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import LessonSection from './LessonSection.js';
 
 const lessonSchema = new mongoose.Schema({
   name: {
@@ -15,6 +14,7 @@ const lessonSchema = new mongoose.Schema({
   lessonSections: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'LessonSection' },
   ],
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
 const Lesson = mongoose.model('Lesson', lessonSchema, 'lesson');
