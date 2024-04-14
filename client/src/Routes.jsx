@@ -36,7 +36,7 @@ const AppRoutes = () => {
         {user && user.role === "teacher" ? (
           <>
             <Route index element={<TeacherDashboard />} />
-            <Route path="lessons" element={<LessonList />} />
+            <Route path="lessons/:lessonName?" element={<LessonList />} />
             <Route path="lessons/new" element={<LessonForm />} />
             <Route path="lessons/edit:lessonId" element={<LessonEdit />} />
             <Route

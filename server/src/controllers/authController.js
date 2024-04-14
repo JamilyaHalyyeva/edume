@@ -53,7 +53,15 @@ export const handleLogin = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const user = await User.findOne({ email }).populate('grade');
+    const user = await User.findOne({ email })
+      .populate('grade')
+      .populate({
+        path: 'teacherClassTypeGrades',
+        populate: {
+          path: 'classType',
+          model: 'ClassType',
+        },
+      });
     console.log('user:', user);
 
     if (!user) {

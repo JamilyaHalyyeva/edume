@@ -1,19 +1,87 @@
 import { createContext, useContext, useState } from "react";
+import classTypeImageObjects from "../assets/classTypes/classTypeImageObjects";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGauge,
+  faListSquares,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+import { useUser } from "./UserProvider";
 
 // Create a context for the teacher's dashboard
 const TeacherDashboardContext = createContext();
 
 // Create a provider for the teacher's dashboard
 const TeacherDashboardProvider = ({ children }) => {
+  const { user } = useUser();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isCompact, setIsCompact] = useState(true);
   const toggleCompactMode = () => setIsCompact(!isCompact);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const prepareClassTypeList = (classTypeGrades) => {
+    return classTypeGrades
+      .map((item) => item.classType)
+      .reduce(
+        (unique, item) =>
+          unique.some((unItem) => unItem.name === item.name)
+            ? unique
+            : [...unique, item],
+        []
+      )
+      .map((classType) => {
+        console.log("classType", classType);
+        const image = classTypeImageObjects.find((classTypeImageObject) => {
+          return classTypeImageObject.name === classType.name;
+        });
+        console.log("image", image);
+        return {
+          id: classType.id,
+          name: classType.name,
+          icon: (
+            <img
+              className={`${image.bgColor} " ml-5  w-[3rem] sm:w-[3rem ] md:w-[3rem] lg:w-[4rem]  rounded-md "`}
+              src={image.imageSrc}
+              alt={image.name}
+            />
+          ),
+          link: `/dashboard/lessons/${classType.name}`,
+        };
+      });
+  };
+  const sideBarElements = [
+    {
+      id: 1,
+      name: "Dashboard",
+      icon: <FontAwesomeIcon icon={faGauge} />,
+      link: "/dashboard",
+    },
+    {
+      id: 2,
+      name: "Lessons",
+      icon: <FontAwesomeIcon icon={faListSquares} />,
+      link: "/dashboard/lessons",
+      children: [...prepareClassTypeList(user.teacherClassTypeGrades)],
+    },
+    {
+      id: 3,
+      name: "Students",
+      icon: <FontAwesomeIcon icon={faUsers} />,
+      link: "/dashboard/students",
+    },
+  ];
+
   return (
     <TeacherDashboardContext.Provider
-      value={{ isSidebarOpen, toggleSidebar, isCompact, toggleCompactMode }}
+      value={{
+        isSidebarOpen,
+        toggleSidebar,
+        isCompact,
+        toggleCompactMode,
+        sideBarElements,
+      }}
     >
       {children}
     </TeacherDashboardContext.Provider>

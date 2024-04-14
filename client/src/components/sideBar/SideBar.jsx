@@ -3,37 +3,12 @@ import "./SideBar.css";
 import LOGO from "../../assets/logo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faListSquares,
-  faUsers,
-  faGauge,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useTeacherDashboard } from "../../context/TeacherDashboardProvider.jsx";
 
 const SideBar = () => {
-  const { isSidebarOpen, isCompact, toggleCompactMode } = useTeacherDashboard();
-
-  const sideBarElements = [
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: <FontAwesomeIcon icon={faGauge} />,
-      link: "/dashboard",
-    },
-    {
-      id: 2,
-      name: "Lessons",
-      icon: <FontAwesomeIcon icon={faListSquares} />,
-      link: "/dashboard/lessons",
-    },
-    {
-      id: 3,
-      name: "Students",
-      icon: <FontAwesomeIcon icon={faUsers} />,
-      link: "/dashboard/students",
-    },
-  ];
+  const { isSidebarOpen, isCompact, toggleCompactMode, sideBarElements } =
+    useTeacherDashboard();
 
   return (
     <div>
@@ -59,7 +34,7 @@ const SideBar = () => {
               )}
             </a>
           </div>
-          <ul className="space-y-2 px-2">
+          <ul className=" space-y-2 px-2">
             {sideBarElements.map((element) => (
               <SideBarLink
                 key={element.id}
@@ -67,6 +42,7 @@ const SideBar = () => {
                 icon={element.icon}
                 isCompact={isCompact}
                 to={element.link}
+                item={element}
               />
             ))}
           </ul>
