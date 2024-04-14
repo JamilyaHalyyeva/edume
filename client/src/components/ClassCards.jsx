@@ -15,7 +15,6 @@ const ClassCards = () => {
 
   useEffect(() => {
     axios.get(`${config.apiBaseUrl}/api/grade`).then((res) => {
-      console.log(res.data);
       const sortedData = res.data.sort(
         (a, b) => Number(a.name) - Number(b.name)
       );

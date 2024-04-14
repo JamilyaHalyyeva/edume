@@ -17,12 +17,9 @@ const TeacherClassTypeCards = (props) => {
   };
 
   const filterGradeClassTypes = (classTypeId) => {
-    console.log("filterGrades->classTypeId:", classTypeId);
-    console.log("gradeClassTypes:", gradeClassTypes);
     const myFilteredGradeClassTypes = gradeClassTypes.filter(
       (gct) => gct.classType._id === classTypeId
     );
-    console.log("myFilteredGradeClassTypes:", myFilteredGradeClassTypes);
     return myFilteredGradeClassTypes.sort((a, b) => {
       return parseInt(a.grade.name, 10) - parseInt(b.grade.name, 10);
     });

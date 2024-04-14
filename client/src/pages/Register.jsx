@@ -64,7 +64,6 @@ const RegisterPage = () => {
       }
 
       const localRole = localStorage.getItem("role");
-      console.log(localRole);
       const roleVal = localRole === null ? "student" : localRole;
       updateUserToBeRegistered({
         username,

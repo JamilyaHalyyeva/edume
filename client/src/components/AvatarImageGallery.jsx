@@ -23,7 +23,7 @@ const AvatarImageGallery = () => {
   }, []);
 
   const handleAvatarClick = (event) => {
-    console.log(event.target.alt);
+
     if (event.target.alt !== undefined) {
       setSelectedAvatar(event.target.alt);
       updateUserToBeRegistered({ avatar: event.target.alt });

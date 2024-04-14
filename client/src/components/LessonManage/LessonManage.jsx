@@ -28,7 +28,6 @@ const LessonManage = () => {
             },
           }
         );
-        console.log("response: ", response);
         setLesson(response.data.lesson);
       } catch (error) {
         console.log(error.message);
@@ -37,7 +36,6 @@ const LessonManage = () => {
 
     fetchData();
 
-    console.log("lessonId: ", lessonId);
   }, [lessonId]);
 
   return (
