@@ -12,7 +12,7 @@ const SmallScreenNavbar = ()=>{
   return  <nav className='bg-gray-300  h-[15vh] w-[100vw] fixed top-[45px] left-0'>
     
   <ul className=" block gap-10 space-y-4 px-4 pt-4">
-         <li><a href="/home" className="text-gray-800 hover:text-orange-600">Home</a></li>
+         <li><a href="/home" className="text-gray-800  hover:text-orange-600">Home</a></li>
          <li><a href="#tutors" className="text-gray-800 hover:text-orange-600">Tutors</a></li>
      
          <li>

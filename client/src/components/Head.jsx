@@ -6,9 +6,9 @@ import LOGO from "../assets/logo.png";
 
 const SmallScreenNavbar = ()=>{
 
-  return <nav className='bg-gray-300  flex justify-center  h-[50vh] w-[100vw] fixed top-[75px] left-0'>
+  return <nav className='bg-gray-100  flex justify-center  h-[50vh] w-[100vw] fixed top-[75px] left-0'>
          <ul className=" block gap-10 space-y-6 px-4 ">
-                <li><a href="#home" className="text-gray-800 hover:text-orange-600"></a></li>
+                <li><a href="#home" className="text-gray-800 border-b hover:text-orange-600"></a></li>
                 <li><a href="#courses" className="text-gray-800 hover:text-orange-600">Courses</a></li>
                 <li><a href="#info" className="text-gray-800 hover:text-orange-600">About</a></li>
                 <li ><Link to="/pricePage " >Pricing</Link></li>

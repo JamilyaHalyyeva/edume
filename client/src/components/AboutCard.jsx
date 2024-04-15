@@ -4,7 +4,7 @@ import { Title } from './Title';
 export const AboutCard = () => {
   return (
     <>
-      <section className="bg-orange-100 pt-4">
+      <section className="bg-purple-100 pt-4">
         <div className="max-w-screen-lg flex flex-col px-2 md:flex-row justify-between mx-auto">
           <div className="md:w-1/2">
             <img src="https://dkckbwr4t7ug6.cloudfront.net/assets/application/layouts/welcome_banner_blobby-50966447b463d5608a2fb27ae8eae0eab091cc1e2f881408166bd6086492c953.svg" alt="" className="w-full object-contain" />
