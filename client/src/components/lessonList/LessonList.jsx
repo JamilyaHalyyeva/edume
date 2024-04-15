@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import config from "../../config/env.config.js";
 import Table from "../Shared/Table/Table.jsx";
 
 const LessonList = () => {
   const [lessons, setLessons] = useState([]);
+  const [filteredLessons, setFilteredLessons] = useState([]);
+  const { lessonName } = useParams();
   const deleteLesson = async (id) => {
     await axios.delete(`${config.apiBaseUrl}/api/lesson/${id}`, {
       headers: {
@@ -15,20 +17,30 @@ const LessonList = () => {
     });
     setLessons(lessons.filter((lesson) => lesson._id !== id));
   };
-  useEffect(() => {
-    const fetchLessons = async () => {
-      // Adjust the URL based on your API endpoint
-      const response = await axios.get(`${config.apiBaseUrl}/api/lesson`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
-      setLessons(response.data.lessons);
-    };
+  const fetchLessons = async () => {
+    // Adjust the URL based on your API endpoint
+    const response = await axios.get(`${config.apiBaseUrl}/api/lesson`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    console.log("LessonList-> fetchLessons ", response.data.lessons);
+    setLessons(response.data.lessons);
+  };
 
-    fetchLessons();
-  }, []);
+  useEffect(() => {
+    if (lessons.length === 0) {
+      fetchLessons();
+    }
+    if (lessonName) {
+      setFilteredLessons(
+        lessons.filter((lesson) => lesson.classType.name === lessonName)
+      );
+    } else {
+      setFilteredLessons(lessons);
+    }
+  }, [lessonName, lessons]);
   const columns = [
     { header: "Name", accessor: "name" },
     { header: "Grade", accessor: "grade" },
@@ -41,7 +53,7 @@ const LessonList = () => {
         <h2 className="text-2xl font-semibold">Lessons</h2>
         <Link
           to="/dashboard/lessons/new"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-3xl"
         >
           Create New Lesson
         </Link>
@@ -49,7 +61,7 @@ const LessonList = () => {
       <ul className="bg-white shadow rounded-lg">
         <Table
           columns={columns}
-          data={lessons.map((lesson) => ({
+          data={filteredLessons.map((lesson) => ({
             name: lesson.name,
             grade: lesson.grade.name,
             classType: lesson.classType.name,

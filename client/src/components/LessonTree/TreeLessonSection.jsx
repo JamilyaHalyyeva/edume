@@ -44,6 +44,13 @@ const TreeLessonSection = ({ section }) => {
           </button>
         </>
       )}
+      <div className="ml-5">
+        {section.childSections &&
+          section.childSections.length > 0 &&
+          section.childSections.map((childSection, index) => (
+            <TreeLessonSection key={index} section={childSection} />
+          ))}
+      </div>
     </div>
   );
 };

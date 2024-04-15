@@ -17,13 +17,10 @@ const LessonManagementProvider = ({ children }) => {
 
   const [currentSection, setCurrentSection] = useState({ name: "" });
   const handleAddSectionClick = () => {
-    console.log("Add Section Clicked");
     setIsNewSectionOrSectionSelected(true);
     setIsNewSection(true);
   };
   const handleAddSubSectionClick = (sectionId) => {
-    console.log("Add SubSection Clicked");
-    console.log("Section Id: ", sectionId);
     setIsNewSubSectionOrSubSectionSelected(true);
     setIsNewSubSection(true);
   };
@@ -34,7 +31,6 @@ const LessonManagementProvider = ({ children }) => {
     setCurrentSection({ name: "" });
   };
   const saveNewSection = () => {
-    console.log("saveNewSection: ", currentSection);
 
     currentSection.lesson = lesson._id;
     currentSection.order = lesson.lessonSections

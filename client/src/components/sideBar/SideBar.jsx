@@ -1,39 +1,15 @@
 import SideBarLink from "./SideBarLink.jsx";
 import "./SideBar.css";
 import LOGO from "../../assets/logo.png";
+import EDUME from "../../assets/edume.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faListSquares,
-  faUsers,
-  faGauge,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useTeacherDashboard } from "../../context/TeacherDashboardProvider.jsx";
 
 const SideBar = () => {
-  const { isSidebarOpen, isCompact, toggleCompactMode } = useTeacherDashboard();
-
-  const sideBarElements = [
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: <FontAwesomeIcon icon={faGauge} />,
-      link: "/dashboard",
-    },
-    {
-      id: 2,
-      name: "Lessons",
-      icon: <FontAwesomeIcon icon={faListSquares} />,
-      link: "/dashboard/lessons",
-    },
-    {
-      id: 3,
-      name: "Students",
-      icon: <FontAwesomeIcon icon={faUsers} />,
-      link: "/dashboard/students",
-    },
-  ];
+  const { isSidebarOpen, isCompact, toggleCompactMode, sideBarElements } =
+    useTeacherDashboard();
 
   return (
     <div>
@@ -53,13 +29,11 @@ const SideBar = () => {
             <a href="#" className="flex items-center space-x-3">
               <img src={LOGO} className="h-14 w-14" alt="Logo" />
               {!isCompact && (
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                  EduMe
-                </span>
+                <img src={EDUME} className="h-10 w-[6rem]" alt="Logo" />
               )}
             </a>
           </div>
-          <ul className="space-y-2 px-2">
+          <ul className=" space-y-2 px-2">
             {sideBarElements.map((element) => (
               <SideBarLink
                 key={element.id}
@@ -67,6 +41,7 @@ const SideBar = () => {
                 icon={element.icon}
                 isCompact={isCompact}
                 to={element.link}
+                item={element}
               />
             ))}
           </ul>

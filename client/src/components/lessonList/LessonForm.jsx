@@ -54,7 +54,6 @@ const LessonForm = (lesson) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("lesson: ", lesson);
     const apiEndpoint =
       lesson && lesson._id
         ? `${config.apiBaseUrl}/api/lesson/${lesson._id}`

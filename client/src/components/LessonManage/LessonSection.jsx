@@ -15,12 +15,10 @@ const LessonSection = (props) => {
   };
 
   const onSectionInfoSaveClickHandler = () => {
-    console.log("onSectionInfoSaveClickHandler: ", currentSection);
     saveNewSection();
     // save the section info
   };
   const onSectionInfoCancelClickHandler = () => {
-    console.log("onSectionInfoCancelClickHandler: ", currentSection);
     cancelNewSection();
     // cancel the section info
   };

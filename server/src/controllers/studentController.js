@@ -55,3 +55,59 @@ export const getTeacherListByClassTypeAndGrade = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+// Check if student is registered in all teachers
+//returns true if all teachers are registered
+export const getIsStudentRegisteredAllTeachers = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const gradeId = req.grade;
+
+    // Get all class types that the user gets
+    const classTypesThatUserGets = await GradeClassType.find({
+      grade: gradeId,
+    })
+      .populate('classType')
+      .populate('grade');
+    console.log('classTypesThatStudentGets ', classTypesThatUserGets);
+    // Get all class types that the user is already registered in
+    const classTypesThatUserIsRegistered = await StudentTeacherSelection.find({
+      student: userId,
+      grade: gradeId,
+    });
+    console.log(
+      'classTypesThatUserIsRegistered ',
+      classTypesThatUserIsRegistered,
+    );
+    // Filter out the class types that the user is already registered in
+    const isAllClassTypesRegistered =
+      classTypesThatUserGets.length === classTypesThatUserIsRegistered.length;
+    res.json(isAllClassTypesRegistered);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+// Register selected teachers
+export const registerSelectedTeachers = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const gradeId = req.grade._id;
+    const { selectedTeachers } = req.body;
+    const studentTeacherSelections = [];
+    selectedTeachers.forEach((selectedTeacher) => {
+      studentTeacherSelections.push({
+        student: userId,
+        teacher: selectedTeacher.teacherId,
+        classType: selectedTeacher.classTypeId,
+        grade: gradeId,
+      });
+    });
+    const registeredTeachers = await StudentTeacherSelection.insertMany(
+      studentTeacherSelections,
+    );
+    res.json(registeredTeachers);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
