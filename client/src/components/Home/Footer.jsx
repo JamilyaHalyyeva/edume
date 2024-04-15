@@ -4,13 +4,13 @@ import EDUME from "../../assets/edume.png";
 export const Footer = () => {
   return (
     <>
-      <section className="bg-orange-100 py-12">
+      <section className="bg-blue-200 py-12">
         <div className="max-w-screen-lg mx-auto grid grid-col-1 px-2 items-center md:flex justify-between">
           <div className="pr-12">
-            <h1 className="text-orange-500 text-2xl font-semibold mb-2">
+            <h1 className="text-gray-600 text-2xl font-semibold mb-2">
               Newsletter - Stay tuned and get the latest update
             </h1>
-            <span className="text-orange-400 ">
+            <span className="text-gray-600 ">
               Far far away, behind the word mountains
             </span>
           </div>
@@ -29,13 +29,13 @@ export const Footer = () => {
           <div className="w-full md:w-70">
             <img src={LOGO} alt="" className="w-16 pb-4 object-contain" />
             <img src={EDUME} alt="" className="w-24 pb-2" />
-            <span className="text-orange-500">online education & learning</span>
+            <span className="text-gray-500">online education & learning</span>
 
             <div className="flex mt-4 space-x-3">
-              <i className="fab fa-facebook-f text-orange-500 hover:text-orange-400 text-xl"></i>
-              <i className="fab fa-instagram text-orange-500 hover:text-orange-400 text-xl"></i>
-              <i className="fab fa-twitter text-orange-500 hover:text-orange-400 text-xl"></i>
-              <i className="fab fa-youtube text-orange-500 hover:text-orange-400 text-xl"></i>
+              <i className="fab fa-facebook-f text-gray-500 hover:text-orange-400 text-xl"></i>
+              <i className="fab fa-instagram text-gray-500 hover:text-orange-400 text-xl"></i>
+              <i className="fab fa-twitter text-gray-500 hover:text-orange-400 text-xl"></i>
+              <i className="fab fa-youtube text-gray-500 hover:text-orange-400 text-xl"></i>{" "}
             </div>
           </div>
           <div className="w-full md:w-70">
