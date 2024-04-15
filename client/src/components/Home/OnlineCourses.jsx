@@ -21,15 +21,12 @@ export const OnlineCourses = () => {
                   <img
                     src={item.cover}
                     alt=""
-                    className="w-full h-full object-cover "
+                    className="w-full h-full object-cover md:block "
                   />
                 </div>
-                <h1 className="text-sm font-light text-gray-800 mt-4  hidden md:block">
+                <h1 className="text-lg font-medium text-gray-900 mt-4  md:block">
                   {item.courseName}
                 </h1>
-                <span className="bg-white hidden px-4 py-2 font-normal text-orange-500 text-sm rounded-lg md:block">
-                  {item.courses}
-                </span>
               </div>
             ))}
           </div>

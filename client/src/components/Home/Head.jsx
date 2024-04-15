@@ -2,13 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import EDUME from "../../assets/edume.png";
 import LOGO from "../../assets/logo.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faBars} from '@fortawesome/free-solid-svg-icons';
+
+
 
 const SmallScreenNavbar = () => {
   return (
-    <nav className="bg-gray-300  flex justify-center  h-[50vh] w-[100vw] fixed top-[75px] left-0">
+    <nav className="bg-gray-100  flex justify-center  h-[50vh] w-[100vw] fixed top-[75px] left-0">
       <ul className=" block gap-10 space-y-6 px-4 ">
         <li>
-          <a href="#home" className="text-gray-800 hover:text-orange-600"></a>
+          <a href="#home" className="text-gray-800 border-b hover:text-orange-600"></a>
         </li>
         <li>
           <a href="#courses" className="text-gray-800 hover:text-orange-600">
@@ -121,9 +125,9 @@ export const Head = () => {
             onClick={() => setClick(!click)}
           >
             {click ? (
-              <i className="fas fa-times"></i>
+               <FontAwesomeIcon icon={faTimes} />
             ) : (
-              <i className="fas fa-bars"></i>
+              <FontAwesomeIcon icon={faBars} />
             )}
           </button>
 

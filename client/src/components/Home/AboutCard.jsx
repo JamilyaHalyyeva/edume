@@ -3,7 +3,7 @@ import { Title } from "../Title";
 export const AboutCard = () => {
   return (
     <>
-      <section className="bg-orange-100 pt-4">
+      <section className="bg-purple-100 pt-4">
         <div className="max-w-screen-lg flex flex-col px-2 md:flex-row justify-between mx-auto">
           <div className="md:w-1/2">
             <img

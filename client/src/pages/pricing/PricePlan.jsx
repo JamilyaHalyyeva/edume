@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook, faUsers, faChartLine, faLifeRing, faPlay, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 export const PricePlan = () => {
   const navigate = useNavigate();
@@ -17,32 +19,32 @@ export const PricePlan = () => {
       features: [
         {
           text: "Access to select courses for specific grades",
-          icon: "fa fa-graduation-cap",
+          icon:  faGraduationCap,
           iconColor: "text-purple-500",
         },
         {
           text: "Structured learning modules",
-          icon: "fa fa-book",
+          icon: faBook,
           iconColor: "text-green-500",
         },
         {
           text: "Limited live sessions with instructors",
-          icon: "fa fa-users",
+          icon: faUsers,
           iconColor: "text-blue-500",
         },
         {
           text: "Basic progress tracking",
-          icon: "fa fa-chart-line",
+          icon: faChartLine,
           iconColor: "text-pink-500",
         },
         {
           text: "Standard support services",
-          icon: "fa fa-life-ring",
+          icon:  faLifeRing,
           iconColor: "text-yellow-500",
         },
         {
           text: "Access to select courses for specific grades",
-          icon: "fa fa-play",
+          icon: faPlay,
           iconColor: "text-purple-500",
         },
       ],
@@ -57,22 +59,22 @@ export const PricePlan = () => {
       features: [
         {
           text: "Access to curated courses designed for specific grades",
-          icon: "fa fa-graduation-cap",
+          icon: faGraduationCap,
           iconColor: "text-purple-500",
         },
         {
           text: "Structured learning modules for comprehensive understanding",
-          icon: "fa fa-book",
+          icon:  faBook,
           iconColor: "text-green-500",
         },
         {
           text: "Participation in limited live sessions with expert instructors",
-          icon: "fa fa-users",
+          icon: faUsers,
           iconColor: "text-blue-500",
         },
         {
           text: "Basic tools for tracking individual progress",
-          icon: "fa fa-chart-line",
+          icon:  faChartLine,
           iconColor: "text-pink-500",
         },
       ],
@@ -107,9 +109,7 @@ export const PricePlan = () => {
                     key={i}
                     className="flex items-center justify-start text-gray-800 border-b p-1 text-m md:text-md"
                   >
-                    <i
-                      className={`${feature.icon} ${feature.iconColor} mr-2 text-2xl`}
-                    ></i>
+                    <FontAwesomeIcon icon={feature.icon} className={`${feature.iconColor} mr-2 text-2xl`} />
                     {feature.text}
                   </li>
                 ))}
