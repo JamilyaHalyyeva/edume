@@ -3,87 +3,176 @@ import BGIMAGE from "../assets/bgimage.png";
 import EDUME from "../assets/edume.png";
 const StudentPageFooter = () => {
   return (
+    // <div className="flex  flex-col w-full  justify-center items-center ">
+    //   <div
+    //     className=" bg-cover  -m-4  w-10/12 h-[12rem] "
+    //     style={{ backgroundImage: `url(${BGIMAGE})` }}
+    //   ></div>
+    //   <footer className="  bg-gray-300 py-12 w-full">
+    //     <div className="max-w-screen-lg mx-auto px-2 grid grid-cols-1 md:grid-cols-4 gap-8">
+    //       <div className="w-full md:w-70">
+    //         <img src={LOGO} alt="" className="w-16 pb-4 object-contain" />
+    //         <img src={EDUME} alt="" className="w-24 pb-2" />
+    //         <span className="text-gray-800">Online education & Learning</span>
+
+    //         <div className="flex mt-4 space-x-3">
+    //           <i className="fab fa-facebook-f text-orange-500 hover:text-orange-400 text-xl"></i>
+    //           <i className="fab fa-instagram text-orange-500 hover:text-orange-400 text-xl"></i>
+    //           <i className="fab fa-twitter text-orange-500 hover:text-orange-400 text-xl"></i>
+    //           <i className="fab fa-youtube text-orange-500 hover:text-orange-400 text-xl"></i>
+    //         </div>
+    //       </div>
+    //       <div className="w-full md:w-70">
+    //         <h3 className="font-semibold mb-6 text-orange-500">Explore</h3>
+    //         <ul className="text-gray-600">
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             About Us
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Courses
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Blog
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Contact
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Privacy Policy
+    //           </li>
+    //         </ul>
+    //       </div>
+    //       <div className="box w-full md:w-70 link">
+    //         <h3 className="font-semibold mb-6 text-orange-500">Useful Links</h3>
+    //         <ul className="text-gray-600">
+    //           <li className="relative before:inline-block before:content-['.'] before:text-orange-500 before:mr-1">
+    //             About Us
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Courses
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Blog
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Contact
+    //           </li>
+    //           <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+    //             Privacy Policy
+    //           </li>
+    //         </ul>
+    //       </div>
+    //       <div className="w-full md:w-70">
+    //         <h3 className="font-semibold mb-6 text-orange-500">
+    //           Have a Question?
+    //         </h3>
+    //         <ul className="text-gray-600">
+    //           <li className="flex items-center mb-4">
+    //             <i className="fa fa-map mr-3 text-orange-500"></i>
+    //             <span>203 fake st, San Francisco, CA 94101</span>
+    //           </li>
+    //           <li className="flex items-center mb-4">
+    //             <i className="fa fa-phone-alt mr-2 text-orange-500"></i>
+    //             <span>(123) 456-7890</span>
+    //           </li>
+    //           <li className="flex items-center">
+    //             <i className="fa fa-envelope mr-2 text-orange-500"></i>
+    //             <span>ex@example.com</span>
+    //           </li>
+    //         </ul>
+    //       </div>
+    //     </div>
+    //   </footer>
+    //   <div className="bg-gray-400 py-8 w-full">
+    //     <p className="text-center leading-7 text-base text-gray-600">
+    //       Copyright @2024 All rights reserved
+    //     </p>
+    //   </div>
+    // </div>
     <div className="flex flex-col w-full  justify-between   items-center">
       <div
         className=" bg-cover  -m-4  w-10/12 h-[12rem] "
         style={{ backgroundImage: `url(${BGIMAGE})` }}
       ></div>
       <footer className=" w-full bg-gray-500">
-        <div className="mx-auto w-10/12  p-4  ">
+        <div className="mx-auto w-10/12    ">
           <div className="md:flex md:justify-between ">
             <div className="mb-6 md:mb-0">
-              <a href="http://localhost:5173/" className="flex items-center">
-                <img src={LOGO} className="h-[8rem] w-[8]" />
+              <a
+                href="http://localhost:5173/"
+                className="flex items-center mt-[3rem]"
+              >
+                <img src={LOGO} className="h-[8rem] w-[7rem]" />
                 <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
-                  <img className="w-[7rem] h-[3rem]" src={EDUME} alt="" />
+                  <img className="w-[8rem] h-[3rem]" src={EDUME} alt="" />
                 </span>
               </a>
             </div>
-            <div className="grid grid-cols-6  gap-8 sm:gap-6 sm:grid-cols-3">
-              <div className="ml-20">
-                <h2 className="mb-6 text-md  font-semibold text-gray-900 uppercase dark:text-white">
-                  Resources
-                </h2>
-                <ul className="text-white font-medium">
-                  <li className="mb-4">
-                    <a href="https://flowbite.com/" className="hover:underline">
-                      Flowbite
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://tailwindcss.com/"
-                      className="hover:underline"
-                    >
-                      Tailwind CSS
-                    </a>
-                  </li>
-                </ul>
+            <div className="grid grid-cols lg:grid-cols-2 md:grid-cols-2 gap-10 sm:gap-3 sm:grid-cols-3">
+              <div className=" flex lg:justify-center items-center flex- lg:flex-row xl:flex-row md:ml-10 md:flex-col w-full">
+                <div className="w-full md:w-70  ml-5 lg:ml-10  ">
+                  <h3 className="font-semibold mb-3 text-gray-900">Explore</h3>
+                  <ul className="text-white">
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      About Us
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Courses
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Price
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Contact
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="w-full md:w-70 ml-10  ">
+                  <h3 className="font-semibold mb-3 text-gray-900">Explore</h3>
+                  <ul className="text-white">
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Teachers
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Students
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Lessons
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Exams
+                    </li>
+                    <li className="relative before:inline-block before:content-['→'] before:text-orange-500 before:mr-1">
+                      Classes
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="ml-20">
-                <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">
-                  Follow us
-                </h2>
-                <ul className="text-white font-medium">
-                  <li className="mb-4">
-                    <a
-                      href="https://github.com/themesberg/flowbite"
-                      className="hover:underline "
-                    >
-                      Github
-                    </a>
+
+              <div className="w-full md:w-70 m-10">
+                <h3 className="font-semibold mb-6 text-gray-900">
+                  Have a Question?
+                </h3>
+                <ul className=" text-white">
+                  <li className="flex items-center mb-4">
+                    <i className="fa fa-map mr-3 text-orange-500"></i>
+                    <span>203 fake st, San Francisco, CA 94101</span>
                   </li>
-                  <li>
-                    <a
-                      href="https://discord.gg/4eeurUVvTy"
-                      className="hover:underline"
-                    >
-                      Discord
-                    </a>
+                  <li className="flex items-center mb-4">
+                    <i className="fa fa-phone-alt mr-2 text-orange-500"></i>
+                    <span>(123) 456-7890</span>
                   </li>
-                </ul>
-              </div>
-              <div className="ml-20">
-                <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">
-                  Legal
-                </h2>
-                <ul className="text-white font-medium">
-                  <li className="mb-4">
-                    <a href="#" className="hover:underline">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:underline">
-                      Terms &amp; Conditions
-                    </a>
+                  <li className="flex items-center">
+                    <i className="fa fa-envelope mr-2 text-orange-500"></i>
+                    <span>ex@example.com</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-autolg:my-8" />
-          <div className="sm:flex sm:items-center sm:justify-between">
+          <hr className="my-6 border-gray-200 sm:mx-autolg:my-8 " />
+          <div className="sm:flex sm:items-center sm:justify-between mb-10">
             <span className="text-sm text-white sm:text-center dark:text-gray-400">
               © 2023{" "}
               <a href="https://flowbite.com/" className="hover:underline">
@@ -91,7 +180,7 @@ const StudentPageFooter = () => {
               </a>
               . All Rights Reserved.
             </span>
-            <div className="flex mt-4 sm:justify-center sm:mt-0">
+            <div className="flex mt-4 sm:justify-center sm:mt-0 ">
               <a href="#" className="text-white hover:text-gray-900">
                 <svg
                   className="w-6 h-6"

@@ -14,12 +14,16 @@ const Navbar = () => {
     <nav className="bg-gray-200  p-2 fixed top-0  w-full z-50  ">
       <div className=" mx-auto flex justify-between items-center w-full">
         {/* Logo and Edume images */}
-        <div className="flex space-x-4 justify-center items-center">
+        <div className="flex space-x-4 justify-center  items-center ">
           <Link to="/" className="text-gray-800 font-bold text-lg">
             <img className="w-[5rem] h-[5rem]" src={LOGO} alt="Logo" />
           </Link>
-          <Link to="/" className="text-gray-800   font-bold text-lg ">
-            <img className="w-[7rem] h-[3rem]" src={EDUME} alt="Edume" />
+          <Link to="/" className="   font-bold text-lg  ">
+            <img
+              className="w-[7rem] h-[3rem] hidden  lg:block xl:block 2xl:block"
+              src={EDUME}
+              alt="Edume"
+            />
           </Link>
         </div>
 
