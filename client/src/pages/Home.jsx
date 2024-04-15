@@ -1,35 +1,31 @@
+import Hero from "../components/Home/Hero";
 
-import Hero from "../components/Hero"
+import { AboutCard } from "../components/Home/AboutCard";
+import { CourseCard } from "../components/Home/CourseCard";
+import { OnlineCourses } from "../components/Home/OnlineCourses";
+import Price from "../components/Home/Price";
+import { Contact } from "../components/Home/Contact";
+import { Slogan } from "../components/Home/Slogan";
+import { Info } from "../components/Home/Info";
+import { Header } from "../components/Home/Header";
+import { Footer } from "../components/Home/Footer";
 
-import { AboutCard } from '../components/AboutCard'
-import { CourseCard } from '../components/CourseCard'
-import { OnlineCourses } from '../components/OnlineCourses'
-import  Price  from '../components/Price'
-import { Contact } from '../components/Contact'
-import { Slogan } from '../components/Slogan'
-import { Info } from '../components/Info'
-import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
-
-
-
-
- const Home = () => {
+const Home = () => {
   return (
     <div className="font-sans bg-gray-100">
-      <Header/>
-    
-        <Hero/>
-        <CourseCard/>
-       <AboutCard/>
-       <Price/>
-       <OnlineCourses/>
-       <Slogan/>
-       <Info/>
-        <Contact/>
-        <Footer/>
-    </div>
-  )
-}
+      <Header />
 
-export default Home
+      <Hero />
+      <CourseCard />
+      <AboutCard />
+      <Price />
+      <OnlineCourses />
+      <Slogan />
+      <Info />
+      <Contact />
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;

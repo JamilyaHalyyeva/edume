@@ -6,8 +6,16 @@ import sentAnEmailForResetPassword from '../utils/forgotPassword.js';
 
 export const handleRegister = async (req, res) => {
   try {
-    const { username, surname, email, password, role, grade, avatar } =
-      req.body;
+    const {
+      username,
+      surname,
+      email,
+      password,
+      role,
+      grade,
+      avatar,
+      teacherClassTypeGrades,
+    } = req.body;
 
     console.log('register: data is ', req.body);
 
@@ -24,6 +32,7 @@ export const handleRegister = async (req, res) => {
       role,
       avatar,
       grade,
+      teacherClassTypeGrades,
     });
     const result = await newUser.save();
 
@@ -44,7 +53,7 @@ export const handleLogin = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate('grade');
     console.log('user:', user);
 
     if (!user) {
@@ -67,11 +76,12 @@ export const handleLogin = async (req, res) => {
       {
         userId: user._id,
         email: user.email,
-        userName: user.userName,
+        userName: user.username,
         surname: user.surname,
         role: user.role,
         avatar: user.avatar,
         grade: user.grade,
+        teacherClassTypeGrades: user.teacherClassTypeGrades,
       },
       config.jwtSecret,
       {

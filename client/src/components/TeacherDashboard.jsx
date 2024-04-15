@@ -1,5 +1,5 @@
 const TeacherDashboard = () => {
-  return <div>TeacherDasboard</div>;
+  return <div className="h-full w-full h-[50rem]">TeacherDasboard</div>;
 };
 
 export default TeacherDashboard;

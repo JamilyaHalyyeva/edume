@@ -38,6 +38,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  teacherClassTypeGrades: [
+    {
+      classType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ClassType',
+      },
+      grade: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Grade',
+      },
+    },
+  ],
 });
 const User = mongoose.model('User', userSchema, 'users');
 export default User;

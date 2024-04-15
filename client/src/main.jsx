@@ -4,24 +4,14 @@ import "./index.css";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserProvider.jsx";
-import  Routes  from "./Routes";
-
-
+import Routes from "./Routes";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-  
-    <UserProvider>
+      <UserProvider>
         <Routes />
       </UserProvider>
-    
     </BrowserRouter>
-    </React.StrictMode>
-
-
-
-
-
- 
+  </React.StrictMode>
 );

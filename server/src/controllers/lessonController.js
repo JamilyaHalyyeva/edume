@@ -2,8 +2,17 @@ import Lesson from '../models/Lesson.js';
 
 export const handleGetLessons = async (req, res) => {
   try {
-    const userId = req.userId;
-    const lessons = await Lesson.find({ userId: userId });
+    console.log('req.grade:', req.grade);
+
+    const lessons = req.grade
+      ? await Lesson.find({ grade: req.grade })
+          .populate('grade')
+          .populate('classType')
+          .populate('lessonSections')
+      : await Lesson.find({})
+          .populate('grade')
+          .populate('classType')
+          .populate('lessonSections');
     res.json({ success: true, lessons: lessons });
   } catch (error) {
     return res.status(500).send({ success: false, error: error.message });
@@ -31,7 +40,18 @@ export const handlePostLesson = async (req, res) => {
 export const handleGetLessonById = async (req, res) => {
   try {
     const lessonId = req.params.lessonId;
-    const lesson = await Lesson.findById(lessonId);
+    const lesson = await Lesson.findById(lessonId)
+      .populate('grade')
+      .populate('classType')
+      .populate({
+        path: 'lessonSections',
+        select: 'name order sectionContents',
+        populate: {
+          path: 'sectionContents',
+          select: 'name videoUrl documentUrl', // Adjust based on your SectionContent model
+        },
+      });
+    console.log('lesson:', lesson);
     if (!lesson) {
       return res
         .status(404)
