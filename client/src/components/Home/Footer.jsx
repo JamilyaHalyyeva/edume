@@ -1,5 +1,7 @@
 import LOGO from "../../assets/logo.png";
 import EDUME from "../../assets/edume.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 
 export const Footer = () => {
   return (
@@ -20,7 +22,7 @@ export const Footer = () => {
               placeholder="Enter your email address"
               className="w-full px-4 py-2  border border-gray-300 rounded"
             />
-            <i className="fa fa-paper-plane px-4 py-2 rounded bg-orange-500 text-white"></i>
+            <FontAwesomeIcon icon={faPaperPlane} className="px-4 py-4 rounded bg-orange-500 text-white" />
           </div>
         </div>
       </section>

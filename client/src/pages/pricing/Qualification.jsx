@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChalkboardTeacher, faEllipsisH, faExchangeAlt, faLayerGroup,faUserFriends, faCheckDouble, faLaptop, faGraduationCap, faBook } from '@fortawesome/free-solid-svg-icons';
+
 export const Qualification = () => {
   return (
     <>
@@ -23,47 +26,47 @@ export const Qualification = () => {
               {[
                 {
                   text: "Introduction of new topics in class",
-                  icon: "fas fa-chalkboard-teacher",
+                  icon: faChalkboardTeacher,
                   iconColor: "text-green-500",
                 },
                 {
                   text: "For students to practice or prepare before and after lessons",
-                  icon: "fas fa-graduation-cap",
+                  icon: faGraduationCap,
                   iconColor: "text-purple-500",
                 },
                 {
                   text: "For your own lesson preparation",
-                  icon: "fas fa-laptop",
+                  icon: faLaptop,
                   iconColor: "text-blue-500",
                 },
                 {
-                  text: "For preparing for exams",
-                  icon: "fas fa-file-alt",
+                  text:  "Preparing for exams",
+                  icon: faBook,
                   iconColor: "text-pink-500",
                 },
                 {
                   text: "As homework - quickly & easily checkable!",
-                  icon: "fas fa-check-double",
+                  icon: faCheckDouble,
                   iconColor: "text-lime-500",
                 },
                 {
                   text: "For substitute lessons",
-                  icon: "fas fa-user-friends",
+                  icon: faUserFriends,
                   iconColor: "text-red-500",
                 },
                 {
                   text: "For internal differentiation",
-                  icon: "fas fa-layer-group",
+                  icon: faLayerGroup,
                   iconColor: "text-yellow-500",
                 },
                 {
                   text: "For the teaching method Flipped Classroom",
-                  icon: "fas fa-exchange-alt",
+                  icon:  faExchangeAlt,
                   iconColor: "text-purple-500",
                 },
                 {
                   text: "... and much more",
-                  icon: "fas fa-ellipsis-h",
+                  icon: faEllipsisH,
                   iconColor: "text-orange-500",
                 },
               ].map((item, index) => (
@@ -71,9 +74,7 @@ export const Qualification = () => {
                   key={index}
                   className="text-gray-600 flex items-center mt-2 gap-2"
                 >
-                  <i
-                    className={`${item.icon} ${item.iconColor} text-3xl  mr-2`}
-                  ></i>{" "}
+                   <FontAwesomeIcon icon={item.icon} className={`${item.iconColor} mr-4 text-2xl`} />{" "}
                   {item.text}
                 </li>
               ))}
