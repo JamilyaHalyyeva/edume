@@ -95,10 +95,13 @@ const StudentPageFooter = () => {
         style={{ backgroundImage: `url(${BGIMAGE})` }}
       ></div>
       <footer className=" w-full bg-gray-500">
-        <div className="mx-auto w-10/12  p-4  ">
+        <div className="mx-auto w-10/12    ">
           <div className="md:flex md:justify-between ">
             <div className="mb-6 md:mb-0">
-              <a href="http://localhost:5173/" className="flex items-center">
+              <a
+                href="http://localhost:5173/"
+                className="flex items-center mt-[3rem]"
+              >
                 <img src={LOGO} className="h-[8rem] w-[7rem]" />
                 <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
                   <img className="w-[8rem] h-[3rem]" src={EDUME} alt="" />
@@ -168,8 +171,8 @@ const StudentPageFooter = () => {
               </div>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-autolg:my-8" />
-          <div className="sm:flex sm:items-center sm:justify-between">
+          <hr className="my-6 border-gray-200 sm:mx-autolg:my-8 " />
+          <div className="sm:flex sm:items-center sm:justify-between mb-10">
             <span className="text-sm text-white sm:text-center dark:text-gray-400">
               © 2023{" "}
               <a href="https://flowbite.com/" className="hover:underline">
@@ -177,7 +180,7 @@ const StudentPageFooter = () => {
               </a>
               . All Rights Reserved.
             </span>
-            <div className="flex mt-4 sm:justify-center sm:mt-0">
+            <div className="flex mt-4 sm:justify-center sm:mt-0 ">
               <a href="#" className="text-white hover:text-gray-900">
                 <svg
                   className="w-6 h-6"
