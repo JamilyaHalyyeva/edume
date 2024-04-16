@@ -30,7 +30,7 @@ const Lessons = () => {
             return lesson.name === data.classType.name;
           });
           if (match) {
-            filteredLessons.push(match);
+            filteredLessons.push({ ...match, _id: data.classType._id });
           }
         });
 
@@ -58,6 +58,7 @@ const Lessons = () => {
             name={lesson.name}
             imageSrc={lesson.imageSrc}
             bgColor={lesson.bgColor}
+            _id={lesson._id}
           />
         ))}
         {lessonList.length > 4 && !showAll && (

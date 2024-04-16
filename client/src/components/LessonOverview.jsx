@@ -1,17 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
 import LessonOverviewCard from "./LessonOverviewCard";
+import { useEffect, useState } from "react";
 
 const LessonOverview = () => {
   const navigate = useNavigate();
-  const { currentLesson } = useStudentDashboardContext();
+  const { currentLesson, allRegisteredLessons } = useStudentDashboardContext();
+  const [lessonContent, setLessonContent] = useState(null);
   const handleClick = () => {
     navigate("/dashboard");
   };
-  const handleSectionClick = () => {
-    navigate("/dashboard/lesson-overview/lesson-section-overview");
-  };
-  const sections = currentLesson?.sections || Array(3).fill();
+
+  useEffect(() => {
+    console.log("allRegisteredLessons", allRegisteredLessons);
+    const myLesson = allRegisteredLessons.find((lessonMeta) => {
+      return lessonMeta.classType === currentLesson._id;
+    });
+    console.log("myLesson", myLesson);
+    if (!myLesson) {
+      navigate("/dashboard");
+    } else {
+      setLessonContent(myLesson);
+    }
+  }, [allRegisteredLessons, currentLesson]);
+
   return (
     <div className="flex justify-center items-center flex-col  ">
       <div className="w-full flex justify-center items-center   flex-col ">
@@ -38,11 +50,12 @@ const LessonOverview = () => {
 
         <div className="mb-10 justify-center items-center flex flex-col p-6 gap-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sections.map((section, index) => (
-              <div key={index} onClick={handleSectionClick}>
-                <LessonOverviewCard />
-              </div>
-            ))}
+            {lessonContent &&
+              lessonContent.lessonSections.map((section, index) => (
+                <div key={index}>
+                  <LessonOverviewCard section={section} />
+                </div>
+              ))}
           </div>
         </div>
       </div>
