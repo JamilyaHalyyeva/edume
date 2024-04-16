@@ -39,7 +39,7 @@ const LessonManage = () => {
   }, [lessonId]);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full  ">
       <div className="flex  flex-col w-full justify-center items-start ">
         {/* this is the lesson info and lesson structure  */}
         <div className="flex flex-col justify-center items-center w-full">
@@ -66,9 +66,9 @@ const LessonManage = () => {
               )}
             </div>
           </div>
-          <div className="flex flex-col  w-full ">
+          <div className="flex flex-col  w-full h-screen overflow-y-auto ">
             <div className="flex flex-col p-2">
-              <div className="lesson-tree">
+              <div className="lesson-tree mb-[15rem]">
                 <TreeLesson lesson={lesson} />
               </div>
             </div>

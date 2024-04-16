@@ -22,20 +22,20 @@ const AddSectionContent = ({ onCancelClick }) => {
 
         <div className="w-full flex justify-end "></div>
       </div>
-      <div className="flex flex-row justify-end">
+      <div className="flex flex-row justify-end mb-2">
         <button
           onClick={() => {
             console.log("save");
           }}
-          className="btn bg-green-300 p-2 mx-2 rounded-md text-black "
+          className="btn bg-yellow-300 p-2 mx-2 w-20 rounded-2xl text-black "
         >
-          save
+          Save
         </button>
         <button
           onClick={handleCancelClick}
-          className="btn bg-red-300 p-2  mx-2 rounded-md text-black "
+          className="btn bg-red-400 p-2  mx-2  w-20  rounded-2xl  text-black "
         >
-          cancel
+          Cancel
         </button>
       </div>
     </div>

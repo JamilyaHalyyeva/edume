@@ -14,6 +14,7 @@ const TreeLessonSection = ({
   section,
   isSubSectionEnabled,
   isChildSection,
+  isChildButton,
 }) => {
   const { handleAddSubSectionClick } = useLessonManagement();
   const [isExpanded, setIsExpanded] = useState(true);
@@ -23,6 +24,7 @@ const TreeLessonSection = ({
 
   const handleAddSectionContent = (sectionId) => {
     setAddContentMode(true);
+    setIsExpanded(true);
     console.log("sectionId", sectionId);
   };
 
@@ -31,8 +33,8 @@ const TreeLessonSection = ({
   };
 
   return (
-    <div className="lesson-section mb-2">
-      <div className="flex items-center h-20">
+    <div className="lesson-section border-2 border-gray-200  rounded-xl shadow-xl mb-5 p-5">
+      <div className="flex items-center   h-20">
         <button
           className="flex items-center text-purple-400"
           onClick={toggleExpand}
@@ -40,7 +42,7 @@ const TreeLessonSection = ({
           {isChildSection ? (
             <FontAwesomeIcon
               icon={isExpanded ? faChevronDown : faChevronRight}
-              className="h-5 w-5"
+              className="h-5 w-5 text-green-400"
             />
           ) : (
             <FontAwesomeIcon
@@ -54,14 +56,18 @@ const TreeLessonSection = ({
           <div>
             <button
               onClick={() => handleAddSectionContent(section._id)}
-              className="ml-3 btn bg-purple-300 p-2 rounded-md text-black"
+              className={
+                isChildButton
+                  ? "ml-3 btn bg-green-300 p-2 rounded-md w-[9rem] text-black"
+                  : "ml-3 btn bg-purple-300 p-2 rounded-md w-[9rem] text-black"
+              }
             >
               Add Content
             </button>
             {isSubSectionEnabled && (
               <button
                 onClick={() => handleAddSubSectionClick(section._id)}
-                className="ml-3 btn bg-green-300 p-2 rounded-md text-black"
+                className="ml-3 btn bg-green-300 p-2 w-[9rem] rounded-md text-black"
               >
                 Add SubSection
               </button>
@@ -85,11 +91,12 @@ const TreeLessonSection = ({
         section.childSections &&
         section.childSections.length > 0 &&
         section.childSections.map((childSection, index) => (
-          <div className="ml-2 mt-2" key={index}>
+          <div className="mb-3 " key={index}>
             <TreeLessonSection
               section={childSection}
               isSubSectionEnabled={false}
               isChildSection={true}
+              isChildButton={true}
             />
           </div>
         ))}
