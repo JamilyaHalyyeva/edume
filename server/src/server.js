@@ -12,6 +12,7 @@ import lessonRouter from './routes/api/lessonRoutes.js';
 import gradeClassTypeRouter from './routes/api/gradeClassTypeRoutes.js';
 import lessonSectionRouter from './routes/api/lessonSectionRoutes.js';
 import studentRouter from './routes/api/studentRoutes.js';
+import mediaUploadRouter from './routes/api/mediaUploadRoutes.js';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/lesson', lessonRouter);
 app.use('/api/gradeClassType', gradeClassTypeRouter);
 app.use('/api/lessonSection', lessonSectionRouter);
 app.use('/api/students', studentRouter);
+app.use('/api/mediaUpload', mediaUploadRouter);
 const PORT = config.port || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
