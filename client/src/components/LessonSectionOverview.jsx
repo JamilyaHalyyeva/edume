@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
 import Player from "./Player/Player";
-import sampleMathVideo from "../assets/videos/math.mp4";
 
 const LessonSectionOverview = () => {
   const navigate = useNavigate();
@@ -12,7 +11,7 @@ const LessonSectionOverview = () => {
   const handleOnNextClick = () => {
     console.log("Next Clicked");
   };
-  console.log("sampleMath video", sampleMathVideo);
+
   return (
     <div className="mt-[10rem]">
       <div className="flex flex-col justify-center items-center p-5">
@@ -39,7 +38,7 @@ const LessonSectionOverview = () => {
           <div className="flex flex-col justify-center items-center p-5">
             <div className="w-full h-96 rounded-2xl overflow-hidden">
               {/* we should have a player component here to show the content video  */}
-              <Player url={sampleMathVideo} />
+              <Player url={currentSection.videoSrc} />
             </div>
           </div>
         </div>

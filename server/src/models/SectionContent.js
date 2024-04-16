@@ -1,20 +1,30 @@
 import mongoose from 'mongoose';
 
 const sectionContentSchema = new mongoose.Schema({
-  videoUrl: {
+  title: {
+    type: String,
+    required: false,
+    trim: true,
+  },
+  description: {
+    type: String,
+    required: false,
+    trim: true,
+  },
+  url: {
     type: String,
     required: true,
     trim: true,
   },
-  documentUrl: {
+  type: {
     type: String,
-    required: false,
+    required: true,
+    enum: ['video', 'pdf', 'other'], // Ensures the type is one of the specified values
   },
   order: {
     type: Number,
     required: true,
   },
-
   lessonSection: { type: mongoose.Schema.Types.ObjectId, ref: 'LessonSection' },
 });
 
@@ -23,4 +33,5 @@ const SectionContent = mongoose.model(
   sectionContentSchema,
   'sectionContent',
 );
+
 export default SectionContent;

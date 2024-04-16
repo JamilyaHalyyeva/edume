@@ -78,6 +78,7 @@ const TreeLessonSection = ({
       {isExpanded &&
         (addContentMode ? (
           <AddSectionContent
+            sectionId={section._id}
             onCancelClick={handleAddSectionCancelClick}
           ></AddSectionContent>
         ) : (

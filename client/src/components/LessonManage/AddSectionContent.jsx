@@ -1,6 +1,9 @@
 import React from "react";
+import FileUploadComponent from "../FileUpload/FileUploadComponent";
+import { useLessonManagement } from "../../context/LessonManagementProvider";
 
-const AddSectionContent = ({ onCancelClick }) => {
+const AddSectionContent = ({ onCancelClick, sectionId }) => {
+  const { lesson } = useLessonManagement();
   const handleCancelClick = () => {
     onCancelClick();
   };
@@ -9,9 +12,9 @@ const AddSectionContent = ({ onCancelClick }) => {
       <h1>Add Section Content</h1>
       <div className="flex flex-col justify-between p-2">
         <div className="w-full flex justify-between">
-          <button>
-            <input type="text" placeholder="video url" />
-          </button>
+          <div>
+            <FileUploadComponent lessonId={lesson._id} sectionId={sectionId} />
+          </div>
           <button>
             <input type="text" placeholder="upload pdf " />
           </button>

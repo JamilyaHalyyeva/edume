@@ -12,9 +12,10 @@
  *
  */
 import express from 'express';
-import authMiddleware from '../../middlewares/authMiddleware';
-import lessonMediaUpload from '../../middlewares/lessonMediaMulterCloudinary';
-import { handleUpload } from '../../controllers/mediaUploadController';
+import authMiddleware from '../../middlewares/authMiddleware.js';
+import lessonMediaUpload from '../../middlewares/lessonMediaMulterCloudinary.js';
+import { handleVideoUpload } from '../../controllers/mediaUploadController.js';
+import multer from 'multer';
 
 const mediaUploadRouter = express.Router();
 
@@ -41,11 +42,29 @@ const mediaUploadRouter = express.Router();
  *       '200':
  *         description: Media file uploaded successfully
  */
+const myUpload = lessonMediaUpload.single('file');
 mediaUploadRouter.post(
-  '/:lessonId',
+  '/:lessonId/:sectionId',
   authMiddleware,
-  lessonMediaUpload.single('file'),
-  handleUpload,
+  (req, res, next) => {
+    myUpload(req, res, function (error) {
+      if (error instanceof multer.MulterError) {
+        // A Multer error occurred when uploading.
+        console.error('MulterError:', error);
+        return res
+          .status(500)
+          .json({ message: `Multer error: ${error.message}` });
+      } else if (error) {
+        // An unknown error occurred when uploading.
+        console.error('Unknown Error:', error);
+        return res.status(500).json({ message: `Error: ${error.message}` });
+      }
+
+      // Everything went fine.
+      next();
+    });
+  },
+  handleVideoUpload,
 );
 
 export default mediaUploadRouter;

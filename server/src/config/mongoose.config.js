@@ -569,10 +569,10 @@ async function createMathLessonsRegardingTeachersGrades(teacher) {
 
     for (const grade of grades) {
       const gradeLevel = grade.name;
-      const lessonName = 'Math Curriculum';
+      const lessonName = `Math Curriculum Grade ${gradeLevel}`;
       const lesson = new Lesson({
         name: lessonName,
-        order: parseInt(gradeLevel),
+        order: parseInt(gradeLevel, 10),
         grade: grade._id,
         classType: mathClassType._id,
         user: teacher._id,
@@ -588,6 +588,34 @@ async function createMathLessonsRegardingTeachersGrades(teacher) {
           lesson: lesson._id,
         });
 
+        // Creating a main section content for video
+        const mainSectionVideoContent = new SectionContent({
+          title: `Overview of ${topic.main}`,
+          description: `Detailed video overview of ${topic.main}`,
+          url: 'https://res.cloudinary.com/jamilyaedume/video/upload/v1713280780/jamilyaedume/661d98654f3f58c49cb43476/661d986d4f3f58c49cb4370f/1713280777106-math%20%281%29%20%281%29.mp4.mp4',
+          type: 'video',
+          order: 1,
+          lessonSection: section._id,
+        });
+
+        await mainSectionVideoContent.save();
+
+        // Creating a main section content for PDF
+        const mainSectionPDFContent = new SectionContent({
+          title: `PDF Summary of ${topic.main}`,
+          description: `Detailed PDF summary of ${topic.main}`,
+          url: 'https://file-examples.com/storage/feed2327706616bd9a07caa/2017/10/file-sample_150kB.pdf',
+          type: 'pdf',
+          order: 2,
+          lessonSection: section._id,
+        });
+
+        await mainSectionPDFContent.save();
+
+        section.sectionContents = [
+          mainSectionVideoContent._id,
+          mainSectionPDFContent._id,
+        ];
         await section.save();
 
         let subsectionOrder = 1;
@@ -595,30 +623,51 @@ async function createMathLessonsRegardingTeachersGrades(teacher) {
           const subsection = new LessonSection({
             name: subtopic,
             order: subsectionOrder++,
+            parentSection: section._id,
             lesson: lesson._id,
-            parentSection: section._id, // Assuming the schema supports hierarchical structuring
           });
 
-          const content = new SectionContent({
-            videoUrl: 'https://youtu.be/CWeURo9iA3g?si=YFq_Tv93tjd31rrQ', //  `https://example.com/video/${subtopic.replace(/ /g, '')}`,
-            documentUrl:
-              'https://file-examples.com/storage/feed2327706616bd9a07caa/2017/10/file-sample_150kB.pdf', //`https://example.com/doc/${subtopic.replace(/ /g, '')}.pdf`,
+          await subsection.save();
+
+          // Video content for subsection
+          const subsectionVideoContent = new SectionContent({
+            title: `Learn about ${subtopic}`,
+            description: `${subtopic} explained in detail.`,
+            url: 'https://res.cloudinary.com/jamilyaedume/video/upload/v1713280780/jamilyaedume/661d98654f3f58c49cb43476/661d986d4f3f58c49cb4370f/1713280777106-math%20%281%29%20%281%29.mp4.mp4',
+            type: 'video',
             order: 1,
             lessonSection: subsection._id,
           });
 
-          await content.save();
-          subsection.sectionContents = [content._id];
+          await subsectionVideoContent.save();
+
+          // PDF content for subsection
+          const subsectionPDFContent = new SectionContent({
+            title: `PDF details on ${subtopic}`,
+            description: `${subtopic} in PDF format.`,
+            url: 'https://file-examples.com/storage/feed2327706616bd9a07caa/2017/10/file-sample_150kB.pdf',
+            type: 'pdf',
+            order: 2,
+            lessonSection: subsection._id,
+          });
+
+          await subsectionPDFContent.save();
+
+          subsection.sectionContents = [
+            subsectionVideoContent._id,
+            subsectionPDFContent._id,
+          ];
           await subsection.save();
-          section.subSections = (section.subSections || []).concat([
+
+          section.subSections = (section.subSections || []).concat(
             subsection._id,
-          ]);
+          );
         }
 
         await section.save();
-        lesson.lessonSections = (lesson.lessonSections || []).concat([
+        lesson.lessonSections = (lesson.lessonSections || []).concat(
           section._id,
-        ]);
+        );
       }
 
       await lesson.save();
