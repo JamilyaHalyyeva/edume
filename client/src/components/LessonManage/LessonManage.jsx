@@ -39,33 +39,34 @@ const LessonManage = () => {
   }, [lessonId]);
 
   return (
-    <div className="flex flex-col">
-      <h1 className="w-full">Lesson Manage</h1>
-      <div className="flex  flex-row justify-center items-start shadow p-4 mt-2">
+    <div className="flex flex-col w-full">
+      <div className="flex  flex-col w-full justify-center items-start ">
         {/* this is the lesson info and lesson structure  */}
-        <div className="flex flex-col justify-center items-start">
-          <div className="flex flex-col p-2 shadow">
-            <div>Lesson Info:</div>
-            <div className=" flex flex-col p-2 ">
+        <div className="flex flex-col justify-center items-center w-full">
+          <div className="flex flex-col p-2  bg-orange-400 w-full">
+            <div className=" grid grid-cols-3 p-2  ">
               {lesson &&
               lesson.grade &&
               lesson.classType &&
               lesson.grade.name &&
               lesson.classType.name ? (
                 <>
-                  {" "}
-                  <p>Lesson Name: {lesson.name}</p>
-                  <p>Lesson Grade: {lesson.grade.name}</p>
-                  <p>Lesson Class Type: {lesson.classType.name}</p>
+                  <div className=" gap-10">
+                    <p> {lesson.name}</p>
+                  </div>
+                  <div>
+                    <p> Grade: {lesson.grade.name}</p>
+                  </div>
+                  <div>
+                    <p>Lesson Class Type: {lesson.classType.name}</p>
+                  </div>
                 </>
               ) : (
                 "Loading..."
               )}
             </div>
           </div>
-          <div className="flex flex-col shadow w-full p-2">
-            <h1>Lesson Structure:</h1>
-
+          <div className="flex flex-col  w-full ">
             <div className="flex flex-col p-2">
               <div className="lesson-tree">
                 <TreeLesson lesson={lesson} />
@@ -74,7 +75,7 @@ const LessonManage = () => {
           </div>
         </div>
         {/* here is the action panel for adding sections and contents */}
-        <div className="flex flex-col w-full shadow mx-2 p-2">
+        {/* <div className="flex flex-col w-full shadow mx-2 p-2">
           {isNewSectionOrSectionSelected ? (
             <div className="flex flex-col">
               <LessonSection />
@@ -89,7 +90,7 @@ const LessonManage = () => {
               <p>there is no section selected</p>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -569,7 +569,7 @@ async function createMathLessonsRegardingTeachersGrades(teacher) {
 
     for (const grade of grades) {
       const gradeLevel = grade.name;
-      const lessonName = `Math Curriculum for Grade ${gradeLevel}`;
+      const lessonName = 'Math Curriculum';
       const lesson = new Lesson({
         name: lessonName,
         order: parseInt(gradeLevel),
