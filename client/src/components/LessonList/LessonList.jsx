@@ -33,12 +33,14 @@ const LessonList = () => {
     if (lessons.length === 0) {
       fetchLessons();
     }
-    if (lessonName) {
-      setFilteredLessons(
-        lessons.filter((lesson) => lesson.classType.name === lessonName)
-      );
-    } else {
-      setFilteredLessons(lessons);
+    if (lessons.length > 0) {
+      if (lessonName) {
+        setFilteredLessons(
+          lessons.filter((lesson) => lesson.classType.name === lessonName)
+        );
+      } else {
+        setFilteredLessons(lessons);
+      }
     }
   }, [lessonName, lessons]);
   const columns = [

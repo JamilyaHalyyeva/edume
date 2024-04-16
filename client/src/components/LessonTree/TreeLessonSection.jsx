@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useLessonManagement } from "../../context/LessonManagementProvider.jsx";
 import AddSectionContent from "../LessonManage/AddSectionContent.jsx";
+import SectionContentList from "../LessonManage/SectionContentList.jsx";
 
 const TreeLessonSection = ({
   section,
@@ -78,14 +79,11 @@ const TreeLessonSection = ({
       {isExpanded &&
         (addContentMode ? (
           <AddSectionContent
+            sectionId={section._id}
             onCancelClick={handleAddSectionCancelClick}
           ></AddSectionContent>
         ) : (
-          section.sectionContent &&
-          section.sectionContent.length > 0 &&
-          section.sectionContent.map((content, index) => (
-            <TreeLesonSectionContent key={index} content={content} />
-          ))
+          <SectionContentList section={section} />
         ))}
       {isExpanded &&
         section.childSections &&

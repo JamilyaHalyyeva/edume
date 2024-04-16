@@ -17,6 +17,7 @@ import {
   getTeacherListByClassTypeAndGrade,
   getIsStudentRegisteredAllTeachers,
   registerSelectedTeachers,
+  getAllRegisteredLessons,
 } from '../../controllers/studentController.js'; // Adjust the path to your controller file
 
 import authMiddleware from '../../middlewares/authMiddleware.js';
@@ -161,4 +162,35 @@ studentRouter.post(
   authMiddleware,
   registerSelectedTeachers,
 );
+
+/**
+ * @swagger
+ * /api/students/getAllRegisteredLessons:
+ *   get:
+ *     summary: Get all registered lessons
+ *     tags: [Student]
+ *     responses:
+ *       '200':
+ *         description: Successful operation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Lesson'
+ *       '400':
+ *         description: Bad request
+ *       '401':
+ *         description: Unauthorized
+ *       '404':
+ *         description: Lessons not found
+ *     security:
+ *       - bearerAuth: []
+ */
+studentRouter.get(
+  '/getAllRegisteredLessons',
+  authMiddleware,
+  getAllRegisteredLessons,
+);
+
 export default studentRouter;

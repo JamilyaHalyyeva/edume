@@ -27,6 +27,8 @@ export const pages = {
 
 const StudentDashboardProvider = ({ children }) => {
   const [currentLesson, setCurrentLesson] = useState(null);
+  const [allRegisteredLessons, setAllRegisteredLessons] = useState([]); // [Lesson, Lesson, Lesson
+  const [currentSection, setCurrentSection] = useState(null); // {section, lessonId, sectionId}
 
   const checkIfStudentRegisteredAllTeachers = async () => {
     try {
@@ -50,12 +52,48 @@ const StudentDashboardProvider = ({ children }) => {
     }
   };
 
+  const fetchAllRegisteredLessons = async () => {
+    try {
+      const response = await axios.get(
+        `${config.apiBaseUrl}/api/students/getAllRegisteredLessons`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching registered lessons", error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const isAllTeachersRegistered =
+        await checkIfStudentRegisteredAllTeachers();
+      if (isAllTeachersRegistered) {
+        const lessons = await fetchAllRegisteredLessons();
+        if (lessons) {
+          setAllRegisteredLessons(lessons.data);
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <StudentDashboardContext.Provider
       value={{
         checkIfStudentRegisteredAllTeachers,
         currentLesson,
         setCurrentLesson,
+        allRegisteredLessons,
+        currentSection,
+        setCurrentSection,
       }}
     >
       {children}

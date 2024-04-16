@@ -6,8 +6,6 @@ const TreeLesson = ({ lesson }) => {
   const { handleAddSectionClick } = useLessonManagement();
   const [isExpanded, setIsExpanded] = useState(true);
 
-  const toggleExpand = () => setIsExpanded(!isExpanded);
-
   return (
     <div className="lesson ">
       {isExpanded && (

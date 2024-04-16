@@ -2,6 +2,8 @@ import GradeClassType from '../models/GradeClassType.js';
 import StudentTeacherSelection from '../models/StudentTeacherSelection.js';
 import User from '../models/User.js';
 import Teachers from '../models/User.js';
+import Lesson from '../models/Lesson.js';
+import LessonSection from '../models/LessonSection.js';
 
 export const getUnregistedClassTypes = async (req, res) => {
   try {
@@ -109,5 +111,62 @@ export const registerSelectedTeachers = async (req, res) => {
     res.json(registeredTeachers);
   } catch (error) {
     res.status(404).json({ message: error.message });
+  }
+};
+async function populateSections(sections) {
+  for (let i = 0; i < sections.length; i++) {
+    const childSections = await LessonSection.find({
+      parentSection: sections[i]._id,
+    }).populate('sectionContents');
+
+    // Convert child sections to plain objects if they are Mongoose documents
+    sections[i].childSections = childSections.map((cs) =>
+      cs.toObject ? cs.toObject() : cs,
+    );
+
+    // Recursively populate child sections
+    if (sections[i].childSections.length > 0) {
+      await populateSections(sections[i].childSections);
+    }
+  }
+}
+
+export const getAllRegisteredLessons = async (req, res) => {
+  try {
+    const selections = await StudentTeacherSelection.find({
+      student: req.userId,
+    })
+      .populate('teacher')
+      .populate('grade')
+      .populate('classType');
+
+    const lessons = await Promise.all(
+      selections.map(async (selection) => {
+        let lesson = await Lesson.findOne({
+          user: selection.teacher._id,
+          grade: selection.grade._id,
+          classType: selection.classType._id,
+        }).populate({
+          path: 'lessonSections',
+          match: { parentSection: null },
+          populate: { path: 'sectionContents' },
+        });
+
+        if (lesson) {
+          lesson = lesson.toObject(); // Convert to JS object
+          await populateSections(lesson.lessonSections);
+          return lesson; // Now lesson includes populated child sections
+        }
+        return null;
+      }),
+    );
+    console.log('lessons', lessons);
+    res.json({
+      success: true,
+      data: lessons.filter((lesson) => lesson !== null),
+    });
+  } catch (error) {
+    console.error('Error fetching registered lessons:', error);
+    res.status(500).send({ success: false, error: error.message });
   }
 };
