@@ -9,6 +9,9 @@ const FileUploadComponent = ({ lessonId, sectionId }) => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [type, setType] = useState("video");
+  const [order, setOrder] = useState(1); // Start with default order
+
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [uploadComplete, setUploadComplete] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -28,11 +31,19 @@ const FileUploadComponent = ({ lessonId, sectionId }) => {
     setDescription(event.target.value);
   };
 
+  const onTypeChange = (event) => {
+    setType(event.target.value);
+  };
+  const onOrderChange = (event) => {
+    setOrder(event.target.value);
+  };
   const onFileUpload = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("type", type);
+    formData.append("order", order);
 
     const requestConfig = {
       headers: {
@@ -84,7 +95,46 @@ const FileUploadComponent = ({ lessonId, sectionId }) => {
           rows={4}
         ></textarea>
       </div>
+      <div>
+        {/* Type dropdown component */}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="type"
+          >
+            Content Type
+          </label>
+          <select
+            id="type"
+            value={type}
+            onChange={onTypeChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="video">Video</option>
+            <option value="pdf">PDF</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
 
+      <div>
+        {/* Order input component */}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="order"
+          >
+            Order
+          </label>
+          <input
+            type="number"
+            id="order"
+            value={order}
+            onChange={onOrderChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+      </div>
       <input type="file" name="file" onChange={onFileChange} />
       <button onClick={onFileUpload} disabled={!file || uploadComplete}>
         Upload

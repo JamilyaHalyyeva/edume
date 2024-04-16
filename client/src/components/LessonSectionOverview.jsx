@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useStudentDashboardContext } from "../context/StudentDashboardProvider";
 import Player from "./Player/Player";
-
+import EXAMPLE from "../assets/example.jpg";
 const LessonSectionOverview = () => {
   const navigate = useNavigate();
   const { currentSection } = useStudentDashboardContext();
@@ -12,8 +12,9 @@ const LessonSectionOverview = () => {
     console.log("Next Clicked");
   };
 
+  console.log("currentSection", currentSection);
   return (
-    <div className="mt-[10rem]">
+    <div className="mt-[6rem]">
       <div className="flex flex-col justify-center items-center p-5">
         {/* top back and next and title section  */}
         <div className="flex flex-row justify-between w-full">
@@ -34,11 +35,16 @@ const LessonSectionOverview = () => {
           </button>
         </div>
         {/* content section */}
-        <div>
+        <div className="w-full flex  flex-row justify-start">
           <div className="flex flex-col justify-center items-center p-5">
             <div className="w-full h-96 rounded-2xl overflow-hidden">
               {/* we should have a player component here to show the content video  */}
-              <Player url={currentSection.videoSrc} />
+              <Player
+                url={
+                  currentSection.sectionContents.find((t) => t.type === "video")
+                    .url
+                }
+              />
             </div>
           </div>
         </div>
@@ -50,9 +56,9 @@ const LessonSectionOverview = () => {
               <div key={index}>
                 <div className="flex justify-center">
                   <div className="w-[22rem] md:w-65 lg:w-96 h-auto bg-slate-100 flex flex-col justify-center items-center p-5 shadow-2xl rounded-2xl transition-all duration-300 ease-in-out hover:scale-105">
-                    <div className="w-full h-64 rounded-2xl overflow-hidden">
+                    <div className="w-full h-40 rounded-2xl overflow-hidden">
                       <img
-                        src={section.imageSrc}
+                        src={section.imageSrc ?? EXAMPLE}
                         alt="Lesson Section"
                         className="w-full h-full object-cover"
                       />

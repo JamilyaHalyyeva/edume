@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useLessonManagement } from "../../context/LessonManagementProvider.jsx";
 
 const LessonSection = (props) => {

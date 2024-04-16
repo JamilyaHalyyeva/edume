@@ -27,14 +27,6 @@ const AddSectionContent = ({ onCancelClick, sectionId }) => {
       </div>
       <div className="flex flex-row justify-end mb-2">
         <button
-          onClick={() => {
-            console.log("save");
-          }}
-          className="btn bg-yellow-300 p-2 mx-2 w-20 rounded-2xl text-black "
-        >
-          Save
-        </button>
-        <button
           onClick={handleCancelClick}
           className="btn bg-red-400 p-2  mx-2  w-20  rounded-2xl  text-black "
         >

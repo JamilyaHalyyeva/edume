@@ -9,21 +9,8 @@ const LessonManagementProvider = ({ children }) => {
   const [isNewSectionOrSectionSelected, setIsNewSectionOrSectionSelected] =
     useState(false);
   const [isNewSection, setIsNewSection] = useState(false);
-  const [
-    isNewSubSectionOrSubSectionSelected,
-    setIsNewSubSectionOrSubSectionSelected,
-  ] = useState(false);
-  const [isNewSubSection, setIsNewSubSection] = useState(false);
 
   const [currentSection, setCurrentSection] = useState({ name: "" });
-  const handleAddSectionClick = () => {
-    setIsNewSectionOrSectionSelected(true);
-    setIsNewSection(true);
-  };
-  const handleAddSubSectionClick = (sectionId) => {
-    setIsNewSubSectionOrSubSectionSelected(true);
-    setIsNewSubSection(true);
-  };
 
   const cancelNewSection = () => {
     setIsNewSectionOrSectionSelected(false);
@@ -31,7 +18,6 @@ const LessonManagementProvider = ({ children }) => {
     setCurrentSection({ name: "" });
   };
   const saveNewSection = () => {
-
     currentSection.lesson = lesson._id;
     currentSection.order = lesson.lessonSections
       ? lesson.lessonSections.length
@@ -89,12 +75,9 @@ const LessonManagementProvider = ({ children }) => {
       value={{
         lesson,
         isNewSectionOrSectionSelected,
-        isNewSubSectionOrSubSectionSelected,
         isNewSection,
         currentSection,
         setCurrentSection,
-        handleAddSectionClick,
-        handleAddSubSectionClick,
         setLesson,
         saveNewSection,
         cancelNewSection,

@@ -8,6 +8,12 @@ async function populateSections(sections) {
         sections[i] = sections[i].toObject();
       }
 
+      //get sectionContents for the parent section itself
+      const sectionContents = await LessonSection.findById(
+        sections[i]._id,
+      ).populate('sectionContents');
+      sections[i].sectionContents = sectionContents.sectionContents;
+
       const childSections = await LessonSection.find({
         parentSection: sections[i]._id,
       }).populate('sectionContents');
