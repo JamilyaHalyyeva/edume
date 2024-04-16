@@ -23,7 +23,7 @@ const LessonSection = (props) => {
     // cancel the section info
   };
   return (
-    <div className="flex flex-col justify-start">
+    <div className="flex flex-col justify-start ">
       <h1 className="w-full">
         {isNewSection === true ? "New " : ""}Section info:
       </h1>
@@ -42,7 +42,7 @@ const LessonSection = (props) => {
             <div className="flex flex-row justify-end">
               <button
                 onClick={onSectionInfoCancelClickHandler}
-                className="btn bg-red-300 p-2 mr-2 rounded-md text-black"
+                className="btn bg-red-500 p-2 mr-2 rounded-md text-black"
               >
                 Cancel
               </button>
