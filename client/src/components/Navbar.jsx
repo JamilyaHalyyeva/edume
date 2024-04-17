@@ -6,9 +6,12 @@ import { useUser } from "../context/UserProvider.jsx";
 import avatars from "../assets/avatars/avatars.js";
 
 const Navbar = () => {
-  const { user } = useUser();
+  const { user, logoutUser } = useUser();
   // State to manage the toggle of the mobile menu
   const [isOpen, setIsOpen] = useState(false);
+  const handleLogout = () => {
+    logoutUser();
+  };
 
   return (
     <nav className="bg-gray-200  p-2 fixed top-0  w-full z-50  ">
@@ -50,6 +53,12 @@ const Navbar = () => {
             </div>
             <div>Grade: {user.grade.name}</div>
           </div>
+          <button
+            onClick={handleLogout}
+            className=" text-sm rounded-2xl  hover:bg-gray-100 bg-orange-400 w-auto justify-center items-center flex h-8 p-3  text-white text-right"
+          >
+            Sign out
+          </button>
         </div>
 
         {/* Mobile Menu Toggle Button */}

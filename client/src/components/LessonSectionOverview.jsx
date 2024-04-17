@@ -47,8 +47,8 @@ const LessonSectionOverview = () => {
           </button>
         </div>
         {content && (
-          <div className="w-full flex flex-row justify-center items-center p-5 gap-8">
-            <div className="flex flex-col justify-center items-center p-5">
+          <div className="w-full flex flex-col xl:flex-row lg:flex-row   justify-center items-center p-5 gap-8">
+            <div className="flex flex-row justify-center items-center p-5">
               <div className="w-full shadow-xl border-2 h-96 rounded-2xl overflow-hidden">
                 {/* we should have a player component here to show the content video  */}
 
