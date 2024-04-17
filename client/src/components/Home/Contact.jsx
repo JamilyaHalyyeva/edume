@@ -5,15 +5,15 @@ export const Contact = () => {
   return (
     <>
       <section
-        className="mt-50 mb-10 h-auto mx-50 md:mx-20 sm:mx-10 xs:mx-5  bg-transparent pr-4 pb-4 rounded-2xl md:bg-orange-500"
+        className="mt-50 mb-10  h-auto mx-50  md:mx-20  sm:mx-10 xs:mx-5  bg-transparent pr-4 pb-4 rounded-2xl md:bg-orange-500"
         id="contact"
       >
         <div className="max-w-screen-lg mx-auto flex justify-center items-center ">
-          <div className="w-2/5 mr-24 ">
+          <div className="w-2/5 mr- ">
             <img src={MAN} alt="" className=" hidden md:block " />
           </div>
-          <div className="right">
-            <form className="w-80 max-w-md p-4 border border-gray-300 mr-4 rounded bg-white">
+          <div className="right ml-8 md:ml-10">
+            <form className="w-72 max-w-md p-4 border md:w-80 border-gray-300 mr-8 rounded bg-white">
               <Title subtitle="Send us a message" />
               <input
                 type="text"
