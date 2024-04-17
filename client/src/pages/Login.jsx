@@ -13,9 +13,6 @@ import CUL from "../assets/cul.png";
 import MUS from "../assets/mus.png";
 import ENG from "../assets/eng.png";
 
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faShield } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
@@ -293,7 +290,7 @@ const LoginPage = () => {
           <Link to={"/register"}>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4   text-sm font-medium rounded-xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              className="group relative w-[9rem] flex justify-center py-2 px-4   text-sm font-medium rounded-2xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >
               Sign up
             </button>
@@ -309,9 +306,14 @@ const LoginPage = () => {
         </div>
         <div className=" flex justify-center items-center flex-row">
           <img src={EDUME} className="w-40 " />
+        </div>{" "}
+        <div>
+          <h2 className="mt-5 text-center text-3xl font-extrabold text-gray-900">
+            Login
+          </h2>
         </div>
         <form
-          className="mt-8 space-y-6 w-4/5 p-10 xs:p-5 flex-row"
+          className=" space-y-6 w-4/5 p-10 xs:p-5 flex-row"
           onSubmit={handleLogin}
         >
           <div className="email-wrapper">
