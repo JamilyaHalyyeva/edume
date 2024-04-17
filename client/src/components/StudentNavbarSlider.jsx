@@ -35,7 +35,7 @@ const StudentNavbarSlider = ({ items }) => {
         </div>
       </div>
       {items.length > 1 && (
-        <div className="flex justify-between absolute top-[29%] w-[22rem] md:w-[30rem] -translate-y-1/2">
+        <div className="flex justify-between absolute top-2.5 w-[22rem] md:w-[30rem] -translate-y-1/2">
           <button onClick={goToPrevious} className=" p-2">
             <FontAwesomeIcon
               className="text-gray-800 xl:hidden 2xl:hidden lg:hidden"

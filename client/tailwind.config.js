@@ -7,7 +7,7 @@ export default {
         xs: { max: "639px" }, // screens smaller than 640px
       },
       spacing: {
-        7.25: "29%", // Tailwind uses a scale of 0 to spacing, so 7.25 is arbitrary
+        2.5: "45%", // Assuming '2.5' means you want 40%
       },
     },
   },

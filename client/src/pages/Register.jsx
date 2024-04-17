@@ -4,7 +4,8 @@ import LOGO from "../assets/logo.png";
 import REGISPANDA from "../assets/panda.png";
 
 import EDUME from "../assets/edume.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRegister } from "../context/RegisterProvider";
 
 const RegisterPage = () => {
@@ -88,8 +89,8 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className=" w-full  flex item-center justify-center 2xl:p-10">
-        <div className="2xl:w-2/5  2xl:rounded-l-2xl xl:w-1/2 lg:w-1/2 md:w-1/2 sm:hidden md:flex xs:hidden flex-col justify-center items-center  bg-gray-100">
+      <div className="  flex item-center justify-center 2xl:p-10">
+        <div className="2xl:w-2/5 h-screen 2xl:rounded-l-2xl xl:w-1/2 lg:w-1/2 md:w-1/2 sm:hidden md:flex xs:hidden flex-col justify-center items-center  bg-gray-100">
           <div className="registerImage ">
             <img src={REGISPANDA} alt="" className="h-[30rem] w-[30rem] flex" />
           </div>
@@ -97,7 +98,7 @@ const RegisterPage = () => {
             <span className="text text-gray-700 text-lg font-extrabold">
               Do you have an account?
             </span>
-            <Link to={"/register"}>
+            <Link to={"/login"}>
               <button
                 type="submit"
                 className="group relative  flex justify-center py-2 px-4 w-[10rem]  text-sm font-medium rounded-2xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
@@ -108,7 +109,7 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        <div className=" 2xl:w-2/5 2xl:rounded-r-2xl   xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-full  xs:w-full flex flex-col justify-center items-center bg-gray-100">
+        <div className=" 2xl:w-2/5 2xl:rounded-r-2xl  h-screen xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-full  xs:w-full flex flex-col justify-center items-center bg-gray-100">
           <div className="2xl:hidden xl:hidden lg:hidden md:hidden mb-10 sm:mb-3 xs:mb-1 sm:pt-10 flex-row">
             <img
               src={LOGO}
@@ -206,7 +207,7 @@ const RegisterPage = () => {
           </div>
 
           <div className="2xl:hidden xl:hidden lg:hidden mb-10 md:hidden  sm:hidden  justify-center item-center flex-row  w-4/5 rounded-xl flex ">
-            <Link to={"/loginpage"}>
+            <Link to={"/login"}>
               <button
                 type="submit"
                 className="group relative w-[10rem] h-10 flex justify-center py-2 px-4  text-sm font-medium rounded-3xl text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
