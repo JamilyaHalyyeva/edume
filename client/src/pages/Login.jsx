@@ -1,5 +1,5 @@
 // LoginPage.js
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../context/UserProvider";
 import LOGO from "../assets/logo.png";
 import GOOGLEICON from "../assets/googleicon.png";
@@ -13,9 +13,10 @@ import CUL from "../assets/cul.png";
 import MUS from "../assets/mus.png";
 import ENG from "../assets/eng.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const { loginUser } = useUser();
 
   const [email, setEmail] = useState("");
@@ -56,6 +57,13 @@ const LoginPage = () => {
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Redirect to dashboard if user is already logged in
+      navigate("/dashboard");
+    }
+  }, []);
   return (
     <div className=" w-full h-screen flex item-center justify-center 2xl:p-10">
       <div className="2xl:w-2/5  2xl:rounded-l-2xl xl:w-1/2 lg:w-1/2 md:w-1/2 sm:hidden md:flex xs:hidden flex-col justify-center items-center  bg-gray-100">
