@@ -4,10 +4,12 @@ import { useStudentDashboardContext } from "../context/StudentDashboardProvider.
 import Player from "./Player/Player.jsx"; // Your existing Player component
 // import PDFViewer from "./PDFViewer/PDFViewer.jsx"; // Assuming you have a PDF viewer component
 import EXAMPLE from "../assets/content.jpg";
+import LessonOverviewCard from "./LessonOverviewCard.jsx";
 
 const LessonSectionOverview = () => {
   const navigate = useNavigate();
-  const { currentSection } = useStudentDashboardContext();
+  const { currentSection, navigateToNextSection, navigateToPreviousSection } =
+    useStudentDashboardContext();
 
   // Find content of type 'video' or 'pdf'
   const content = useMemo(
@@ -18,6 +20,14 @@ const LessonSectionOverview = () => {
     [currentSection]
   );
 
+  const handleOnNextClick = () => {
+    console.log("Next Clicked");
+    navigateToNextSection();
+  };
+
+  const handleOnBackClick = () => {
+    navigateToPreviousSection();
+  };
   // Determine the component to use based on the content type
   const ContentComponent = content?.type === "video" ? Player : null;
 
@@ -32,7 +42,7 @@ const LessonSectionOverview = () => {
         <div className="flex flex-row justify-between w-full bg-gray-200 rounded-3xl  p-2">
           <button
             className="bg-orange-400 p-2 px-4 text-white font-bold rounded-3xl shadow-md hover:shadow-lg hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-75"
-            onClick={() => navigate("/dashboard/lesson-overview")}
+            onClick={handleOnBackClick}
           >
             Back
           </button>
@@ -41,7 +51,7 @@ const LessonSectionOverview = () => {
           </div>
           <button
             className="bg-orange-400 p-2 px-4 text-white font-bold rounded-3xl shadow-md hover:shadow-lg hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-75"
-            onClick={() => console.log("Next Clicked")}
+            onClick={handleOnNextClick}
           >
             Next
           </button>
@@ -93,20 +103,7 @@ const LessonSectionOverview = () => {
         )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentSection.childSections.map((section, index) => (
-            <div key={index}>
-              <div className="flex justify-center items-center">
-                <div className="w-[25rem] md:w-65  h-[20rem] lg:w-96  bg-gray-100 flex flex-col justify-center items-center p-5 shadow-2xl rounded-2xl transition-all duration-300 ease-in-out hover:scale-105">
-                  <img
-                    src={section.imageSrc ?? EXAMPLE}
-                    alt="Lesson Section"
-                    className="w-full h-[13rem] border-2 object-cover rounded-2xl"
-                  />
-                  <div className="mt-4 text-lg font-semibold">
-                    {section.name}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <LessonOverviewCard key={index} section={section} />
           ))}
         </div>
       </div>

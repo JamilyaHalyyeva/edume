@@ -71,6 +71,88 @@ const StudentDashboardProvider = ({ children }) => {
     }
   };
 
+  const navigateToNextSection = () => {
+    //find the lesson from allRegisteredLessons
+    const lesson = allRegisteredLessons.find(
+      (lesson) => lesson.classType === currentLesson._id
+    );
+
+    //now get all the sections of the lesson in flat array and consider childSections as well
+    const getAllSections = (sections) => {
+      let allSections = [];
+      sections.forEach((section) => {
+        allSections.push(section);
+        if (section.childSections) {
+          allSections.push(...getAllSections(section.childSections));
+        }
+      });
+      return allSections;
+    };
+
+    const allSections = getAllSections(lesson.lessonSections);
+
+    //find the index of the current section
+    const currentSectionIndex = allSections.findIndex(
+      (section) => section._id === currentSection._id
+    );
+
+    //if the current section is the last section, then return
+    if (currentSectionIndex === allSections.length - 1) {
+      return;
+    }
+
+    console.log("allSections", allSections);
+    //get the next section
+    const nextSection = allSections[currentSectionIndex + 1];
+
+    console.log("nextSection", nextSection);
+    //set the current section
+    setCurrentSection({
+      ...nextSection,
+    });
+  };
+
+  const navigateToPreviousSection = () => {
+    //find the lesson from allRegisteredLessons
+    const lesson = allRegisteredLessons.find(
+      (lesson) => lesson.classType === currentLesson._id
+    );
+
+    //now get all the sections of the lesson in flat array and consider childSections as well
+    const getAllSections = (sections) => {
+      let allSections = [];
+      sections.forEach((section) => {
+        allSections.push(section);
+        if (section.childSections) {
+          allSections.push(...getAllSections(section.childSections));
+        }
+      });
+      return allSections;
+    };
+
+    const allSections = getAllSections(lesson.lessonSections);
+
+    //find the index of the current section
+    const currentSectionIndex = allSections.findIndex(
+      (section) => section._id === currentSection._id
+    );
+
+    //if the current section is the first section, then return
+    if (currentSectionIndex === 0) {
+      return;
+    }
+
+    console.log("allSections", allSections);
+    //get the previous section
+    const previousSection = allSections[currentSectionIndex - 1];
+
+    console.log("previousSection", previousSection);
+    //set the current section
+    setCurrentSection({
+      ...previousSection,
+    });
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const isAllTeachersRegistered =
@@ -94,6 +176,8 @@ const StudentDashboardProvider = ({ children }) => {
         allRegisteredLessons,
         currentSection,
         setCurrentSection,
+        navigateToNextSection,
+        navigateToPreviousSection,
       }}
     >
       {children}
