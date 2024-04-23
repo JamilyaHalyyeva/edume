@@ -65,17 +65,9 @@ const LessonOverview = () => {
             className="rounded-3xl bg-orange-400 px-6 py-2 shadow-xl hover:shadow-orange-500 transition-all duration-300 ease-in-out"
             onClick={handleClick}
           >
-            back{" "}
+            Back Class List
           </button>
         </div>
-        {/* <div>
-          <button
-            className="rounded-3xl bg-orange-400 px-6 py-2 shadow-xl hover:shadow-orange-500 transition-all duration-300 ease-in-out"
-            onClick={handleSectionClick}
-          >
-            Next
-          </button>
-        </div> */}
       </div>
     </div>
   );
