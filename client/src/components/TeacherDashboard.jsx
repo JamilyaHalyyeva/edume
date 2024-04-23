@@ -23,24 +23,14 @@ const TeacherDashboard = () => {
         </p>
         <ColumnChartComponent />
       </div>
-      {/* <div className=" p-5 border-2 rounded-2xl shadow-xl">
-        <p className="text-2xl font-bold  text-orange-400 mb-3">
-          Monthly Attendance
-        </p>
-        <ColorfulBarChart />
-      </div> */}
-      {/* <div className="p-5 border-2">
-        <BarChartComponent />
-      </div> */}
-      {/* <div className="p-5 border-2">
-        <LineChartComponent />
-      </div> */}
+
       <div className="p-5 border-2 rounded-2xl shadow-xl">
         <p className="text-2xl font-bold text-start text-orange-400 mb-3">
           Monthly Attendance
         </p>
         <ColorfulBarChart />
       </div>
+
 
       <div className="p-5 border-2  rounded-2xl shadow-xl">
         <p className="text-2xl font-bold text-start text-orange-400 mb-3">
