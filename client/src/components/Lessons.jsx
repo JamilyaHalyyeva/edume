@@ -67,7 +67,7 @@ const Lessons = () => {
               className="rounded-3xl bg-orange-400 w-[9rem] h-[3rem] shadow-2xl hover:shadow-orange-600"
               onClick={() => setShowAll(true)}
             >
-              All Lessons
+              All Classes
             </button>
           </div>
         )}
@@ -77,7 +77,7 @@ const Lessons = () => {
               className="rounded-3xl bg-orange-400 w-[9rem] h-[3rem] shadow-2xl hover:shadow-orange-600"
               onClick={() => setShowAll(false)}
             >
-              Less Lessons
+              Less Classes
             </button>
           </div>
         )}
