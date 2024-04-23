@@ -51,7 +51,7 @@ const CustomDropdown = ({ onSelect }) => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gray-50 w-full  text-lg border border-gray-300 text-gray-900  rounded-lg p-2.5 flex justify-between items-center"
+        className="bg-gray-50 w-full  text-lg border border-gray-300 text-gray-900  rounded-lg p-3 flex justify-between items-center"
       >
         {selectedOption ? (
           <>

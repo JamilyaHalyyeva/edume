@@ -13,7 +13,7 @@ const TeacherLayout = ({ children }) => {
         {/* Add conditional padding */}
         <TopBar />
         <main
-          className={`flex flex-col flex-1 ${
+          className={`flex flex-col flex-1 overflow-y-auto ${
             isSidebarOpen === false ? "" : isCompact ? "pl-20" : "pl-64"
           }`}
         >

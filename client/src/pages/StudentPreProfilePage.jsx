@@ -7,7 +7,7 @@ const StudentPreProfilePage = () => {
   const navigate = useNavigate();
   const { registerUser } = useRegister();
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100  h-full  xl:h-screen">
       <div className="flex justify-start   pt-10 pb-2 pl-10 pr-20 mr-40 ">
         <button
           onClick={() => navigate("/register")}

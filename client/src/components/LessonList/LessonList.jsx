@@ -50,7 +50,7 @@ const LessonList = () => {
     { header: "Actions", accessor: "actions" },
   ];
   return (
-    <div className="p-4 h-screen overflow-y-auto">
+    <div className="p-4 h-screen overflow-y-auto pb-10">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-semibold">Lessons</h2>
         <Link
