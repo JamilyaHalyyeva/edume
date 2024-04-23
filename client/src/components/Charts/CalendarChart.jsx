@@ -80,7 +80,7 @@ const events = [
 
 const CalendarChart = () => {
   return (
-    <div className="w-[39rem] h-[21rem] ">
+    <div className="h-[20rem]">
       <Calendar
         localizer={localizer}
         events={events} // Dummy events

@@ -9,7 +9,7 @@ import PieChartComponent from "./Charts/PieChart";
 
 const TeacherDashboard = () => {
   return (
-    <div className=" w-full h-screen overflow-y-auto gap-5 grid grid-cols-2 pb-[10rem] justify-center items-center ">
+    <div className=" w-full  p-5 h-screen overflow-y-auto gap-5 grid grid-cols-2 pb-[10rem] justify-center items-center ">
       <div className="p-5 border-2 rounded-2xl shadow-xl ">
         <p className="text-2xl font-bold text-start text-orange-400 mb-3">
           Student Grades
@@ -26,11 +26,11 @@ const TeacherDashboard = () => {
 
       <div className="p-5 border-2 rounded-2xl shadow-xl h-[26rem]">
         <p className="text-2xl font-bold text-start text-orange-400 mb-3">
-          Monthly Test Attendance     
+          Monthly Test Attendance
         </p>
         <ColorfulBarChart />
       </div>
-      <div className="p-5 border-2  rounded-2xl shadow-xl">
+      <div className="p-5 border-2  rounded-2xl shadow-xl h-[26rem]">
         <p className="text-2xl font-bold text-start text-orange-400 mb-3">
           Event Calendar
         </p>
