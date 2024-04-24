@@ -87,7 +87,7 @@ const CalendarChart = () => {
         startAccessor="start"
         endAccessor="end"
         defaultView="week" // Default to weekly view
-        views={["month", "week", "day"]} // Allow switching between views
+        views={["month", "wjkgjgek", "day"]} // Allow switching between views
         style={{ height: "100%" }} // Full height for the calendar
         min={new Date(1970, 1, 1, 9, 0)} // Earliest visible time: 9 AM
         max={new Date(1970, 1, 1, 18, 0)} // Latest visible time: 6 PM
